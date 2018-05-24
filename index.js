@@ -15,35 +15,75 @@ bot.on('message', function (event) {
                 console.log('success',data);
                 }).catch(function(error){ console.log('Error',error);
             });
-        }else{
+        //}else{
+        if(event.message.text=="Hello"){
             console.log(event); //把收到訊息的 event 印出來看看
             event.reply(event.message.text).then(function(data){
                 console.log('success',data);
                 }).catch(function(error){ console.log('Error',error);
             });
+                 if(event.message.text=="carousel"){
+            console.log(event); //把收到訊息的 event 印出來看看
+event.reply({
+  type: 'template',
+  altText: 'this is a carousel template',
+  template: {
+    type: 'carousel',
+    columns: [{
+      thumbnailImageUrl: 'https://example.com/bot/images/item1.jpg',
+      title: 'this is menu',
+      text: 'description',
+      actions: [{
+        type: 'postback',
+        label: 'Buy',
+        data: 'action=buy&itemid=111'
+      }, {
+        type: 'postback',
+        label: 'Add to cart',
+        data: 'action=add&itemid=111'
+      }, {
+        type: 'uri',
+        label: 'View detail',
+        uri: 'http://example.com/page/111'
+      }]
+    }, {
+      thumbnailImageUrl: 'https://example.com/bot/images/item2.jpg',
+      title: 'this is menu',
+      text: 'description',
+      actions: [{
+        type: 'postback',
+        label: 'Buy',
+        data: 'action=buy&itemid=222'
+      }, {
+        type: 'postback',
+        label: 'Add to cart',
+        data: 'action=add&itemid=222'
+      }, {
+        type: 'uri',
+        label: 'View detail',
+        uri: 'http://example.com/page/222'
+      }]
+    }]
+  }
+}); 
+            
         }
     }
-       if(event=="message" && event.message.text=="Carousel Template"){
-       
-var column1 = new LINEBot.CarouselColumnTemplateBuilder();
-column1.setTitle('this is item 1')
-       .setMessage('description')
-       .setThumbnail('https://example.com/bot/images/item1.jpg')
-       .addAction('Buy', 'action=buy&itemid=111', LINEBot.Action.POSTBACK)
-       .addAction('Add to cart', 'action=buy&itemid=111', LINEBot.Action.POSTBACK)
-       .addAction('View detail', 'http://example.com/page/111', LINEBot.Action.URI);
- 
-var column2 = new LINEBot.CarouselColumnTemplateBuilder();
-column2.setTitle('this is item 2')
-       .setMessage('description')
-       .setThumbnail('https://example.com/bot/images/item2.jpg')
-       .addAction('Buy', 'action=buy&itemid=222', LINEBot.Action.POSTBACK)
-       .addAction('Add to cart', 'action=buy&itemid=222', LINEBot.Action.POSTBACK)
-       .addAction('View detail', 'http://example.com/page/222', LINEBot.Action.URI);
- 
-var carousel = new LINEBot.CarouselTemplateBuilder([column1, column2]);
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
-    }
 });
 
 const app = express();
