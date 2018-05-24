@@ -9,12 +9,33 @@ var bot = linebot({
 
 bot.on('message', function (event) {
     console.log(event); //把收到訊息的 event 印出來看看
-    event.reply("圖片").then(function(data){
+   /* event.reply("圖片").then(function(data){
                 console.log('success',data);
     }).catch(function(error){ console.log('Error',error);
  });
+});*/
+    ////////////////////////////////////////////////////////////////
+    
+    
+    event.reply({
+  type: 'template',
+  altText: 'this is a confirm template',
+  template: {
+    type: 'confirm',
+    text: 'Are you sure?',
+    actions: [{
+      type: 'message',
+      label: 'Yes',
+      text: 'yes'
+    }, {
+      type: 'message',
+      label: 'No',
+      text: 'no'
+    }]
+  }
 });
-
+    
+    ////////////////////////////////////////////////////////////////
 const app = express();
 const linebotParser = bot.parser();
 app.post('/', linebotParser);
