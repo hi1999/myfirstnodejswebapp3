@@ -9,24 +9,7 @@ var bot = linebot({
 
 bot.on('message', function (event) {
     console.log(event); //把收到訊息的 event 印出來看看
-    var userMessage = msg.events[0].message.text;
-    Logger.log("userMessage:"+userMessage); 
-    var url = 'https://api.line.me/v2/bot/message/reply';
-    UrlFetchApp.fetch(url, {
-      'headers': {
-      'Content-Type': 'application/json; charset=UTF-8',
-      'Authorization': 'Bearer ' + CHANNEL_ACCESS_TOKEN,
-     },
-    'method': 'post',
-    'payload': JSON.stringify({
-      'replyToken': replyToken,
-      'messages': [{
-        'type': 'text',
-        'text': replyMessage,
-          }],
-    }),
-  });
-}
+
 });
 
 const app = express();
