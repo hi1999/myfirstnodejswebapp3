@@ -8,19 +8,29 @@ var bot = linebot({
 });
 
 bot.on('message', function (event) {
-    if(event.message.text=="抽"){
-        console.log(event); //把收到訊息的 event 印出來看看
-        event.reply("圖片").then(function(data){
-            console.log('success',data);
-            }).catch(function(error){ console.log('Error',error);
-        });
+   if(event=="message"){
+        if(event.message.text=="抽"){
+            console.log(event); //把收到訊息的 event 印出來看看
+            event.reply("圖片").then(function(data){
+                console.log('success',data);
+                }).catch(function(error){ console.log('Error',error);
+            });
+        }else{
+            console.log(event); //把收到訊息的 event 印出來看看
+            event.reply(event.message.text).then(function(data){
+                console.log('success',data);
+                }).catch(function(error){ console.log('Error',error);
+            });
+        }
     }
-    else{
-        console.log(event); //把收到訊息的 event 印出來看看
-        event.reply(event.message.text).then(function(data){
-            console.log('success',data);
-            }).catch(function(error){ console.log('Error',error);
-        });
+       if(event=="follow"){
+       
+           
+            event.reply("歡迎加入").then(function(data){
+                console.log('success',data);
+                }).catch(function(error){ console.log('Error',error);
+            });
+
     }
 });
 
