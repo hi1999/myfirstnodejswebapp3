@@ -23,13 +23,25 @@ bot.on('message', function (event) {
             });
         }
     }
-       if(event=="follow"){
+       if(event=="message" && event.message.text=="Carousel Template"){
        
-           
-            event.reply("歡迎加入").then(function(data){
-                console.log('success',data);
-                }).catch(function(error){ console.log('Error',error);
-            });
+var column1 = new LINEBot.CarouselColumnTemplateBuilder();
+column1.setTitle('this is item 1')
+       .setMessage('description')
+       .setThumbnail('https://example.com/bot/images/item1.jpg')
+       .addAction('Buy', 'action=buy&itemid=111', LINEBot.Action.POSTBACK)
+       .addAction('Add to cart', 'action=buy&itemid=111', LINEBot.Action.POSTBACK)
+       .addAction('View detail', 'http://example.com/page/111', LINEBot.Action.URI);
+ 
+var column2 = new LINEBot.CarouselColumnTemplateBuilder();
+column2.setTitle('this is item 2')
+       .setMessage('description')
+       .setThumbnail('https://example.com/bot/images/item2.jpg')
+       .addAction('Buy', 'action=buy&itemid=222', LINEBot.Action.POSTBACK)
+       .addAction('Add to cart', 'action=buy&itemid=222', LINEBot.Action.POSTBACK)
+       .addAction('View detail', 'http://example.com/page/222', LINEBot.Action.URI);
+ 
+var carousel = new LINEBot.CarouselTemplateBuilder([column1, column2]);
 
     }
 });
