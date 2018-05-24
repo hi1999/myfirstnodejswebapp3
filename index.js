@@ -15,8 +15,7 @@ bot.on('message', function (event) {
                 console.log('success',data);
                 }).catch(function(error){ console.log('Error',error);
             });
-        //}else{
-        if(event.message.text=="Hello"){
+        }else{
             console.log(event); //把收到訊息的 event 印出來看看
             event.reply(event.message.text).then(function(data){
                 console.log('success',data);
@@ -25,21 +24,6 @@ bot.on('message', function (event) {
             
         }
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
 });
 
 const app = express();
