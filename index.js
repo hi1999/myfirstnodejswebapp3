@@ -8,15 +8,11 @@ var bot = linebot({
 });
 
 bot.on('message', function (event) {
-   if(event=="message"){
-        if(event.message.text=="抽"){
-            console.log(event); //把收到訊息的 event 印出來看看
-            event.reply("圖片").then(function(data){
+    console.log(event); //把收到訊息的 event 印出來看看
+    event.reply("圖片").then(function(data){
                 console.log('success',data);
-                }).catch(function(error){ console.log('Error',error);
-            });
-        }
-   }
+    }).catch(function(error){ console.log('Error',error);
+ });
 });
 
 const app = express();
