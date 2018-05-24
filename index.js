@@ -12,8 +12,11 @@ bot.on('message', function (event) {
    /* event.reply("圖片").then(function(data){
                 console.log('success',data);
     }).catch(function(error){ console.log('Error',error);
- });
-});*/
+ });*/
+    
+    
+    
+    
     ////////////////////////////////////////////////////////////////
     
     
@@ -36,7 +39,10 @@ bot.on('message', function (event) {
 });
     
     ////////////////////////////////////////////////////////////////
-const app = express();
+
+});
+    
+    const app = express();
 const linebotParser = bot.parser();
 app.post('/', linebotParser);
 
