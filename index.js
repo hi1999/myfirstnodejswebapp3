@@ -8,16 +8,16 @@ var bot = linebot({
 });
 
 bot.on('message', function (event) {
-    console.log(event); //把收到訊息的 event 印出來看看
+   /* console.log(event); //把收到訊息的 event 印出來看看
     
     
     //////回覆訊息功能-測試OK
    
-   event.reply(event.source.userid).then(function(data){
+   event.reply("圖片").then(function(data){
                 console.log('success',data);
     }).catch(function(error){ console.log('Error',error);
  });
- 
+ */
     
     
     
@@ -61,11 +61,11 @@ doc.useServiceAccountAuth(creds, function (err) {
 });
     */
     //////Line主動推播測試
-/*    const ME = '你的Line使用者ID';
+    const ME = 'U39df481b54d0db051fe29d3a94b5b887';
     			bot.push(ME, {
 				type: 'text',
 				text: '女王呼喚：\n\n快去洗碗！！'
-			});*/
+			});
     ////////////////////////////////////////////////////////////////
 
 });
