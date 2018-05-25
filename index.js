@@ -9,13 +9,15 @@ var bot = linebot({
 
 bot.on('message', function (event) {
     console.log(event); //把收到訊息的 event 印出來看看
+    
+    
     //////回覆訊息功能-測試OK
-   /* 
-   event.reply("圖片").then(function(data){
+   
+   event.reply(event.source.userid).then(function(data){
                 console.log('success',data);
     }).catch(function(error){ console.log('Error',error);
  });
- */
+ 
     
     
     
@@ -42,7 +44,7 @@ bot.on('message', function (event) {
 });
     */
     //////測試連結Google試算表功能
-    
+    /*
 var GoogleSpreadsheet = require('google-spreadsheet');
 var creds = require('./client_secret.json');
  
@@ -57,8 +59,13 @@ doc.useServiceAccountAuth(creds, function (err) {
     console.log(rows);
   });
 });
-    
-    
+    */
+    //////Line主動推播測試
+/*    const ME = '你的Line使用者ID';
+    			bot.push(ME, {
+				type: 'text',
+				text: '女王呼喚：\n\n快去洗碗！！'
+			});*/
     ////////////////////////////////////////////////////////////////
 
 });
