@@ -9,17 +9,20 @@ var bot = linebot({
 
 bot.on('message', function (event) {
     console.log(event); //把收到訊息的 event 印出來看看
-   /* event.reply("圖片").then(function(data){
+    //////回覆訊息功能-測試OK
+   /* 
+   event.reply("圖片").then(function(data){
                 console.log('success',data);
     }).catch(function(error){ console.log('Error',error);
- });*/
+ });
+ */
     
     
     
     
-    ////////////////////////////////////////////////////////////////
+    //////回覆Comfirm Template功能-測試OK
     
-    
+   /* 
     event.reply({
   type: 'template',
   altText: 'this is a confirm template',
@@ -37,6 +40,24 @@ bot.on('message', function (event) {
     }]
   }
 });
+    */
+    //////測試連結Google試算表功能
+    
+var GoogleSpreadsheet = require('google-spreadsheet');
+var creds = require('./client_secret.json');
+ 
+// Create a document object using the ID of the spreadsheet - obtained from its URL.
+var doc = new GoogleSpreadsheet('1GjY1OKGyO_QMLTk4G10J_cCpb_rAbKXcMs8Q2aLrHEo');
+ 
+// Authenticate with the Google Spreadsheets API.
+doc.useServiceAccountAuth(creds, function (err) {
+ 
+  // Get all of the rows from the spreadsheet.
+  doc.getRows(1, function (err, rows) {
+    console.log(rows);
+  });
+});
+    
     
     ////////////////////////////////////////////////////////////////
 
