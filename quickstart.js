@@ -178,7 +178,7 @@ function listMajors(auth) {
 
     sheets.spreadsheets.values.get({
 
-        spreadsheetId: '1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms',
+        spreadsheetId: '1GjY1OKGyO_QMLTk4G10J_cCpb_rAbKXcMs8Q2aLrHEo',
 
         range: 'Class Data!A2:E',
 
