@@ -17,7 +17,7 @@ bot.on('message', function (event) {
     console.log('收到的event:');
     console.log(event); 
 var fs = require('fs');
-/*
+
 var data = [
     {
         name : 'sheet1',
@@ -67,9 +67,8 @@ fs.writeFile('./resut.xls', buffer, function (err)
     var obj = xlsx.parse("./" + "resut.xls");
     console.log(JSON.stringify(obj));
 }
-);*/
-    var obj = xlsx.parse("./" + "resut.xls");
-    console.log(JSON.stringify(obj));
+);
+    
 	
     //===========================================================
     //回覆訊息功能-測試OK   
