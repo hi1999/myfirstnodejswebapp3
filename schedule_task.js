@@ -18,7 +18,7 @@ bot.push(ME, {
     type: 'text',
     text: '女王呼喚：\n\n快去洗碗！！'
 });
-const SAM = 'U96297178ee6ec3fbfe6d399b5b1e92e7';
+const SAM = 'Uf11e08fe2c7bbabff46ad97b52806f3a';//'U96297178ee6ec3fbfe6d399b5b1e92e7';
 bot.push(SAM, {
     type: 'text',
     text: '讚讚讚！！'

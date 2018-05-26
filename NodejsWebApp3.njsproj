@@ -12,7 +12,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>cce3ce8f-ce73-4035-8101-110a20388f0d</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>server.js</StartupFile>
+    <StartupFile>MyImgurTest.js</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -30,6 +30,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="index.js">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MyImgurTest.js">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="quickstart.js">
