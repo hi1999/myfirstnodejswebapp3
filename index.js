@@ -49,7 +49,9 @@ var GoogleSpreadsheet = require('google-spreadsheet');
 console.log("連Google");
 var creds = require('./client_secret.json');
 var doc = new GoogleSpreadsheet('1GjY1OKGyO_QMLTk4G10J_cCpb_rAbKXcMs8Q2aLrHEo');
-    // see notes below for authentication instructions!
+     function setAuth(step) {
+    
+	// see notes below for authentication instructions!
     var creds = require('./client_secret.json');
     // OR, if you cannot save the file locally (like on heroku)
     var creds_json = {
@@ -57,7 +59,9 @@ var doc = new GoogleSpreadsheet('1GjY1OKGyO_QMLTk4G10J_cCpb_rAbKXcMs8Q2aLrHEo');
       private_key: 'n1dRke7L5V5dtUK4J23lXTGC'
     }
  
-    doc.useServiceAccountAuth(creds, step);
+    
+    doc.useServiceAccountAuth(creds, step)
+    ;
 
  sheet = info.worksheets[0];
       console.log('sheet 1: '+sheet.title+' '+sheet.rowCount+'x'+sheet.colCount)
