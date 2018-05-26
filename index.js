@@ -46,12 +46,9 @@ bot.on('message', function (event) {
     //////測試連結Google試算表功能
     
 var GoogleSpreadsheet = require('google-spreadsheet');
-var async = require('async');
 console.log("連Google");
 var creds = require('./client_secret.json');
 var doc = new GoogleSpreadsheet('1GjY1OKGyO_QMLTk4G10J_cCpb_rAbKXcMs8Q2aLrHEo');
-async.series([
-  function setAuth(step) {
     // see notes below for authentication instructions!
     var creds = require('./client_secret.json');
     // OR, if you cannot save the file locally (like on heroku)
@@ -61,7 +58,7 @@ async.series([
     }
  
     doc.useServiceAccountAuth(creds, step);
-  },
+
  sheet = info.worksheets[0];
       console.log('sheet 1: '+sheet.title+' '+sheet.rowCount+'x'+sheet.colCount)
     
