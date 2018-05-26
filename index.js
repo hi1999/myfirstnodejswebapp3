@@ -23,16 +23,19 @@ MongoClient.connect(url, function (err, database) {
         age: 40,
         name: "Sam"
     });
-    db.close();
+    database.close();
+    console.log('DB插入資料成功');
 });
 
 // Read Data Sample
 MongoClient.connect(url, function (err, database) {
+    console.log('DB連線成功');
     var db = database.db('heroku_p97hnb3x');
     var cursor = db.collection('test1').find();
     cursor.each(function (err, doc) {
         console.log('DB資料讀取:', doc);
     });
+    database.close();
 }); 
 
 bot.on('message', function (event) {
