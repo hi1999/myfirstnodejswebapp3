@@ -1,4 +1,20 @@
-﻿var rp = require('request-promise');
+﻿var linebot = require('linebot');
+var express = require('express');
+var google = require('googleapis');
+var googleAuth = require('google-auth-library');
+var xlsx = require('node-xlsx');
+
+var bot = linebot({
+    channelId: '1574577182',
+    channelSecret: 'c05559be60a96b1c97ec1e23e66dfe34',
+    channelAccessToken: 'IuH6YSRirA0lKr2RRbRXaXCr0ysuVmaNpPBi8VLh0nLj7hOOIexln58+JAswGF71Jpv5pnp8fBrC6kO0rG4bq1detk7Qh40XADbWE524z74JdtfRJe4IizHpQ9k5QmqLTNIRUvV+8YRKnkkYLJiH7AdB04t89/1O/w1cDnyilFU='
+});
+
+console.log('收到的event:');
+console.log(event); 
+
+var rp = require('request-promise');
+console.log(rp);
 
 exports.reply = function justReply(req, res) {
 
