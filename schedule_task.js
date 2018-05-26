@@ -35,13 +35,19 @@ var options = {
 
 var req = https.request(options, function (res) {
     //console.log('statusCode:', res.statusCode);
-    //console.log('headers:', res.headers);
+    console.log('--------------------------1');
+    console.log('headers:', res.headers);
+    console.log('--------------------------');
     
     //console.log('link', res.headers.data.link);
     res.on('data', function (d) {
-        //process.stdout.write(d);
+        console.log('--------------------------2');
+        process.stdout.write(d);
+        console.log('--------------------------');
         console.log(d);
+        console.log('--------------------------');
         console.log(d[0]);
+        console.log('--------------------------');
         //console.log('link',d.link);
     });
 });
