@@ -44,7 +44,7 @@ bot.on('message', function (event) {
 });
     */
     //////測試連結Google試算表功能
-    /*
+    
 var GoogleSpreadsheet = require('google-spreadsheet');
 var creds = require('./client_secret.json');
  
@@ -59,14 +59,15 @@ doc.useServiceAccountAuth(creds, function (err) {
     console.log(rows);
   });
 });
-    */
+    
     //////Line主動推播測試
-    const ME = 'U39df481b54d0db051fe29d3a94b5b887';
+    /*const ME = 'U39df481b54d0db051fe29d3a94b5b887';
     			bot.push(ME, {
 				type: 'text',
 				text: '女王呼喚：\n\n快去洗碗！！'
 			});
-    ////////////////////////////////////////////////////////////////
+*/
+
 
 });
     
