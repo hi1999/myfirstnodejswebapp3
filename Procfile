@@ -1,1 +1,1 @@
-web: node quickstart.js
+web: node index.js
