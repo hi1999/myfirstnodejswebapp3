@@ -37,7 +37,7 @@ var req = https.request(options, function (res) {
     //console.log('statusCode:', res.statusCode);
     console.log('headers:', res.headers);
     var headers = JSON.parse(res.headers);
-    console.log('data', headers.data);
+    console.log('headers', headers);
     //console.log('link', res.headers.data.link);
     res.on('data', function (d) {
         process.stdout.write(d);
