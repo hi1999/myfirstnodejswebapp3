@@ -25,37 +25,21 @@ var bot = linebot({
 //});
 
 //------------------------------------------------------------
-var https = require('https');
+console.log('取得相簿裡的所有照片');
+var request = require('request');
 var options = {
-    hostname: 'api.imgur.com',
-    path: '/3/album/ZaDbl2w/images',
-    headers: { 'Authorization': 'Client-ID c5059e019ff8903' },
-    method: 'GET'
+    url: 'https://api.imgur.com/3/album/ZaDbl2w/images',
+    headers: { 'Authorization': 'Client-ID c5059e019ff8903' }
 };
-
-var req = https.request(options, function (res) {
-    //console.log('statusCode:', res.statusCode);
-    console.log('--------------------------1');
-    console.log('headers:', res.headers);
-    console.log('--------------------------');
-    
-    //console.log('link', res.headers.data.link);
-    res.on('data', function (d) {
-        console.log('--------------------------2');
-        process.stdout.write(d);
-        console.log('--------------------------');
-        console.log(d);
-        console.log('--------------------------');
-        console.log(d[0]);
-        console.log('--------------------------');
-        //console.log('link',d.link);
-    });
-});
-
-req.on('error', function (e) {
-    console.error(e);
-});
-
-req.end();
+var i = 0;
+function callback(error, response, body) {
+    if (!error && response.statusCode == 200) {
+        var info = JSON.parse(body);
+        for (i = 0; i < info.data.length; i++) {
+            console.log(info.data[i].link);
+        }
+    }
+}
+request(options, callback);
 
 console.log('==================');

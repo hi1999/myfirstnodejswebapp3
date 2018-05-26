@@ -12,7 +12,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>cce3ce8f-ce73-4035-8101-110a20388f0d</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>MyImgurTest.js</StartupFile>
+    <StartupFile>server.js</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
