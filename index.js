@@ -46,10 +46,12 @@ bot.on('message', function (event) {
     //////測試連結Google試算表功能
     
 var GoogleSpreadsheet = require('google-spreadsheet');
+	    console.log("連Google");
 var creds = require('./client_secret.json');
- 
+ console.log("金鑰通過");
 // Create a document object using the ID of the spreadsheet - obtained from its URL.
 var doc = new GoogleSpreadsheet('1GjY1OKGyO_QMLTk4G10J_cCpb_rAbKXcMs8Q2aLrHEo');
+	 console.log("連檔案");
  //console.log(rows.length);
 // Authenticate with the Google Spreadsheets API.
 doc.useServiceAccountAuth(creds, function (err) {
