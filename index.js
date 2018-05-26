@@ -57,14 +57,14 @@ var data = [
 
 // 寫xlsx
 var buffer = xlsx.build(data);
-fs.writeFile('./resut.xls', buffer, function (err)
+fs.writeFile('./hi1999/myfirstnodejswebapp3/resut.xls', buffer, function (err)
 {
    // if (err)
    //     throw err;
     console.log('Write to xls has finished');
     
 // 讀xlsx
-    var obj = xlsx.parse("./" + "resut.xls");
+    var obj = xlsx.parse("./hi1999/myfirstnodejswebapp3/" + "resut.xls");
     console.log(JSON.stringify(obj));
 }
 );
