@@ -8,60 +8,62 @@ var bot = linebot({
 });
 
 bot.on('message', function (event) {
-   /* console.log(event); //把收到訊息的 event 印出來看看
+
+    console.log('收到的event:'+event); //把收到訊息的 event 印出來看看
     
     
-    //////回覆訊息功能-測試OK
-   
-   event.reply("圖片").then(function(data){
-                console.log('success',data);
-    }).catch(function(error){ console.log('Error',error);
- });
- */
-    
-    //
-    
-    
-    //////回覆Comfirm Template功能-測試OK
-    
-   /* 
+    //回覆訊息功能-測試OK   
+    console.log('##測試==>回覆訊息功能');
+    event.reply("圖片").then(function (data) {
+        console.log('success', data);
+    }).catch(function (error) {
+        console.log('Error', error);
+        });
+    console.log('##');
+ 
+    //回覆Comfirm Template功能-測試OK
+    console.log('##測試==>回覆Comfirm Template功能');
     event.reply({
-  type: 'template',
-  altText: 'this is a confirm template',
-  template: {
-    type: 'confirm',
-    text: 'Are you sure?',
-    actions: [{
-      type: 'message',
-      label: 'Yes',
-      text: 'yes'
-    }, {
-      type: 'message',
-      label: 'No',
-      text: 'no'
-    }]
-  }
-});
-    */
-    //////測試連結Google試算表功能
+        type: 'template',
+        altText: 'this is a confirm template',
+        template: {
+            type: 'confirm',
+            text: 'Are you sure?',
+            actions: [{
+                type: 'message',
+                label: 'Yes',
+                text: 'yes'
+            }, {
+                type: 'message',
+                label: 'No',
+                text: 'no'
+            }]
+        }
+    });
+    console.log('##');
     
-var GoogleSpreadsheet = require('google-spreadsheet');
-console.log("連Google");
-var creds = require('./client_secret.json');
-var doc = new GoogleSpreadsheet('1GjY1OKGyO_QMLTk4G10J_cCpb_rAbKXcMs8Q2aLrHEo');
-    // see notes below for authentication instructions!
+   
+    
+    //測試連結Google試算表功能
+    console.log('##測試==>連結Google試算表功');
+    var GoogleSpreadsheet = require('google-spreadsheet');
+    console.log("連Google");
     var creds = require('./client_secret.json');
+    console.log("creds:" + creds);
+    var doc = new GoogleSpreadsheet('1GjY1OKGyO_QMLTk4G10J_cCpb_rAbKXcMs8Q2aLrHEo');
+    console.log("doc:" + doc);
+    // see notes below for authentication instructions!
+    //var creds = require('./client_secret.json');
     // OR, if you cannot save the file locally (like on heroku)
     var creds_json = {
       client_email: 'pchunfan@google.com',
       private_key: 'n1dRke7L5V5dtUK4J23lXTGC'
     }
- 
+    console.log("creds_json:" + creds_json);
     doc.useServiceAccountAuth(creds, step);
+    sheet = info.worksheets[0];
+    console.log('sheet 1: ' + sheet.title + ' ' + sheet.rowCount + 'x' + sheet.colCount)
 
- sheet = info.worksheets[0];
-      console.log('sheet 1: '+sheet.title+' '+sheet.rowCount+'x'+sheet.colCount)
-    
     //////Line主動推播測試
     /*const ME = 'U39df481b54d0db051fe29d3a94b5b887';
     			bot.push(ME, {
@@ -73,7 +75,9 @@ var doc = new GoogleSpreadsheet('1GjY1OKGyO_QMLTk4G10J_cCpb_rAbKXcMs8Q2aLrHEo');
 
 });
     
-    const app = express();
+
+
+const app = express();
 const linebotParser = bot.parser();
 app.post('/', linebotParser);
 
