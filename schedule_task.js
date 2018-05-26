@@ -49,23 +49,26 @@ var MongoClient = require('mongodb').MongoClient;
 var url = 'mongodb://admin:tartan@ds235840.mlab.com:35840/heroku_p97hnb3x';
 
 //Insert Sample
-MongoClient.connect(url, function (err, db) {
+MongoClient.connect(url, function (err, database) {
     console.log('DB連線成功');
+    var db = database.db('heroku_p97hnb3x');
     db.collection('test1').insertOne({
         age: 40,
         name: "Sam"
     });
+    database.close();
     console.log('DB插入資料成功');
-    db.close();
 });
 
 // Read Data Sample
-vMongoClient.connect(url, function (err, db) {
+MongoClient.connect(url, function (err, database) {
+    console.log('DB連線成功');
+    var db = database.db('heroku_p97hnb3x');
     var cursor = db.collection('test1').find();
     cursor.each(function (err, doc) {
-        console.log('DB資料讀取:',doc);
+        console.log('DB資料讀取:', doc);
     });
-    db.close();
+    database.close();
 }); 
 
 console.log('==================');
