@@ -50,13 +50,13 @@ var creds = require('./client_secret.json');
  
 // Create a document object using the ID of the spreadsheet - obtained from its URL.
 var doc = new GoogleSpreadsheet('1GjY1OKGyO_QMLTk4G10J_cCpb_rAbKXcMs8Q2aLrHEo');
- console.log(rows.length);
+ //console.log(rows.length);
 // Authenticate with the Google Spreadsheets API.
 doc.useServiceAccountAuth(creds, function (err) {
  
   // Get all of the rows from the spreadsheet.
   doc.getRows(1, function (err, rows) {
-    console.log(rows);
+    console.log("資料筆數"+rows.length);
   });
 });
     
