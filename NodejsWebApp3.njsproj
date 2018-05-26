@@ -32,6 +32,9 @@
     <Compile Include="index.js">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="quickstart.js">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="schedule_task.js" />
     <Compile Include="server.js" />
     <Content Include="client_secret.json" />
