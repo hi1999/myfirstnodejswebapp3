@@ -13,39 +13,39 @@ bot.on('message', function (event) {
     
     
     //回覆訊息功能-測試OK   
-    console.log('##測試==>回覆訊息功能');
-    event.reply("圖片").then(function (data) {
-        console.log('success', data);
-    }).catch(function (error) {
-        console.log('Error', error);
-        });
-    console.log('##');
+    //console.log('##測試==>回覆訊息功能');
+    //event.reply("圖片").then(function (data) {
+    //    console.log('success', data);
+    //}).catch(function (error) {
+    //    console.log('Error', error);
+    //    });
+    //console.log('##');
  
     //回覆Comfirm Template功能-測試OK
-    console.log('##測試==>回覆Comfirm Template功能');
-    event.reply({
-        type: 'template',
-        altText: 'this is a confirm template',
-        template: {
-            type: 'confirm',
-            text: 'Are you sure?',
-            actions: [{
-                type: 'message',
-                label: 'Yes',
-                text: 'yes'
-            }, {
-                type: 'message',
-                label: 'No',
-                text: 'no'
-            }]
-        }
-    });
-    console.log('##');
+    //console.log('##測試==>回覆Comfirm Template功能');
+    //event.reply({
+    //    type: 'template',
+    //    altText: 'this is a confirm template',
+    //    template: {
+    //        type: 'confirm',
+    //        text: 'Are you sure?',
+    //        actions: [{
+    //            type: 'message',
+    //            label: 'Yes',
+    //            text: 'yes'
+    //        }, {
+    //            type: 'message',
+    //            label: 'No',
+    //            text: 'no'
+    //        }]
+    //    }
+    //});
+    //console.log('##');
     
    
     
     //測試連結Google試算表功能
-    console.log('##測試==>連結Google試算表功');
+    console.log('##測試==>連結Google試算表');
     //var GoogleSpreadsheet = require('google-spreadsheet');
     //console.log("連Google");
     //var creds = require('./client_secret.json');    console.log("creds:" + creds);
@@ -65,14 +65,13 @@ bot.on('message', function (event) {
     // spreadsheet key is the long id in the sheets URL
     var doc = new GoogleSpreadsheet('1GjY1OKGyO_QMLTk4G10J_cCpb_rAbKXcMs8Q2aLrHEo');
     var sheet;
-    console.log(1);
     async.series([
         function setAuth(step) {
             // see notes below for authentication instructions!
             var creds = require('./client_secret.json');
             // OR, if you cannot save the file locally (like on heroku)
             var creds_json = {
-                client_email: 'pchunfan@google.com',
+                client_email: 'pchunfan@gmail.com',
                 private_key: 'n1dRke7L5V5dtUK4J23lXTGC'
             }
             console.log(2);
