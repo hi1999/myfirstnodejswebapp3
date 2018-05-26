@@ -1,11 +1,14 @@
 ﻿var linebot = require('linebot');
 var express = require('express');
+var google = require('googleapis');
+var googleAuth = require('google-auth-library');
 
 var bot = linebot({
     channelId: '1582182960',
     channelSecret: 'c704241b69cade92ab8798ad5c3b3e5b',
     channelAccessToken: 'LT+LkDLR3McBFEiVtGJcLx4VFF7bLqC8/VtmZk/2rfcQEze6mIIyPq3Xg2g2I1poURhGfv1fCxAY4uD5t5dkzhNP+BbXiseCTm9Zprtc1MZITPN1Rvo9021XUZ590fPE+hg7+wTiq5ruhW2s5aCHRwdB04t89/1O/w1cDnyilFU='
 });
+
 
 bot.on('message', function (event) {
 
@@ -65,6 +68,7 @@ bot.on('message', function (event) {
     //doc.useServiceAccountAuth(creds, step);
     //sheet = info.worksheets[0];
     //console.log('sheet 1: ' + sheet.title + ' ' + sheet.rowCount + 'x' + sheet.colCount)
+
     let fs = require('fs');
     let readline = require('readline');
     const google = require("googleapis");
