@@ -46,7 +46,7 @@ const SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly'];
 
 const TOKEN_PATH = 'credentials.json';
 
-
+console.log("測試");
 
 // Load client secrets from a local file.
 
