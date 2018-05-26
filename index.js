@@ -55,7 +55,7 @@ var doc = new GoogleSpreadsheet('1GjY1OKGyO_QMLTk4G10J_cCpb_rAbKXcMs8Q2aLrHEo');
  //console.log(rows.length);
 // Authenticate with the Google Spreadsheets API.
 doc.useServiceAccountAuth(creds, function (err) {
- 
+ console.log("錯誤:"+err);
   // Get all of the rows from the spreadsheet.
   doc.getRows(1, function (err, rows) {
     console.log("資料筆數"+rows.length);
