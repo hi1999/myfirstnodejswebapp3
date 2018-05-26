@@ -55,7 +55,7 @@ var doc = new GoogleSpreadsheet('1GjY1OKGyO_QMLTk4G10J_cCpb_rAbKXcMs8Q2aLrHEo');
     var creds = require('./client_secret.json');
     // OR, if you cannot save the file locally (like on heroku)
     var creds_json = {
-      client_email: 'pchunfan@google.com',
+      client_email: 'pchunfan@gmail.com',
       private_key: 'n1dRke7L5V5dtUK4J23lXTGC'
     }
  
