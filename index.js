@@ -17,7 +17,7 @@ bot.on('message', function (event) {
     console.log('收到的event:');
     console.log(event); 
 var fs = require('fs');
-
+/*
 var data = [
     {
         name : 'sheet1',
@@ -67,7 +67,10 @@ fs.writeFile('./resut.xls', buffer, function (err)
     var obj = xlsx.parse("./" + "resut.xls");
     console.log(JSON.stringify(obj));
 }
-);
+);*/
+    var obj = xlsx.parse("./" + "resut.xls");
+    console.log(JSON.stringify(obj));
+	
     //===========================================================
     //回覆訊息功能-測試OK   
     //console.log('##測試==>回覆訊息功能');
@@ -78,28 +81,29 @@ fs.writeFile('./resut.xls', buffer, function (err)
     //    });
     //console.log('##');
     //===========================================================
-
+    "type": "file",
+    "fileName": "file.txt",
     //===========================================================
     //回覆Comfirm Template功能-測試OK
-    //console.log('##測試==>回覆Comfirm Template功能');
-    //event.reply({
-    //    type: 'template',
-    //    altText: 'this is a confirm template',
-    //    template: {
-    //        type: 'confirm',
-    //        text: 'Are you sure?',
-    //        actions: [{
-    //            type: 'message',
-    //            label: 'Yes',
-    //            text: 'yes'
-    //        }, {
-    //            type: 'message',
-    //            label: 'No',
-    //            text: 'no'
-    //        }]
-    //    }
-    //});
-    //console.log('##');
+  /*  console.log('##測試==>回覆Comfirm Template功能');
+    event.reply({
+        type: 'template',
+       altText: 'this is a confirm template',
+        template: {
+            type: 'confirm',
+            text: 'Are you sure?',
+            actions: [{
+                type: 'message',
+                label: 'Yes',
+                text: 'yes'
+            }, {
+                type: 'message',
+                label: 'No',
+                text: 'no'
+            }]
+        }
+    });
+    console.log('##');*/
     //===========================================================
     
    
