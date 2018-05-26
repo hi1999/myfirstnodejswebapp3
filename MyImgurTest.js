@@ -87,7 +87,7 @@ bot.on('message', function (event) {
 
 
     };
-}
+})
 
     
 const app = express();
