@@ -41,7 +41,7 @@ var req = https.request(options, function (res) {
     //console.log('link', res.headers.data.link);
     res.on('data', function (d) {
         process.stdout.write(d);
-        //console.log(d);
+        console.log(d);
         //console.log('link',d.link);
     });
 });
