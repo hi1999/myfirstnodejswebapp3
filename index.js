@@ -65,7 +65,7 @@ bot.on('message', function (event) {
     // spreadsheet key is the long id in the sheets URL
     var doc = new GoogleSpreadsheet('1GjY1OKGyO_QMLTk4G10J_cCpb_rAbKXcMs8Q2aLrHEo');
     var sheet;
-
+    console.log(1);
     async.series([
         function setAuth(step) {
             // see notes below for authentication instructions!
@@ -75,8 +75,10 @@ bot.on('message', function (event) {
                 client_email: 'pchunfan@google.com',
                 private_key: 'n1dRke7L5V5dtUK4J23lXTGC'
             }
+            console.log(2);
 
             doc.useServiceAccountAuth(creds, step);
+            console.log(3);
         },
         function getInfoAndWorksheets(step) {
             doc.getInfo(function (err, info) {
