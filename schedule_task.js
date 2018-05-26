@@ -45,37 +45,25 @@ request(options, callback);
 
 //------------------------------------------------------------
 console.log('資料庫測試');
-var MongoClient = require('mongodb').MongoClient, assert = require('assert');
-
-// Connection URL
+var MongoClient = require('mongodb').MongoClient;
 var url = 'mongodb://admin:tartan@ds235840.mlab.com:35840/heroku_p97hnb3x';
+
+//Insert Sample
 MongoClient.connect(url, function (err, db) {
-    assert.equal(null, err);
-    console.log("Connected correctly to server");
-});
-// Insert Data
-var insertDocuments = function (db, callback) {
-    var collection = db.collection('test1');
-    collection.insert([
-        { name: 'Sam', age: 40 },
-        { name: 'Brandon', age: 40 }
-    ],
-        function (err, result) {
-            assert.equal(err, null);
-            assert.equal(2, result.result.n);
-            assert.equal(2, result.ops.length);
-            console.log("Inserted 2 documents into the userProfile collection\n");
-            callback(result);
-        });
-}
-// Read Data
-var findDocuments = function (db, callback) {
-    // Get the documents collection
-    var collection = db.collection('test1');
-    // Find some documents
-    collection.find({}).toArray(function (err, docs) {
-        callback(docs);
+    console.log('DB連線成功');
+    db.collection('test1').insertOne({
+        age: 40,
+        name: "Sam"
     });
-}
-//console.log(docs);
+    db.close();
+});
+
+// Read Data Sample
+vMongoClient.connect(url, function (err, db) {
+    var cursor = db.collection('test1').find();
+    cursor.each(function (err, doc) {
+        console.log('DB資料讀取:',doc);
+    });
+}); 
+
 console.log('==================');
