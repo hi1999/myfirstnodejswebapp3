@@ -56,17 +56,17 @@ var data = [
 ]
 
 // 寫xlsx
-var buffer = xlsx.build(data);
+/*var buffer = xlsx.build(data);
 fs.writeFile('./resut.xls', buffer, function (err)
 {
-    if (err)
-        throw err;
+   // if (err)
+   //     throw err;
     console.log('Write to xls has finished');
-    
+  */  
 // 讀xlsx
     var obj = xlsx.parse("./" + "resut.xls");
     console.log(JSON.stringify(obj));
-}
+//}
 );
     //===========================================================
     //回覆訊息功能-測試OK   
