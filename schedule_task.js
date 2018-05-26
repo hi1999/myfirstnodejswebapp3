@@ -36,7 +36,7 @@ function callback(error, response, body) {
     if (!error && response.statusCode == 200) {
         var info = JSON.parse(body);
         for (i = 0; i < info.data.length; i++) {
-            console.log('link',info.data[i].link);
+            console.log('取得相簿照片-',info.data[i].link);
         }
     }
 }
@@ -77,5 +77,5 @@ var findDocuments = function (db, callback) {
         callback(docs);
     });
 }
-console.log(docs);
+//console.log(docs);
 console.log('==================');
