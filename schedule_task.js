@@ -12,6 +12,7 @@ var bot = linebot({
     channelSecret: 'c05559be60a96b1c97ec1e23e66dfe34',
     channelAccessToken: 'IuH6YSRirA0lKr2RRbRXaXCr0ysuVmaNpPBi8VLh0nLj7hOOIexln58+JAswGF71Jpv5pnp8fBrC6kO0rG4bq1detk7Qh40XADbWE524z74JdtfRJe4IizHpQ9k5QmqLTNIRUvV+8YRKnkkYLJiH7AdB04t89/1O/w1cDnyilFU='
 });
+
 const ME = 'U39df481b54d0db051fe29d3a94b5b887';
 bot.push(ME, {
     type: 'text',
