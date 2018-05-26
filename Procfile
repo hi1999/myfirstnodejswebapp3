@@ -1,1 +1,1 @@
-web: node MyImgurTest.js
+web: node index.js
