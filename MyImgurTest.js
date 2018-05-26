@@ -1,8 +1,5 @@
 ﻿var linebot = require('linebot');
 var express = require('express');
-var google = require('googleapis');
-var googleAuth = require('google-auth-library');
-var xlsx = require('node-xlsx');
 
 var bot = linebot({
     channelId: '1574577182',
@@ -10,81 +7,95 @@ var bot = linebot({
     channelAccessToken: 'IuH6YSRirA0lKr2RRbRXaXCr0ysuVmaNpPBi8VLh0nLj7hOOIexln58+JAswGF71Jpv5pnp8fBrC6kO0rG4bq1detk7Qh40XADbWE524z74JdtfRJe4IizHpQ9k5QmqLTNIRUvV+8YRKnkkYLJiH7AdB04t89/1O/w1cDnyilFU='
 });
 
-console.log('收到的event:');
-console.log(event); 
+bot.on('message', function (event) {
 
-var rp = require('request-promise');
-console.log(rp);
+    console.log('收到的event:');
+    console.log(event);
 
-exports.reply = function justReply(req, res) {
+    var rp = require('request-promise');
+    console.log(rp);
 
-    const promises = req.body.events.map(event => {
+    exports.reply = function justReply(req, res) {
 
-        var msg = event.message.text;
-        var reply_token = event.replyToken;
+        const promises = req.body.events.map(event => {
 
-        var target_albumId = "";
+            var msg = event.message.text;
+            var reply_token = event.replyToken;
 
-        if (msg.includes('hi')) {
-            target_albumId = 'ZaDbl2w';
-        } else {
-            return;
-        }
+            var target_albumId = "";
 
-        var imgur_options = {
-            method: 'GET',
-            uri: 'https://api.imgur.com/3/album/ZaDbl2w/images',
-            headers: {
-                "Authorization": "Client-ID c5059e019ff8903"
-            },
-            json: true
-        };
+            if (msg.includes('hi')) {
+                target_albumId = 'ZaDbl2w';
+            } else {
+                return;
+            }
+
+            var imgur_options = {
+                method: 'GET',
+                uri: 'https://api.imgur.com/3/album/ZaDbl2w/images',
+                headers: {
+                    "Authorization": "Client-ID c5059e019ff8903"
+                },
+                json: true
+            };
 
 
-        return rp(imgur_options)
-            .then(function (imgur_response) {
+            return rp(imgur_options)
+                .then(function (imgur_response) {
 
-                // collect image urls from the album
-                var array_images = [];
-                imgur_response.data.forEach(function (item) {
-                    array_images.push(item.link);
+                    // collect image urls from the album
+                    var array_images = [];
+                    imgur_response.data.forEach(function (item) {
+                        array_images.push(item.link);
+                    })
+
+                    // choose one of images randomly
+                    var target_imageUrl = array_images[Math.floor(Math.random() * array_images.length)];
+
+                    var lineReply_options = {
+                        method: 'POST',
+                        uri: "https://api.line.me/v2/bot/message/reply",
+                        headers: {
+                            "Content-type": "application/json; charset=UTF-8",
+                            "Authorization": "Bearer IuH6YSRirA0lKr2RRbRXaXCr0ysuVmaNpPBi8VLh0nLj7hOOIexln58+JAswGF71Jpv5pnp8fBrC6kO0rG4bq1detk7Qh40XADbWE524z74JdtfRJe4IizHpQ9k5QmqLTNIRUvV+8YRKnkkYLJiH7AdB04t89/1O/w1cDnyilFU="
+                        },
+                        json: true,
+                        body: {
+                            replyToken: reply_token,
+                            messages: [
+                                {
+                                    type: 'image',
+                                    originalContentUrl: target_imageUrl.replace("http", "https"),
+                                    previewImageUrl: target_imageUrl.replace("http", "https")
+                                }
+                            ]
+                        }
+                    };
+
+                    return rp(lineReply_options);
+
                 })
+                .catch(function (err) {
+                    console.log(err);
+                });
 
-                // choose one of images randomly
-                var target_imageUrl = array_images[Math.floor(Math.random() * array_images.length)];
+        });
 
-                var lineReply_options = {
-                    method: 'POST',
-                    uri: "https://api.line.me/v2/bot/message/reply",
-                    headers: {
-                        "Content-type": "application/json; charset=UTF-8",
-                        "Authorization": "Bearer IuH6YSRirA0lKr2RRbRXaXCr0ysuVmaNpPBi8VLh0nLj7hOOIexln58+JAswGF71Jpv5pnp8fBrC6kO0rG4bq1detk7Qh40XADbWE524z74JdtfRJe4IizHpQ9k5QmqLTNIRUvV+8YRKnkkYLJiH7AdB04t89/1O/w1cDnyilFU="
-                    },
-                    json: true,
-                    body: {
-                        replyToken: reply_token,
-                        messages: [
-                            {
-                                type: 'image',
-                                originalContentUrl: target_imageUrl.replace("http", "https"),
-                                previewImageUrl: target_imageUrl.replace("http", "https")
-                            }
-                        ]
-                    }
-                };
-
-                return rp(lineReply_options);
-
-            })
-            .catch(function (err) {
-                console.log(err);
-            });
-
-    });
-
-    Promise
-        .all(promises)
-        .then(() => res.json({ success: true }));
+        Promise
+            .all(promises)
+            .then(() => res.json({ success: true }));
 
 
-};
+    };
+}
+
+    
+const app = express();
+const linebotParser = bot.parser();
+app.post('/', linebotParser);
+
+//因為 express 預設走 port 3000，而 heroku 上預設卻不是，要透過下列程式轉換
+var server = app.listen(process.env.PORT || 8080, function () {
+    var port = server.address().port;
+    console.log("App now running on port", port);
+});
