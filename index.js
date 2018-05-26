@@ -11,11 +11,37 @@ var bot = linebot({
 });
 
 
+console.log('資料庫測試');
+var MongoClient = require('mongodb').MongoClient;
+var url = 'mongodb://admin:tartan@ds235840.mlab.com:35840/heroku_p97hnb3x';
+
+//Insert Sample
+MongoClient.connect(url, function (err, db) {
+    console.log('DB連線成功');
+    db.collection('test1').insertOne({
+        age: 40,
+        name: "Sam"
+    });
+    db.close();
+});
+
+// Read Data Sample
+vMongoClient.connect(url, function (err, db) {
+    var cursor = db.collection('test1').find();
+    cursor.each(function (err, doc) {
+        console.log('DB資料讀取:', doc);
+    });
+}); 
+
 bot.on('message', function (event) {
 
     //把收到訊息的 event 印出來看看
     console.log('收到的event:');
     console.log(event); 
+
+
+
+
 var fs = require('fs');
 
 var data = [
@@ -56,18 +82,18 @@ var data = [
 ]
 
 // 寫xlsx
-var buffer = xlsx.build(data);
-fs.writeFile('./hi1999/myfirstnodejswebapp3/resut.xls', buffer, function (err)
-{
-   // if (err)
-   //     throw err;
-    console.log('Write to xls has finished');
+//var buffer = xlsx.build(data);
+//fs.writeFile('./hi1999/myfirstnodejswebapp3/resut.xls', buffer, function (err)
+//{
+//   // if (err)
+//   //     throw err;
+//    console.log('Write to xls has finished');
     
-// 讀xlsx
-    var obj = xlsx.parse("./hi1999/myfirstnodejswebapp3/" + "resut.xls");
-    console.log(JSON.stringify(obj));
-}
-);
+//// 讀xlsx
+//    var obj = xlsx.parse("./hi1999/myfirstnodejswebapp3/" + "resut.xls");
+//    console.log(JSON.stringify(obj));
+//}
+//);
     
 	
     //===========================================================
@@ -80,8 +106,8 @@ fs.writeFile('./hi1999/myfirstnodejswebapp3/resut.xls', buffer, function (err)
     //    });
     //console.log('##');
     //===========================================================
-    "type": "file",
-    "fileName": "file.txt",
+    //"type": "file",
+    //"fileName": "file.txt",
     //===========================================================
     //回覆Comfirm Template功能-測試OK
   /*  console.log('##測試==>回覆Comfirm Template功能');
