@@ -2,6 +2,7 @@
 var express = require('express');
 var google = require('googleapis');
 var googleAuth = require('google-auth-library');
+    var xlsx = require('node-xlsx');
 
 var bot = linebot({
     channelId: '1574577182',
@@ -15,7 +16,58 @@ bot.on('message', function (event) {
     //把收到訊息的 event 印出來看看
     console.log('收到的event:');
     console.log(event); 
+var fs = require('fs');
+
+var data = [
+    {
+        name : 'sheet1',
+        data : [
+            [
+                'ID',
+                'Name',
+                'Score'
+            ],
+            [
+                '1',
+                'Michael',
+                '99'
+
+            ],
+            [
+                '2',
+                'Jordan',
+                '98'
+            ]
+        ]
+    },
+    {
+        name : 'sheet2',
+        data : [
+            [
+                'AA',
+                'BB'
+            ],
+            [
+                '23',
+                '24'
+            ]
+        ]
+    }
+]
+
+// 寫xlsx
+var buffer = xlsx.build(data);
+fs.writeFile('./resut.xls', buffer, function (err)
+{
+    if (err)
+        throw err;
+    console.log('Write to xls has finished');
     
+// 讀xlsx
+    var obj = xlsx.parse("./" + "resut.xls");
+    console.log(JSON.stringify(obj));
+}
+);
     //===========================================================
     //回覆訊息功能-測試OK   
     //console.log('##測試==>回覆訊息功能');
