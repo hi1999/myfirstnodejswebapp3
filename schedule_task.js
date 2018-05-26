@@ -24,6 +24,29 @@ bot.push(SAM, {
     text: '讚讚讚！！'
 });
 
+//------------------------------------------------------------
+var https = require('https');
+var options = {
+    hostname: 'api.imgur.com',
+    path: '/3/album/ZaDbl2w/images',
+    headers: { 'Authorization': 'Client-ID c5059e019ff8903' },
+    method: 'GET'
+};
 
+var req = https.request(options, function (res) {
+    console.log('statusCode:', res.statusCode);
+    console.log('headers:', res.headers);
+
+    res.on('data', function (d) {
+        process.stdout.write(d);
+        console.log(d);
+    });
+});
+
+req.on('error', function (e) {
+    console.error(e);
+});
+
+req.end();
 
 console.log('==================');
