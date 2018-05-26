@@ -36,10 +36,46 @@ function callback(error, response, body) {
     if (!error && response.statusCode == 200) {
         var info = JSON.parse(body);
         for (i = 0; i < info.data.length; i++) {
-            console.log(info.data[i].link);
+            console.log('link',info.data[i].link);
         }
     }
 }
 request(options, callback);
 
+
+//------------------------------------------------------------
+console.log('資料庫測試');
+var MongoClient = require('mongodb').MongoClient, assert = require('assert');
+
+// Connection URL
+var url = 'mongodb://admin:tartan@ds235840.mlab.com:35840/heroku_p97hnb3x';
+MongoClient.connect(url, function (err, db) {
+    assert.equal(null, err);
+    console.log("Connected correctly to server");
+});
+// Insert Data
+var insertDocuments = function (db, callback) {
+    var collection = db.collection('test1');
+    collection.insert([
+        { name: 'Sam', age: 40 },
+        { name: 'Brandon', age: 40 }
+    ],
+        function (err, result) {
+            assert.equal(err, null);
+            assert.equal(2, result.result.n);
+            assert.equal(2, result.ops.length);
+            console.log("Inserted 2 documents into the userProfile collection\n");
+            callback(result);
+        });
+}
+// Read Data
+var findDocuments = function (db, callback) {
+    // Get the documents collection
+    var collection = db.collection('test1');
+    // Find some documents
+    collection.find({}).toArray(function (err, docs) {
+        callback(docs);
+    });
+}
+console.log(docs);
 console.log('==================');
