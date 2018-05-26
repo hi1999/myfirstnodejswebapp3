@@ -4,9 +4,9 @@ var google = require('googleapis');
 var googleAuth = require('google-auth-library');
 
 var bot = linebot({
-    channelId: '1582182960',
-    channelSecret: 'c704241b69cade92ab8798ad5c3b3e5b',
-    channelAccessToken: 'LT+LkDLR3McBFEiVtGJcLx4VFF7bLqC8/VtmZk/2rfcQEze6mIIyPq3Xg2g2I1poURhGfv1fCxAY4uD5t5dkzhNP+BbXiseCTm9Zprtc1MZITPN1Rvo9021XUZ590fPE+hg7+wTiq5ruhW2s5aCHRwdB04t89/1O/w1cDnyilFU='
+    channelId: '1574577182',
+    channelSecret: 'c05559be60a96b1c97ec1e23e66dfe34',
+    channelAccessToken: 'IuH6YSRirA0lKr2RRbRXaXCr0ysuVmaNpPBi8VLh0nLj7hOOIexln58+JAswGF71Jpv5pnp8fBrC6kO0rG4bq1detk7Qh40XADbWE524z74JdtfRJe4IizHpQ9k5QmqLTNIRUvV+8YRKnkkYLJiH7AdB04t89/1O/w1cDnyilFU='
 });
 
 
