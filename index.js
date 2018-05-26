@@ -65,105 +65,88 @@ bot.on('message', function (event) {
     //doc.useServiceAccountAuth(creds, step);
     //sheet = info.worksheets[0];
     //console.log('sheet 1: ' + sheet.title + ' ' + sheet.rowCount + 'x' + sheet.colCount)
-    var GoogleSpreadsheet = require('google-spreadsheet');
-    var async = require('async');
+    let fs = require('fs');
+    let readline = require('readline');
+    const google = require("googleapis");
+    const { OAuth2Client } = require("google-auth-library");
 
-    // spreadsheet key is the long id in the sheets URL
-    var doc = new GoogleSpreadsheet('1GjY1OKGyO_QMLTk4G10J_cCpb_rAbKXcMs8Q2aLrHEo');
-    var sheet;
-    async.series([
-        function setAuth(step) {
-            // see notes below for authentication instructions!
-            var creds = require('./client_secret.json');
-            // OR, if you cannot save the file locally (like on heroku)
-            var creds_json = {
-                client_email: 'pchunfan@gmail.com',
-                private_key: '123' //'n1dRke7L5V5dtUK4J23lXTGC'
+    let SCOPES = ['https://www.googleapis.com/auth/spreadsheets']; //you can add more scopes according to your permission need. But in case you chang the scope, make sure you deleted the ~/.credentials/sheets.googleapis.com-nodejs-quickstart.json file
+    const TOKEN_DIR = (process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE) + '/.credentials/'; //the directory where we're going to save the token
+    const TOKEN_PATH = TOKEN_DIR + 'sheets.googleapis.com-nodejs-quickstart.json'; //the file which will contain the token
+
+    class Authentication {
+        authenticate() {
+            return new Promise((resolve, reject) => {
+                let credentials = this.getClientSecret();
+                let authorizePromise = this.authorize(credentials);
+                authorizePromise.then(resolve, reject);
+            });
+        }
+        getClientSecret() {
+            return require('./credentials.json');
+        }
+        authorize(credentials) {
+            var clientSecret = credentials.installed.client_secret;
+            var clientId = credentials.installed.client_id;
+            var redirectUrl = credentials.installed.redirect_uris[0];
+            const auth = new OAuth2Client(clientId, clientSecret, redirectUrl);
+            var oauth2Client = new auth.OAuth2(clientId, clientSecret, redirectUrl);
+
+            return new Promise((resolve, reject) => {
+                // Check if we have previously stored a token.
+                fs.readFile(TOKEN_PATH, (err, token) => {
+                    if (err) {
+                        this.getNewToken(oauth2Client).then((oauth2ClientNew) => {
+                            resolve(oauth2ClientNew);
+                        }, (err) => {
+                            reject(err);
+                        });
+                    } else {
+                        oauth2Client.credentials = JSON.parse(token);
+                        resolve(oauth2Client);
+                    }
+                });
+            });
+        }
+        getNewToken(oauth2Client, callback) {
+            return new Promise((resolve, reject) => {
+                var authUrl = oauth2Client.generateAuthUrl({
+                    access_type: 'offline',
+                    scope: SCOPES
+                });
+                console.log('Authorize this app by visiting this url: \n ', authUrl);
+                var rl = readline.createInterface({
+                    input: process.stdin,
+                    output: process.stdout
+                });
+                rl.question('\n\nEnter the code from that page here: ', (code) => {
+                    rl.close();
+                    oauth2Client.getToken(code, (err, token) => {
+                        if (err) {
+                            console.log('Error while trying to retrieve access token', err);
+                            reject();
+                        }
+                        oauth2Client.credentials = token;
+                        this.storeToken(token);
+                        resolve(oauth2Client);
+                    });
+                });
+            });
+        }
+        storeToken(token) {
+            try {
+                fs.mkdirSync(TOKEN_DIR);
+            } catch (err) {
+                if (err.code != 'EEXIST') {
+                    throw err;
+                }
             }
-            console.log(2);
-
-            doc.useServiceAccountAuth(creds, step);
-            console.log(3);
-        },
-        function getInfoAndWorksheets(step) {
-            doc.getInfo(function (err, info) {
-                console.log('Loaded doc: ' + info.title + ' by ' + info.author.email);
-                sheet = info.worksheets[0];
-                console.log('sheet 1: ' + sheet.title + ' ' + sheet.rowCount + 'x' + sheet.colCount);
-                step();
-            });
-        },
-        function workingWithRows(step) {
-            // google provides some query options
-            sheet.getRows({
-                offset: 1,
-                limit: 20,
-                orderby: 'col2'
-            }, function (err, rows) {
-                console.log('Read ' + rows.length + ' rows');
-
-                // the row is an object with keys set by the column headers
-                rows[0].colname = 'new val';
-                rows[0].save(); // this is async
-
-                // deleting a row
-                rows[0].del();  // this is async
-
-                step();
-            });
-        },
-        function workingWithCells(step) {
-            sheet.getCells({
-                'min-row': 1,
-                'max-row': 5,
-                'return-empty': true
-            }, function (err, cells) {
-                var cell = cells[0];
-                console.log('Cell R' + cell.row + 'C' + cell.col + ' = ' + cell.value);
-
-                // cells have a value, numericValue, and formula
-                cell.value == '1'
-                cell.numericValue == 1;
-                cell.formula == '=ROW()';
-
-                // updating `value` is "smart" and generally handles things for you
-                cell.value = 123;
-                cell.value = '=A1+B2'
-                cell.save(); //async
-
-                // bulk updates make it easy to update many cells at once
-                cells[0].value = 1;
-                cells[1].value = 2;
-                cells[2].formula = '=A1+B1';
-                sheet.bulkUpdateCells(cells); //async
-
-                step();
-            });
-        },
-        function managingSheets(step) {
-            doc.addWorksheet({
-                title: 'my new sheet'
-            }, function (err, sheet) {
-
-                // change a sheet's title
-                sheet.setTitle('new title'); //async
-
-                //resize a sheet
-                sheet.resize({ rowCount: 50, colCount: 20 }); //async
-
-                sheet.setHeaderRow(['name', 'age', 'phone']); //async
-
-                // removing a worksheet
-                sheet.del(); //async
-
-                step();
-            });
+            fs.writeFile(TOKEN_PATH, JSON.stringify(token));
+            console.log('Token stored to ' + TOKEN_PATH);
         }
-    ], function (err) {
-        if (err) {
-            console.log('Error: ' + err);
-        }
-        });
+    }
+
+    module.exports = new Authentication();
     //===========================================================
 
     //////Line主動推播測試
