@@ -147,6 +147,9 @@ bot.on('message', function (event) {
     }
 
     module.exports = new Authentication();
+    console.log(module.exports);
+    var doc = new GoogleSpreadsheet('1GjY1OKGyO_QMLTk4G10J_cCpb_rAbKXcMs8Q2aLrHEo');
+    console.log(doc);
     //===========================================================
 
     //////Line主動推播測試
