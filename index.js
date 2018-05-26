@@ -13,7 +13,7 @@ bot.on('message', function (event) {
     console.log('收到的event:');
     console.log(event); 
     
-    
+    //===========================================================
     //回覆訊息功能-測試OK   
     //console.log('##測試==>回覆訊息功能');
     //event.reply("圖片").then(function (data) {
@@ -22,7 +22,9 @@ bot.on('message', function (event) {
     //    console.log('Error', error);
     //    });
     //console.log('##');
- 
+    //===========================================================
+
+    //===========================================================
     //回覆Comfirm Template功能-測試OK
     //console.log('##測試==>回覆Comfirm Template功能');
     //event.reply({
@@ -43,9 +45,11 @@ bot.on('message', function (event) {
     //    }
     //});
     //console.log('##');
+    //===========================================================
     
    
-    
+
+    //===========================================================
     //測試連結Google試算表功能
     console.log('##測試==>連結Google試算表');
     //var GoogleSpreadsheet = require('google-spreadsheet');
@@ -74,7 +78,7 @@ bot.on('message', function (event) {
             // OR, if you cannot save the file locally (like on heroku)
             var creds_json = {
                 client_email: 'pchunfan@gmail.com',
-                private_key: 'n1dRke7L5V5dtUK4J23lXTGC'
+                private_key: '123' //'n1dRke7L5V5dtUK4J23lXTGC'
             }
             console.log(2);
 
@@ -160,6 +164,7 @@ bot.on('message', function (event) {
             console.log('Error: ' + err);
         }
         });
+    //===========================================================
 
     //////Line主動推播測試
     /*const ME = 'U39df481b54d0db051fe29d3a94b5b887';
