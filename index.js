@@ -26,7 +26,7 @@ MongoClient.connect(url, function (err, db) {
 });
 
 // Read Data Sample
-vMongoClient.connect(url, function (err, db) {
+MongoClient.connect(url, function (err, db) {
     var cursor = db.collection('test1').find();
     cursor.each(function (err, doc) {
         console.log('DB資料讀取:', doc);

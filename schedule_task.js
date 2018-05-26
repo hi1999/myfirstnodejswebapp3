@@ -55,6 +55,7 @@ MongoClient.connect(url, function (err, db) {
         age: 40,
         name: "Sam"
     });
+    console.log('DB插入資料成功');
     db.close();
 });
 
@@ -64,6 +65,7 @@ vMongoClient.connect(url, function (err, db) {
     cursor.each(function (err, doc) {
         console.log('DB資料讀取:',doc);
     });
+    db.close();
 }); 
 
 console.log('==================');
