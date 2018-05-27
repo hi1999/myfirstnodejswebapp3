@@ -114,13 +114,13 @@ function callback(error, response, body) {
             console.log('取得相簿照片-',info.data[i].link);
         }
     }
-}*/
-request(options, callback);
+}
+request(options, callback);*/
     console.log('##測試==>回覆圖片功能');
     event.reply({
     "type": "image",
-    "originalContentUrl": "https://example.com/original.jpg",
-    "previewImageUrl": "https://example.com/preview.jpg"
+    "originalContentUrl": "https://i.imgur.com/qCGMEIs.jpg",
+    "previewImageUrl": "https://i.imgur.com/qCGMEIs.jpg"
 
     });
     console.log('##');
