@@ -60,14 +60,28 @@ MongoClient.connect(url, function (err, database) {
     console.log('DB插入資料成功');
 });
 
-// Read Data Sample
+// Find Data Sample
 MongoClient.connect(url, function (err, database) {
     console.log('DB連線成功');
     var db = database.db('heroku_p97hnb3x');
     var cursor = db.collection('test1').find();
+
+    //For each
     cursor.each(function (err, doc) {
         console.log('DB資料讀取:', doc);
     });
+    database.close();
+}); 
+
+// Update Data Sample
+MongoClient.connect(url, function (err, database) {
+    console.log('DB連線成功');
+    db.collection('Employee').updateOne(
+        { "name": "Sam" },        //==>Where條件
+        //{ $set: { "age": 41 } }   //==>Set Value範例
+        { $inc: { age: 1 } }      //==> +1 的範例
+    );
+    console.log('DB更新資料成功:');
     database.close();
 }); 
 
