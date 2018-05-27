@@ -53,7 +53,7 @@ bot.on('message', function (event) {
     console.log('收到的event:');
     console.log(event); 
 
-    var msg = JSON.parse(e.postData.contents);
+    var msg = JSON.parse(event.postData.contents);
     var userId = msg.events[0].source.userId;
     var groupId = msg.events[0].source.groupId;
 
