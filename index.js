@@ -35,32 +35,29 @@ MongoClient.connect(url, function (err, database) {
 });
 
 // Update Data Sample
-MongoClient.connect(url, function (err, database) {
-    console.log('DB連線成功3');
-    var db = database.db('heroku_p97hnb3x');
-    db.collection('test1').updateOne(
-        { "name": "Sam" },        //==>Where條件
-        //{ $set: { "age": 41 } }   //==>Set Value範例
-        { $inc: { age: 1 } }      //==> +1 的範例
-    );
-    console.log('DB更新資料成功');
-    database.close();
-}); 
+//MongoClient.connect(url, function (err, database) {
+//    console.log('DB連線成功3');
+//    var db = database.db('heroku_p97hnb3x');
+//    db.collection('test1').updateOne(
+//        { "name": "Sam" },        //==>Where條件
+//        //{ $set: { "age": 41 } }   //==>Set Value範例
+//        { $inc: { age: 1 } }      //==> +1 的範例
+//    );
+//    console.log('DB更新資料成功');
+//    database.close();
+//}); 
 
 bot.on('message', function (event) {
 
     //把收到訊息的 event 印出來看看
     console.log('收到的event:');
     console.log(event); 
-
-    var msg = JSON.parse(event.postData.contents);
-    var userId = msg.events[0].source.userId;
-    var groupId = msg.events[0].source.groupId;
-
+    
     console.log('-----(參數解析)-----');
-    console.log('--msg',msg);
-    console.log('--userId',userId);
-    console.log('--groupId', groupId);
+    console.log('--message',event.message);
+    console.log('--userId',event.source.userId);
+    console.log('--groupId', event.source.groupId);
+    console.log('--replyToken', event.source.replyToken);
     console.log('-----(參數解析)-----');
 
     //===========================================================
