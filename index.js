@@ -17,7 +17,7 @@ var url = 'mongodb://admin:tartan@ds235840.mlab.com:35840/heroku_p97hnb3x';
 
 //Insert Sample
 MongoClient.connect(url, function (err, database) {
-    console.log('DB連線成功');
+    console.log('DB連線成功1');
     var db = database.db('heroku_p97hnb3x');
     db.collection('test1').insertOne({
         age: 40,
@@ -29,7 +29,7 @@ MongoClient.connect(url, function (err, database) {
 
 // Read Data Sample
 MongoClient.connect(url, function (err, database) {
-    console.log('DB連線成功');
+    console.log('DB連線成功2');
     var db = database.db('heroku_p97hnb3x');
     var cursor = db.collection('test1').find();
     cursor.each(function (err, doc) {
@@ -40,7 +40,7 @@ MongoClient.connect(url, function (err, database) {
 
 // Update Data Sample
 MongoClient.connect(url, function (err, database) {
-    console.log('DB連線成功');
+    console.log('DB連線成功3');
     var db = database.db('heroku_p97hnb3x');
     db.collection('Employee').updateOne(
         { "name": "Sam" },        //==>Where條件
