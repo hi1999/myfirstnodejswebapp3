@@ -24,15 +24,15 @@ MongoClient.connect(url, function (err, database) {
 });
 
 // Read Data Sample
-MongoClient.connect(url, function (err, database) {
-    console.log('DB連線成功2');
-    var db = database.db('heroku_p97hnb3x');
-    var cursor = db.collection('test1').find();
-    cursor.each(function (err, doc) {
-        console.log('DB資料讀取:', doc);
-    });
-    database.close();
-});
+//MongoClient.connect(url, function (err, database) {
+//    console.log('DB連線成功2');
+//    var db = database.db('heroku_p97hnb3x');
+//    var cursor = db.collection('test1').find();
+//    cursor.each(function (err, doc) {
+//        console.log('DB資料讀取:', doc);
+//    });
+//    database.close();
+//});
 
 // Update Data Sample
 //MongoClient.connect(url, function (err, database) {
@@ -52,7 +52,6 @@ bot.on('message', function (event) {
     //把收到訊息的 event 印出來看看
     console.log('收到的event:');
     console.log(event); 
-    JSON.parse(e.postData.contents);
     console.log('┌──(參數解析)───────────────');
     console.log('│message', event.message);
     console.log('│message_content', JSON.parse(event.message.content) );
