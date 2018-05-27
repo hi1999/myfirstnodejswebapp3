@@ -13,7 +13,7 @@ var url = 'mongodb://admin:tartan@ds235840.mlab.com:35840/heroku_p97hnb3x';
 
 //Insert Sample
 //MongoClient.connect(url, function (err, database) {
-//    console.log('DB連線成功1');
+//    console.log('DB插入資料--DB連線成功');
 //    var db = database.db('heroku_p97hnb3x');
 //    db.collection('test1').insertOne({
 //        age: 40,
@@ -25,7 +25,7 @@ var url = 'mongodb://admin:tartan@ds235840.mlab.com:35840/heroku_p97hnb3x';
 
 //Read Data Sample
 MongoClient.connect(url, function (err, database) {
-    console.log('DB連線成功2');
+    console.log('DB資料讀取--DB連線成功');
     var db = database.db('heroku_p97hnb3x');
     var cursor = db.collection('test1').find();
     cursor.each(function (err, doc) {
@@ -36,7 +36,7 @@ MongoClient.connect(url, function (err, database) {
 
 // Update Data Sample
 //MongoClient.connect(url, function (err, database) {
-//    console.log('DB連線成功3');
+//    console.log('DB更新資料--DB連線成功');
 //    var db = database.db('heroku_p97hnb3x');
 //    db.collection('test1').updateOne(
 //        { "name": "Sam" },        //==>Where條件
