@@ -50,15 +50,15 @@ MongoClient.connect(url, function (err, database) {
 bot.on('message', function (event) {
 
     //把收到訊息的 event 印出來看看
-    console.log('收到的event:');
-    console.log(event); 
-    console.log('┌──(參數解析)───────────────');
-    console.log('│message', event.message);
-    console.log('│message_content', JSON.parse(event.message.content) );
-    console.log('│userId', event.source.userId);
-    console.log('│groupId', event.source.groupId);
-    console.log('│replyToken', event.source.replyToken);
-    console.log('└──(參數解析)───────────────');
+    console.log('解析收到的event:');
+    //console.log(event); 
+    console.log('●──(參數解析)───────────────');
+    console.log('○message', event.message);
+    console.log('○message_content', event.message.content );
+    console.log('○userId', event.source.userId);
+    console.log('○groupId', event.source.groupId);
+    console.log('○replyToken', event.source.replyToken);
+    console.log('○──(參數解析)───────────────');
 
     //===========================================================
     //回覆訊息功能-測試OK   
