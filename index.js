@@ -3,8 +3,8 @@ var express = require('express');
 
 var bot = linebot({
     channelId: '1574577182',
-    channelSecret: '',
-    channelAccessToken: ''
+    channelSecret: '3e03bec3a3ee9e463ed76dfe7da3baec',
+    channelAccessToken: 'NZXzzQ3o+VJYjHusBszu5QIoff22qIQ88z+F0fOFeFKIYsLtuYPB4XJAGY84LJIBJpv5pnp8fBrC6kO0rG4bq1detk7Qh40XADbWE524z77Sdumg1Hom12AXpa827FVnCoR81vbtvGoDlHCrX5MdmwdB04t89/1O/w1cDnyilFU='
 });
 
 console.log('資料庫測試');
@@ -92,8 +92,36 @@ bot.on('message', function (event) {
     });
     console.log('##');*/
     //===========================================================
+    {
+
+}
+
+     //回覆圖片功能-測試ing
     
-   
+    console.log('取得相簿裡的所有照片');
+var request = require('request');
+var options = {
+    url: 'https://api.imgur.com/3/album/ZaDbl2w/images',
+    headers: { 'Authorization': 'Client-ID c5059e019ff8903' }
+};
+var i = 0;
+function callback(error, response, body) {
+    if (!error && response.statusCode == 200) {
+        var info = JSON.parse(body);
+        for (i = 0; i < info.data.length; i++) {
+            console.log('取得相簿照片-',info.data[i].link);
+        }
+    }
+}
+request(options, callback);
+    console.log('##測試==>回覆圖片功能');
+    event.reply({
+    "type": "image",
+    "originalContentUrl": "https://example.com/original.jpg",
+    "previewImageUrl": "https://example.com/preview.jpg"
+
+    });
+    console.log('##');*/
 
 
 });
