@@ -41,6 +41,7 @@ MongoClient.connect(url, function (err, database) {
 // Update Data Sample
 MongoClient.connect(url, function (err, database) {
     console.log('DB連線成功');
+    var db = database.db('heroku_p97hnb3x');
     db.collection('Employee').updateOne(
         { "name": "Sam" },        //==>Where條件
         //{ $set: { "age": 41 } }   //==>Set Value範例
