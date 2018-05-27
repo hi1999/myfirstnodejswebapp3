@@ -117,6 +117,7 @@ function callback(error, response, body) {
     }
 }
 request(options, callback);*/
+    if(event.message.text=='抽'){
     console.log('##測試==>回覆圖片功能');
     event.reply({
     "type": "image",
@@ -125,7 +126,7 @@ request(options, callback);*/
 
     });
     console.log('##');
-
+}
 
 });
     
