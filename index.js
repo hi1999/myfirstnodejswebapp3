@@ -12,27 +12,27 @@ var MongoClient = require('mongodb').MongoClient;
 var url = 'mongodb://admin:tartan@ds235840.mlab.com:35840/heroku_p97hnb3x';
 
 //Insert Sample
-MongoClient.connect(url, function (err, database) {
-    console.log('DB連線成功1');
-    var db = database.db('heroku_p97hnb3x');
-    db.collection('test1').insertOne({
-        age: 40,
-        name: "Sam"
-    });
-    database.close();
-    console.log('DB插入資料成功');
-});
-
-// Read Data Sample
 //MongoClient.connect(url, function (err, database) {
-//    console.log('DB連線成功2');
+//    console.log('DB連線成功1');
 //    var db = database.db('heroku_p97hnb3x');
-//    var cursor = db.collection('test1').find();
-//    cursor.each(function (err, doc) {
-//        console.log('DB資料讀取:', doc);
+//    db.collection('test1').insertOne({
+//        age: 40,
+//        name: "Sam"
 //    });
 //    database.close();
+//    console.log('DB插入資料成功');
 //});
+
+ Read Data Sample
+MongoClient.connect(url, function (err, database) {
+    console.log('DB連線成功2');
+    var db = database.db('heroku_p97hnb3x');
+    var cursor = db.collection('test1').find();
+    cursor.each(function (err, doc) {
+        console.log('DB資料讀取:', doc);
+    });
+    database.close();
+});
 
 // Update Data Sample
 //MongoClient.connect(url, function (err, database) {
@@ -52,13 +52,12 @@ bot.on('message', function (event) {
     //把收到訊息的 event 印出來看看
     console.log('解析收到的event:');
     //console.log(event); 
-    console.log('●──(參數解析)───────────────');
-    console.log('○message', event.message);
-    console.log('○message_content', event.message.content );
-    console.log('○userId', event.source.userId);
-    console.log('○groupId', event.source.groupId);
-    console.log('○replyToken', event.source.replyToken);
-    console.log('○──(參數解析)───────────────');
+    console.log('┌──(參數解析)───────────────');
+    console.log('│message', event.message);
+    console.log('│userId', event.source.userId);
+    console.log('│groupId', event.source.groupId);
+    console.log('│replyToken', event.source.replyToken);
+    console.log('└──(參數解析)───────────────');
 
     //===========================================================
     //回覆訊息功能-測試OK   
