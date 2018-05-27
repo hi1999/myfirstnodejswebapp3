@@ -23,7 +23,7 @@ var url = 'mongodb://admin:tartan@ds235840.mlab.com:35840/heroku_p97hnb3x';
 //    console.log('DB插入資料成功');
 //});
 
- Read Data Sample
+//Read Data Sample
 MongoClient.connect(url, function (err, database) {
     console.log('DB連線成功2');
     var db = database.db('heroku_p97hnb3x');
