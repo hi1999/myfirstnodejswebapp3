@@ -9,8 +9,8 @@ var express = require('express');
 
 var bot = linebot({
     channelId: '1574577182',
-    channelSecret: 'c05559be60a96b1c97ec1e23e66dfe34',
-    channelAccessToken: 'IuH6YSRirA0lKr2RRbRXaXCr0ysuVmaNpPBi8VLh0nLj7hOOIexln58+JAswGF71Jpv5pnp8fBrC6kO0rG4bq1detk7Qh40XADbWE524z74JdtfRJe4IizHpQ9k5QmqLTNIRUvV+8YRKnkkYLJiH7AdB04t89/1O/w1cDnyilFU='
+    channelSecret: '',
+    channelAccessToken: ''
 });
 
 //const ME = 'Ubb9f5c58d8fc3755bc871dcda17439f6';//'U39df481b54d0db051fe29d3a94b5b887';
