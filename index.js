@@ -53,12 +53,13 @@ bot.on('message', function (event) {
     console.log('收到的event:');
     console.log(event); 
     
-    console.log('-----(參數解析)-----');
-    console.log('--message',event.message);
-    console.log('--userId',event.source.userId);
-    console.log('--groupId', event.source.groupId);
-    console.log('--replyToken', event.source.replyToken);
-    console.log('-----(參數解析)-----');
+    console.log('┌──(參數解析)───────────────');
+    console.log('│message', event.message);
+    console.log('│message', event.message.content);
+    console.log('│userId', event.source.userId);
+    console.log('│groupId', event.source.groupId);
+    console.log('│replyToken', event.source.replyToken);
+    console.log('└──(參數解析)───────────────');
 
     //===========================================================
     //回覆訊息功能-測試OK   
