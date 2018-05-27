@@ -3,8 +3,8 @@ var express = require('express');
 
 var bot = linebot({
     channelId: '1574577182',
-    channelSecret: '3e03bec3a3ee9e463ed76dfe7da3baec',
-    channelAccessToken: 'NZXzzQ3o+VJYjHusBszu5QIoff22qIQ88z+F0fOFeFKIYsLtuYPB4XJAGY84LJIBJpv5pnp8fBrC6kO0rG4bq1detk7Qh40XADbWE524z77Sdumg1Hom12AXpa827FVnCoR81vbtvGoDlHCrX5MdmwdB04t89/1O/w1cDnyilFU=+JAswGF71Jpv5pnp8fBrC6kO0rG4bq1detk7Qh40XADbWE524z74JdtfRJe4IizHpQ9k5QmqLTNIRUvV+8YRKnkkYLJiH7AdB04t89/1O/w1cDnyilFU='
+    channelSecret: '',
+    channelAccessToken: ''
 });
 
 console.log('資料庫測試');
