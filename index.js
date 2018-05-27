@@ -123,7 +123,7 @@ request(options, callback);
     "previewImageUrl": "https://example.com/preview.jpg"
 
     });
-    console.log('##');*/
+    console.log('##');
 
 
 });
