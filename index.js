@@ -52,10 +52,10 @@ bot.on('message', function (event) {
     //把收到訊息的 event 印出來看看
     console.log('收到的event:');
     console.log(event); 
-    
+    JSON.parse(e.postData.contents);
     console.log('┌──(參數解析)───────────────');
     console.log('│message', event.message);
-    console.log('│message', event.message.content);
+    console.log('│message_content', JSON.parse(event.message.content) );
     console.log('│userId', event.source.userId);
     console.log('│groupId', event.source.groupId);
     console.log('│replyToken', event.source.replyToken);
