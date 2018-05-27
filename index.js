@@ -42,12 +42,12 @@ MongoClient.connect(url, function (err, database) {
 MongoClient.connect(url, function (err, database) {
     console.log('DB連線成功3');
     var db = database.db('heroku_p97hnb3x');
-    db.collection('Employee').updateOne(
+    db.collection('test1').updateOne(
         { "name": "Sam" },        //==>Where條件
         //{ $set: { "age": 41 } }   //==>Set Value範例
         { $inc: { age: 1 } }      //==> +1 的範例
     );
-    console.log('DB更新資料成功:');
+    console.log('DB更新資料成功');
     database.close();
 }); 
 
