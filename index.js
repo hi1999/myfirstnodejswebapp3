@@ -1,32 +1,11 @@
 ﻿var linebot = require('linebot');
 var express = require('express');
-var google = require('googleapis');
-var googleAuth = require('google-auth-library');
-var xlsx = require('node-xlsx');
-
-//var http = require('http');
-//var querystring = require('querystring');
-//var util = require('util');
-
-//http.createServer(function (req, res) {
-//    var post = '';     
-
-//    req.on('data', function (chunk) {    
-//        post += chunk;
-//    });
-
-//    req.on('end', function () {
-//        post = querystring.parse(post);
-//        res.end(util.inspect(post));
-//    });
-//}).listen(3000);
 
 var bot = linebot({
     channelId: '1574577182',
     channelSecret: '3e03bec3a3ee9e463ed76dfe7da3baec',
     channelAccessToken: 'NZXzzQ3o+VJYjHusBszu5QIoff22qIQ88z+F0fOFeFKIYsLtuYPB4XJAGY84LJIBJpv5pnp8fBrC6kO0rG4bq1detk7Qh40XADbWE524z77Sdumg1Hom12AXpa827FVnCoR81vbtvGoDlHCrX5MdmwdB04t89/1O/w1cDnyilFU=+JAswGF71Jpv5pnp8fBrC6kO0rG4bq1detk7Qh40XADbWE524z74JdtfRJe4IizHpQ9k5QmqLTNIRUvV+8YRKnkkYLJiH7AdB04t89/1O/w1cDnyilFU='
 });
-
 
 console.log('資料庫測試');
 var MongoClient = require('mongodb').MongoClient;
@@ -74,63 +53,16 @@ bot.on('message', function (event) {
     console.log('收到的event:');
     console.log(event); 
 
+    var msg = JSON.parse(e.postData.contents);
+    var userId = msg.events[0].source.userId;
+    var groupId = msg.events[0].source.groupId;
 
+    console.log('-----(參數解析)-----');
+    console.log('--msg',msg);
+    console.log('--userId',userId);
+    console.log('--groupId', groupId);
+    console.log('-----(參數解析)-----');
 
-
-var fs = require('fs');
-
-var data = [
-    {
-        name : 'sheet1',
-        data : [
-            [
-                'ID',
-                'Name',
-                'Score'
-            ],
-            [
-                '1',
-                'Michael',
-                '99'
-
-            ],
-            [
-                '2',
-                'Jordan',
-                '98'
-            ]
-        ]
-    },
-    {
-        name : 'sheet2',
-        data : [
-            [
-                'AA',
-                'BB'
-            ],
-            [
-                '23',
-                '24'
-            ]
-        ]
-    }
-]
-
-// 寫xlsx
-//var buffer = xlsx.build(data);
-//fs.writeFile('./hi1999/myfirstnodejswebapp3/resut.xls', buffer, function (err)
-//{
-//   // if (err)
-//   //     throw err;
-//    console.log('Write to xls has finished');
-    
-//// 讀xlsx
-//    var obj = xlsx.parse("./hi1999/myfirstnodejswebapp3/" + "resut.xls");
-//    console.log(JSON.stringify(obj));
-//}
-//);
-    
-	
     //===========================================================
     //回覆訊息功能-測試OK   
     //console.log('##測試==>回覆訊息功能');
@@ -141,8 +73,7 @@ var data = [
     //    });
     //console.log('##');
     //===========================================================
-    //"type": "file",
-    //"fileName": "file.txt",
+
     //===========================================================
     //回覆Comfirm Template功能-測試OK
   /*  console.log('##測試==>回覆Comfirm Template功能');
@@ -167,33 +98,6 @@ var data = [
     //===========================================================
     
    
-
-    //===========================================================
-    //測試連結Google試算表功能
-    console.log('##測試==>連結Google試算表');
-    //var GoogleSpreadsheet = require('google-spreadsheet');
-    //console.log("連Google");
-    //var creds = require('./client_secret.json');    console.log("creds:" + creds);
-    //var doc = new GoogleSpreadsheet('1GjY1OKGyO_QMLTk4G10J_cCpb_rAbKXcMs8Q2aLrHEo');    console.log("doc:" + doc);
-    //var creds_json = {
-    //  client_email: 'pchunfan@google.com',
-    //  private_key: 'n1dRke7L5V5dtUK4J23lXTGC'
-    //}
-    //console.log("creds_json:" + creds_json);
-
-    //doc.useServiceAccountAuth(creds, step);
-    //sheet = info.worksheets[0];
-    //console.log('sheet 1: ' + sheet.title + ' ' + sheet.rowCount + 'x' + sheet.colCount)
-    
-    //===========================================================
-
-    //////Line主動推播測試
-    /*const ME = 'U39df481b54d0db051fe29d3a94b5b887';
-    			bot.push(ME, {
-				type: 'text',
-				text: '女王呼喚：\n\n快去洗碗！！'
-			});
-*/
 
 
 });
