@@ -55,6 +55,7 @@ bot.on('message', function (event) {
     console.log('解析收到的event:');
     //console.log(event); 
     console.log('┌──(參數解析)───────────────');
+    console.log('event type',event.type);
     console.log('│message', event.message);
     console.log('│userId', event.source.userId);
     console.log('│groupId', event.source.groupId);
