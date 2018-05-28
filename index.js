@@ -48,8 +48,7 @@ MongoClient.connect(url, function (err, database) {
 //    console.log('DB更新資料成功');
 //    database.close();
 //}); 
-    console.log('event type',event.type);
-bot.on('follow', function (event) {
+bot.on(event.type, function (event) {
 
     //把收到訊息的 event 印出來看看
     console.log('解析收到的event:');
