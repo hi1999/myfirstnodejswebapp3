@@ -56,11 +56,11 @@ bot.on('message', function (event) {
     //console.log(event); 
     console.log('┌──(參數解析)───────────────');
     console.log('event type',event.type);
-    console.log('│message', event.message);
-    console.log('│userId', event.source.userId);
-    console.log('│groupId', event.source.groupId);
-    console.log('│replyToken', event.source.replyToken);
-    console.log('└──(參數解析)───────────────');
+   // console.log('│message', event.message);
+   // console.log('│userId', event.source.userId);
+   // console.log('│groupId', event.source.groupId);
+   // console.log('│replyToken', event.source.replyToken);
+   // console.log('└──(參數解析)───────────────');
 
     //===========================================================
     //回覆訊息功能-測試OK   
