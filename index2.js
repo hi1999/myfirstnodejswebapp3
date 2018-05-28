@@ -13,11 +13,13 @@ var bot = linebot({
 bot.on('message', function (event) {
 
     //把收到訊息的 event 印出來看看
+    console.log('==================');
     console.log('解析收到的event:');
-    console.log(event);
+    //console.log(event);
     console.log('type==>', event.type);
     console.log('replyToken==>', event.replyToken);
     console.log('userId==>', event.source.userId);
+    console.log('==================');
 
     if (event.type === 'message') {
         console.log(event.type, event.message);
@@ -25,6 +27,7 @@ bot.on('message', function (event) {
         console.log(event.type, '');
         console.log(event.source);
     }
+    console.log('==================');
 });
 
 
