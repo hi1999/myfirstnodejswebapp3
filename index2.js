@@ -1,5 +1,5 @@
-﻿var express = require("express");
-var myParser = require("body-parser");
+﻿var linebot = require('linebot');
+var express = require('express');
 
 console.log('start index2.js'); 
 
