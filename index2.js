@@ -15,6 +15,9 @@ bot.on('follow', function (event) {
 bot.on('join', function (event) {
     console.log('==================join');
 });
+bot.on('unfollow', function (event) {
+    console.log('==================unfollow');
+});
 bot.on('message', function (event) {
 
     //把收到訊息的 event 印出來看看
