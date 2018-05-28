@@ -14,13 +14,14 @@ bot.on('message', function (event) {
     //把收到訊息的 event 印出來看看
     console.log('解析收到的event:'); console.log(event); 
     console.log('┌──(參數解析)───────────────');
-    //console.log('│event type', event.type);
-    console.log('│message', event.message);
+    console.log('│type', event.type);
     console.log('│userId', event.source.userId);
     console.log('│groupId', event.source.groupId);
     console.log('│replyToken', event.source.replyToken);
     console.log('└──(參數解析)───────────────');
-
+    if (event.type === 'message') {
+        console.log(event.type,event.message);
+    }
 });
 
 
