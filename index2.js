@@ -9,7 +9,12 @@ var bot = linebot({
     channelAccessToken: 'NZXzzQ3o+VJYjHusBszu5QIoff22qIQ88z+F0fOFeFKIYsLtuYPB4XJAGY84LJIBJpv5pnp8fBrC6kO0rG4bq1detk7Qh40XADbWE524z77Sdumg1Hom12AXpa827FVnCoR81vbtvGoDlHCrX5MdmwdB04t89/1O/w1cDnyilFU='
 });
 
-
+bot.on('follow', function (event) {
+    console.log('==================follow');
+});
+bot.on('join', function (event) {
+    console.log('==================join');
+});
 bot.on('message', function (event) {
 
     //把收到訊息的 event 印出來看看
