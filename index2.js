@@ -9,15 +9,18 @@ var bot = linebot({
     channelAccessToken: 'NZXzzQ3o+VJYjHusBszu5QIoff22qIQ88z+F0fOFeFKIYsLtuYPB4XJAGY84LJIBJpv5pnp8fBrC6kO0rG4bq1detk7Qh40XADbWE524z77Sdumg1Hom12AXpa827FVnCoR81vbtvGoDlHCrX5MdmwdB04t89/1O/w1cDnyilFU='
 });
 
+//事件：加入好友
 bot.on('follow', function (event) {
     console.log('==================follow');
 });
 bot.on('unfollow', function (event) {
     console.log('==================unfollow');
 });
-bot.on('join', function (event) {
+//事件：加入群組
+bot.on('join', function (event) { 
     console.log('==================join');
 });
+//事件：退出群組
 bot.on('leave', function (event) {
     console.log('==================leave');
 });
