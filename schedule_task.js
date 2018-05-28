@@ -44,46 +44,46 @@ request(options, callback);
 
 
 //------------------------------------------------------------
-console.log('資料庫測試');
-var MongoClient = require('mongodb').MongoClient;
-var url = 'mongodb://admin:tartan@ds235840.mlab.com:35840/heroku_p97hnb3x';
+//console.log('資料庫測試');
+//var MongoClient = require('mongodb').MongoClient;
+//var url = 'mongodb://admin:tartan@ds235840.mlab.com:35840/heroku_p97hnb3x';
 
-//Insert Sample
-MongoClient.connect(url, function (err, database) {
-    console.log('DB連線成功');
-    var db = database.db('heroku_p97hnb3x');
-    db.collection('test1').insertOne({
-        age: 40,
-        name: "Sam"
-    });
-    database.close();
-    console.log('DB插入資料成功');
-});
+////Insert Sample
+//MongoClient.connect(url, function (err, database) {
+//    console.log('DB連線成功');
+//    var db = database.db('heroku_p97hnb3x');
+//    db.collection('test1').insertOne({
+//        age: 40,
+//        name: "Sam"
+//    });
+//    database.close();
+//    console.log('DB插入資料成功');
+//});
 
-// Find Data Sample
-MongoClient.connect(url, function (err, database) {
-    console.log('DB連線成功');
-    var db = database.db('heroku_p97hnb3x');
-    var cursor = db.collection('test1').find();
+//// Find Data Sample
+//MongoClient.connect(url, function (err, database) {
+//    console.log('DB連線成功');
+//    var db = database.db('heroku_p97hnb3x');
+//    var cursor = db.collection('test1').find();
 
-    //For each
-    cursor.each(function (err, doc) {
-        console.log('DB資料讀取:', doc);
-    });
-    database.close();
-}); 
+//    //For each
+//    cursor.each(function (err, doc) {
+//        console.log('DB資料讀取:', doc);
+//    });
+//    database.close();
+//}); 
 
-// Update Data Sample
-MongoClient.connect(url, function (err, database) {
-    console.log('DB連線成功');
-    var db = database.db('heroku_p97hnb3x');
-    db.collection('test1').updateOne(
-        { "name": "Sam" },        //==>Where條件
-        //{ $set: { "age": 41 } }   //==>Set Value範例
-        { $inc: { age: 1 } }      //==> +1 的範例
-    );
-    console.log('DB更新資料成功:');
-    database.close();
-}); 
+//// Update Data Sample
+//MongoClient.connect(url, function (err, database) {
+//    console.log('DB連線成功');
+//    var db = database.db('heroku_p97hnb3x');
+//    db.collection('test1').updateOne(
+//        { "name": "Sam" },        //==>Where條件
+//        //{ $set: { "age": 41 } }   //==>Set Value範例
+//        { $inc: { age: 1 } }      //==> +1 的範例
+//    );
+//    console.log('DB更新資料成功:');
+//    database.close();
+//}); 
 
 console.log('==================');
