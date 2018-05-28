@@ -12,11 +12,14 @@ var bot = linebot({
 bot.on('follow', function (event) {
     console.log('==================follow');
 });
+bot.on('unfollow', function (event) {
+    console.log('==================unfollow');
+});
 bot.on('join', function (event) {
     console.log('==================join');
 });
-bot.on('unfollow', function (event) {
-    console.log('==================unfollow');
+bot.on('leave', function (event) {
+    console.log('==================leave');
 });
 bot.on('message', function (event) {
 
