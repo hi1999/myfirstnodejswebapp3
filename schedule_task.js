@@ -13,19 +13,19 @@ var bot = linebot({
     channelAccessToken: ''
 });
 
-//const ME = 'Ubb9f5c58d8fc3755bc871dcda17439f6';//'U39df481b54d0db051fe29d3a94b5b887';
-//bot.push(ME, {
-//    type: 'text',
-//    text: '女王呼喚：\n\n快去洗鳥！！'
-//});
+const ME = 'Ubb9f5c58d8fc3755bc871dcda17439f6';//'U39df481b54d0db051fe29d3a94b5b887';
+bot.push(ME, {
+    type: 'text',
+    text: '女王呼喚：\n\n快去洗鳥！！'
+});
 //const SAM = 'Uf11e08fe2c7bbabff46ad97b52806f3a';//'U96297178ee6ec3fbfe6d399b5b1e92e7';
 //bot.push(SAM, {
 //    type: 'text',
 //    text: '讚讚讚！！'
 //});
 
-//------------------------------------------------------------
-console.log('取得相簿裡的所有照片');
+//Mark at 0529------------------------------------------------------------
+/*console.log('取得相簿裡的所有照片');
 var request = require('request');
 var options = {
     url: 'https://api.imgur.com/3/album/ZaDbl2w/images',
@@ -41,7 +41,7 @@ function callback(error, response, body) {
     }
 }
 request(options, callback);
-
+*/
 
 //------------------------------------------------------------
 //console.log('資料庫測試');
