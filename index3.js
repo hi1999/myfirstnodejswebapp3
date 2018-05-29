@@ -30,7 +30,7 @@ console.log('連線OK');
 //    }
 //    //client.end();
 //});
-bot.on('follow', function (event) {
+bot.on('message', function (event) {
 //insert data ==>OK, 注意userid是KEY，重覆的會INSERT不進去
 var user_id=event.source.userId;
 console.log('insert table test1');
