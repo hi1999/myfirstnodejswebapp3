@@ -31,15 +31,6 @@ console.log('連線OK');
 //    //client.end();
 //});
 
-//query table test1 ==>OK
-console.log('query table test1');
-client.query('SELECT * FROM public.test1;', (err, res) => {
-    if (err) throw err;
-    for (let row of res.rows) {
-        console.log(JSON.stringify(row));
-    }
-    client.end();
-});
 
 //insert data ==>OK
 console.log('insert table test1');
@@ -65,6 +56,15 @@ client.query("UPDATE public.test1 SET cc=103 WHERE userid = 'Sam1'", (err, res) 
 //        //client.end();
 //    });
 
+//query table test1 ==>OK
+console.log('query table test1');
+client.query('SELECT * FROM public.test1;', (err, res) => {
+    if (err) throw err;
+    for (let row of res.rows) {
+        console.log(JSON.stringify(row));
+    }
+    client.end();
+});
 
 
 const app = express();
