@@ -1,7 +1,8 @@
 ﻿var linebot = require('linebot');
 var express = require('express');
 
-console.log('start index2.js');
+console.log('start index3.js');
+console.log('測試PostgreSQL');
 
 var bot = linebot({
     channelId: '1574577182',
@@ -18,8 +19,19 @@ const client = new Client({
 });
 
 client.connect();
+console.log('連線OK');
 
-client.query('SELECT table_schema,table_name FROM information_schema.tables;', (err, res) => {
+//query all table in this database
+//client.query('SELECT table_schema,table_name FROM information_schema.tables;', (err, res) => {
+//    if (err) throw err;
+//    for (let row of res.rows) {
+//        console.log(JSON.stringify(row));
+//    }
+//    client.end();
+//});
+
+//query table test1
+client.query('SELECT * FROM public.test1;', (err, res) => {
     if (err) throw err;
     for (let row of res.rows) {
         console.log(JSON.stringify(row));
