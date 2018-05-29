@@ -31,6 +31,7 @@ console.log('連線OK');
 //});
 
 //query table test1
+console.log('query table test1');
 client.query('SELECT * FROM public.test1;', (err, res) => {
     if (err) throw err;
     for (let row of res.rows) {
@@ -38,6 +39,27 @@ client.query('SELECT * FROM public.test1;', (err, res) => {
     }
     client.end();
 });
+
+//insert data
+client.query(
+    'INSERT into public.test1 (userId, count, update_at) VALUES($1, $2, $3) RETURNING id',
+    ['Sam1', 101, new Date()],
+    function (err, result) {
+        if (err) {
+            console.log(err);
+        } else {
+            console.log('row inserted with id: ' + result.rows[0].id);
+        }
+
+        count++;
+        console.log('count = ' + count);
+        if (count == 1000) {
+            console.log('Client will end now!!!');
+        }
+        client.end();
+    });
+
+//update data
 
 
 
