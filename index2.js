@@ -43,16 +43,6 @@ bot.on('message', function (event) {
 
 });
 
-const line = require('@line/bot-sdk');
-const client = new line.Client({
-    channelAccessToken: 'NZXzzQ3o+VJYjHusBszu5QIoff22qIQ88z+F0fOFeFKIYsLtuYPB4XJAGY84LJIBJpv5pnp8fBrC6kO0rG4bq1detk7Qh40XADbWE524z77Sdumg1Hom12AXpa827FVnCoR81vbtvGoDlHCrX5MdmwdB04t89/1O/w1cDnyilFU='
-});
-client.leaveGroup('<groupId>').then(() => {
-    console.log('12345');
-    })
-    .catch((err) => {
-        // error handling
-    });
 
 const app = express();
 const linebotParser = bot.parser();
