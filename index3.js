@@ -48,7 +48,7 @@ console.log('insert table test1');
 //    //client.end();
 //});
 client.query(
-    'INSERT into public.test1 (userId, count, update_at) VALUES($1, $2, $3) ',
+    'INSERT into public.test1 (userid, cc, update_at) VALUES($1, $2, $3) ',
     ['Sam1', 101, new Date()],
     function (err, result) {
         if (err) throw err;
