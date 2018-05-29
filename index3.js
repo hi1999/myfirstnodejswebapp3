@@ -31,7 +31,7 @@ console.log('連線OK');
 //    //client.end();
 //});
 
-
+/*mark at 0530 for testing
 //insert data ==>OK, 注意userid是KEY，重覆的會INSERT不進去
 console.log('insert table test1');
 client.query(
@@ -41,7 +41,7 @@ client.query(
         if (err1) throw err1;
         //client.end();
     });
-
+*/
 //update data
 console.log('update table test1');
 client.query("UPDATE public.test1 SET cc=cc+1 WHERE userid = 'Sam1'", (err2, res) => {
