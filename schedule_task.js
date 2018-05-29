@@ -20,7 +20,7 @@ const ME = 'Ubb9f5c58d8fc3755bc871dcda17439f6';
     type: 'text',
     text: '女王呼喚：\n\n快去洗鳥！！'
 });*/
-bot.push(ME, {
+/*bot.push(ME, {
  type: 'template',
        altText: 'this is a confirm template',
         template: {
@@ -36,8 +36,43 @@ bot.push(ME, {
                 text: 'no'
             }]
         }
+});*/
+///////////
+bot.push(ME, {
+ "type": "template",
+  "altText": "This is a buttons template",
+  "template": {
+      "type": "buttons",
+      "thumbnailImageUrl": "https://example.com/bot/images/image.jpg",
+      "imageAspectRatio": "rectangle",
+      "imageSize": "cover",
+      "imageBackgroundColor": "#FFFFFF",
+      "title": "Menu",
+      "text": "Please select",
+      "defaultAction": {
+          "type": "uri",
+          "label": "View detail",
+          "uri": "http://example.com/page/123"
+      },
+      "actions": [
+          {
+            "type": "postback",
+            "label": "Buy",
+            "data": "action=buy&itemid=123"
+          },
+          {
+            "type": "postback",
+            "label": "Add to cart",
+            "data": "action=add&itemid=123"
+          },
+          {
+            "type": "uri",
+            "label": "View detail",
+            "uri": "http://example.com/page/123"
+          }
+      ]
+  }
 });
-
 
 //const SAM = 'Uf11e08fe2c7bbabff46ad97b52806f3a';//'U96297178ee6ec3fbfe6d399b5b1e92e7';
 //bot.push(SAM, {
