@@ -30,20 +30,20 @@ console.log('連線OK');
 //    }
 //    //client.end();
 //});
-bot.on('message', function (event) {
+//bot.on('message', function (event) {
 //insert data ==>OK, 注意userid是KEY，重覆的會INSERT不進去
-var user_id=event.source.userId;
+//var user_id=event.source.userId;
 console.log('insert table test1');
 client.query(
     'INSERT into public.test1 (userid, cc, update_at) VALUES($1, $2, $3) ',
-    [user_id + new Date(), 101, new Date()],
+    ['B' + new Date(), 101, new Date()],
     function (err1, result) {
         if (err1) throw err1;
         //client.end();
     });
 
     
-});
+//});
 
 //update data
 console.log('update table test1');
