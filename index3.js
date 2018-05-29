@@ -36,7 +36,7 @@ console.log('連線OK');
 console.log('insert table test1');
 client.query(
     'INSERT into public.test1 (userid, cc, update_at) VALUES($1, $2, $3) ',
-    ['Sam3', 101, new Date()],
+    ['Sam' + new Date(), 101, new Date()],
     function (err1, result) {
         if (err1) throw err1;
         //client.end();
