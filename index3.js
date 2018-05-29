@@ -50,12 +50,6 @@ client.query(
         } else {
             console.log('row inserted with id: ' + result.rows[0].id);
         }
-
-        count++;
-        console.log('count = ' + count);
-        if (count == 1000) {
-            console.log('Client will end now!!!');
-        }
         client.end();
     });
 
