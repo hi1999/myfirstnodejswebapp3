@@ -22,13 +22,12 @@ client.connect();
 console.log('連線OK');
 
 //query all table in this database
-client.query('SELECT table_schema,table_name FROM information_schema.tables;', (err, res) => {
-    if (err) throw err;
-    for (let row of res.rows) {
-        console.log(JSON.stringify(row));
-    }
-    client.end();
-});
+//client.query('SELECT table_schema,table_name FROM information_schema.tables;', (err, res) => {
+//    if (err) throw err;
+//    for (let row of res.rows) {
+//        console.log(JSON.stringify(row));
+//    }
+//});
 
 //query table test1
 console.log('query table test1');
@@ -37,14 +36,12 @@ client.query('SELECT * FROM public.test1;', (err, res) => {
     for (let row of res.rows) {
         console.log(JSON.stringify(row));
     }
-    client.end();
 });
 
 //insert data
 console.log('insert table test1');
 client.query("INSERT into public.test1 (userId, count, update_at) VALUES('Sam1', 101, new Date());", (err, res) => {
     if (err) throw err;
-    client.end();
 });
 //client.query(
 //    'INSERT into public.test1 (userId, count, update_at) VALUES($1, $2, $3) ',
@@ -61,6 +58,7 @@ client.query("INSERT into public.test1 (userId, count, update_at) VALUES('Sam1',
 
 //update data
 
+client.end();
 
 
 const app = express();
