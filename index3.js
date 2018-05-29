@@ -38,7 +38,7 @@ client.query('SELECT * FROM public.test1;', (err, res) => {
     for (let row of res.rows) {
         console.log(JSON.stringify(row));
     }
-    //client.end();
+    client.end();
 });
 
 //insert data ==>OK
@@ -53,7 +53,7 @@ client.query(
 
 //update data
 console.log('update table test1');
-client.query("UPDATE public.test1 SET cc=102 WHERE userid = 'Sam1'", (err, res) => {
+client.query("UPDATE public.test1 SET cc=103 WHERE userid = 'Sam1'", (err, res) => {
     if (err) throw err;
     //client.end();
 });
@@ -66,7 +66,6 @@ client.query("UPDATE public.test1 SET cc=102 WHERE userid = 'Sam1'", (err, res) 
 //    });
 
 
-//client.end();
 
 const app = express();
 const linebotParser = bot.parser();
