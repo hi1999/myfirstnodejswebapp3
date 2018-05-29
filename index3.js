@@ -44,7 +44,7 @@ client.query(
 
 //update data
 console.log('update table test1');
-client.query("UPDATE public.test1 SET cc=103 WHERE userid = 'Sam1'", (err2, res) => {
+client.query("UPDATE public.test1 SET cc=cc+1 WHERE userid = 'Sam1'", (err2, res) => {
     if (err2) throw err2;
     //client.end();
 });
