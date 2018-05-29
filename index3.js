@@ -66,7 +66,7 @@ client.query("UPDATE public.test1 SET cc=102 WHERE userid = 'Sam1'", (err, res) 
 //    });
 
 
-client.end();
+//client.end();
 
 const app = express();
 const linebotParser = bot.parser();
