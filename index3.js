@@ -45,7 +45,7 @@ var sql = '';
 client.query("INSERT into public.test1 (userId, count, update_at) VALUES('Sam1', 101, new Date()) RETURNING id;", (err, res) => {
     if (err) throw err;
     for (let row of res.rows) {
-        console.log('row inserted with id: ' + result.rows[0].id);
+        console.log('row inserted with id: ' + row.id);
     }
     client.end();
 });
