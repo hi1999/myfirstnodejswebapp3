@@ -9,23 +9,79 @@ var express = require('express');
 
 var bot = linebot({
     channelId: '1574577182',
-    channelSecret: '',
-    channelAccessToken: ''
+
+    channelSecret: '3e03bec3a3ee9e463ed76dfe7da3baec',
+    channelAccessToken: 'NZXzzQ3o+VJYjHusBszu5QIoff22qIQ88z+F0fOFeFKIYsLtuYPB4XJAGY84LJIBJpv5pnp8fBrC6kO0rG4bq1detk7Qh40XADbWE524z77Sdumg1Hom12AXpa827FVnCoR81vbtvGoDlHCrX5MdmwdB04t89/1O/w1cDnyilFU='
+
 });
 
-//const ME = 'Ubb9f5c58d8fc3755bc871dcda17439f6';//'U39df481b54d0db051fe29d3a94b5b887';
-//bot.push(ME, {
-//    type: 'text',
-//    text: '女王呼喚：\n\n快去洗鳥！！'
-//});
+const ME = 'Ubb9f5c58d8fc3755bc871dcda17439f6';
+/*bot.push(ME, {
+    type: 'text',
+    text: '女王呼喚：\n\n快去洗鳥！！'
+});*/
+/*bot.push(ME, {
+ type: 'template',
+       altText: 'this is a confirm template',
+        template: {
+            type: 'confirm',
+            text: 'Are you sure?',
+            actions: [{
+                type: 'message',
+                label: 'Yes',
+                text: 'yes'
+            }, {
+                type: 'message',
+                label: 'No',
+                text: 'no'
+            }]
+        }
+});*/
+///////////
+bot.push(ME, {
+ "type": "template",
+  "altText": "This is a buttons template",
+  "template": {
+      "type": "buttons",
+      "thumbnailImageUrl": "https://example.com/bot/images/image.jpg",
+      "imageAspectRatio": "rectangle",
+      "imageSize": "cover",
+      "imageBackgroundColor": "#FFFFFF",
+      "title": "Menu",
+      "text": "Please select",
+      "defaultAction": {
+          "type": "uri",
+          "label": "View detail",
+          "uri": "http://example.com/page/123"
+      },
+      "actions": [
+          {
+            "type": "postback",
+            "label": "Buy",
+            "data": "action=buy&itemid=123"
+          },
+          {
+            "type": "postback",
+            "label": "Add to cart",
+            "data": "action=add&itemid=123"
+          },
+          {
+            "type": "uri",
+            "label": "View detail",
+            "uri": "http://example.com/page/123"
+          }
+      ]
+  }
+});
+
 //const SAM = 'Uf11e08fe2c7bbabff46ad97b52806f3a';//'U96297178ee6ec3fbfe6d399b5b1e92e7';
 //bot.push(SAM, {
 //    type: 'text',
 //    text: '讚讚讚！！'
 //});
 
-//------------------------------------------------------------
-console.log('取得相簿裡的所有照片');
+//Mark at 0529------------------------------------------------------------
+/*console.log('取得相簿裡的所有照片');
 var request = require('request');
 var options = {
     url: 'https://api.imgur.com/3/album/ZaDbl2w/images',
@@ -41,7 +97,7 @@ function callback(error, response, body) {
     }
 }
 request(options, callback);
-
+*/
 
 //------------------------------------------------------------
 //console.log('資料庫測試');
