@@ -32,11 +32,11 @@ console.log('連線OK');
 //});
 
 
-//insert data ==>OK
+//insert data ==>OK, 注意userid是KEY，重覆的會INSERT不進去
 console.log('insert table test1');
 client.query(
     'INSERT into public.test1 (userid, cc, update_at) VALUES($1, $2, $3) ',
-    ['Sam2', 101, new Date()],
+    ['Sam3', 101, new Date()],
     function (err1, result) {
         if (err1) throw err1;
         //client.end();
