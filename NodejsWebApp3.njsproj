@@ -35,6 +35,9 @@
     <Compile Include="index2.js">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="index3.js">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="MyImgurTest.js">
       <SubType>Code</SubType>
     </Compile>
