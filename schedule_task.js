@@ -14,10 +14,29 @@ var bot = linebot({
 });
 
 const ME = 'Ubb9f5c58d8fc3755bc871dcda17439f6';//'U39df481b54d0db051fe29d3a94b5b887';
-bot.push(ME, {
+/*bot.push(ME, {
     type: 'text',
     text: '女王呼喚：\n\n快去洗鳥！！'
+});*/
+bot.push(ME, {
+ type: 'template',
+       altText: 'this is a confirm template',
+        template: {
+            type: 'confirm',
+            text: 'Are you sure?',
+            actions: [{
+                type: 'message',
+                label: 'Yes',
+                text: 'yes'
+            }, {
+                type: 'message',
+                label: 'No',
+                text: 'no'
+            }]
+        }
 });
+
+
 //const SAM = 'Uf11e08fe2c7bbabff46ad97b52806f3a';//'U96297178ee6ec3fbfe6d399b5b1e92e7';
 //bot.push(SAM, {
 //    type: 'text',
