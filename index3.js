@@ -46,15 +46,15 @@ console.log('insert table test1');
 client.query(
     'INSERT into public.test1 (userid, cc, update_at) VALUES($1, $2, $3) ',
     ['Sam2', 101, new Date()],
-    function (err, result) {
-        if (err) throw err;
+    function (err1, result) {
+        if (err1) throw err1;
         //client.end();
     });
 
 //update data
 console.log('update table test1');
 client.query("UPDATE public.test1 SET cc=103 WHERE userid = 'Sam1'", (err, res) => {
-    if (err) throw err;
+    if (err2) throw err2;
     //client.end();
 });
 //client.query(
