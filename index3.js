@@ -22,13 +22,13 @@ client.connect();
 console.log('連線OK');
 
 //query all table in this database
-//client.query('SELECT table_schema,table_name FROM information_schema.tables;', (err, res) => {
-//    if (err) throw err;
-//    for (let row of res.rows) {
-//        console.log(JSON.stringify(row));
-//    }
-//    client.end();
-//});
+client.query('SELECT table_schema,table_name FROM information_schema.tables;', (err, res) => {
+    if (err) throw err;
+    for (let row of res.rows) {
+        console.log(JSON.stringify(row));
+    }
+    client.end();
+});
 
 //query table test1
 console.log('query table test1');
@@ -41,26 +41,18 @@ client.query('SELECT * FROM public.test1;', (err, res) => {
 });
 
 //insert data
-var sql = '';
-client.query("INSERT into public.test1 (userId, count, update_at) VALUES('Sam1', 101, new Date()) RETURNING id;", (err, res) => {
-    if (err) throw err;
-    for (let row of res.rows) {
-        console.log('row inserted with id: ' + row.id);
-    }
-    client.end();
-});
-//client.query(
-//    'INSERT into public.test1 (userId, count, update_at) VALUES($1, $2, $3) RETURNING id',
-//    ['Sam1', 101, new Date()],
-//    function (err, result) {
-//        if (err) throw err;
-//        if (err) {
-//            console.log(err);
-//        } else {
-//            console.log('row inserted with id: ' + result.rows[0].id);
-//        }
-//        client.end();
-//    });
+client.query(
+    'INSERT into public.test1 (userId, count, update_at) VALUES($1, $2, $3) RETURNING id',
+    ['Sam1', 101, new Date()],
+    function (err, result) {
+        if (err) throw err;
+        if (err) {
+            console.log(err);
+        } else {
+            console.log('row inserted with id: ' + result.rows[0].id);
+        }
+        client.end();
+    });
 
 //update data
 
