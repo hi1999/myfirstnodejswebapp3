@@ -41,18 +41,23 @@ client.query('SELECT * FROM public.test1;', (err, res) => {
 });
 
 //insert data
-client.query(
-    'INSERT into public.test1 (userId, count, update_at) VALUES($1, $2, $3) RETURNING id',
-    ['Sam1', 101, new Date()],
-    function (err, result) {
-        if (err) throw err;
-        if (err) {
-            console.log(err);
-        } else {
-            console.log('row inserted with id: ' + result.rows[0].id);
-        }
-        client.end();
-    });
+console.log('insert table test1');
+client.query("INSERT into public.test1 (userId, count, update_at) VALUES('Sam1', 101, new Date());", (err, res) => {
+    if (err) throw err;
+    client.end();
+});
+//client.query(
+//    'INSERT into public.test1 (userId, count, update_at) VALUES($1, $2, $3) ',
+//    ['Sam1', 101, new Date()],
+//    function (err, result) {
+//        if (err) throw err;
+//        if (err) {
+//            console.log(err);
+//        } else {
+//            console.log('row inserted with id: ' + result.rows[0].id);
+//        }
+//        client.end();
+//    });
 
 //update data
 
