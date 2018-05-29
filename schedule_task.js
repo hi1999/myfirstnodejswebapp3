@@ -15,7 +15,7 @@ var bot = linebot({
 
 });
 
-const ME = 'Ubb9f5c58d8fc3755bc871dcda17439f6';//'U39df481b54d0db051fe29d3a94b5b887';
+const ME = 'Ubb9f5c58d8fc3755bc871dcda17439f6';
 /*bot.push(ME, {
     type: 'text',
     text: '女王呼喚：\n\n快去洗鳥！！'
