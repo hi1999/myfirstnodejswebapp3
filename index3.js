@@ -106,6 +106,7 @@ bot.on('message', function (event) {
             "previewImageUrl": "https://i.imgur.com/qCGMEIs.jpg"
            
         });
+      }
 });
 
 
