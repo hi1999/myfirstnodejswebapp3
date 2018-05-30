@@ -39,22 +39,22 @@ bot.on('follow', function (event) {
         //  2.1若尚未存在於資料庫，1表新增一筆資料 
         client.connect();
         if(bExist=="0"){
-            client.query(
+           /* client.query(
                 'INSERT into public.test1 (userid, cc, update_at) VALUES($1, $2, $3) ',
                 ['B', 101, new Date()],
                 function (err1, result) {
                     if (err1) throw err1;
                     //client.end();
-                });
+                });*/
             console.log("新增一筆資料");
        }
         
         //  2.2若已存在資料庫，將1表"friend"欄位更新為Yes 
         if(bExist=="1"){
-            client.query("UPDATE public.test1 SET cc=cc+1 WHERE userid = 'B'", (err2, res) => {
+           /* client.query("UPDATE public.test1 SET cc=cc+1 WHERE userid = 'B'", (err2, res) => {
                if (err2) throw err2;
                 //client.end();
-                });
+                });*/
             console.log("更新一筆資料");      
         }
 //        console.log(JSON.stringify(row));
