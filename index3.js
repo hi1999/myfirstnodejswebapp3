@@ -24,8 +24,6 @@ console.log('連線OK');
 //使用者加入機器人好友事件
 bot.on('follow', function (event) {
     console.log('==================follow-使用者加入機器人好友事件');
-    //  2.1若已存在資料庫，將1表"friend"欄位更新為Yes
-    //  2.2若尚未存在於資料庫，1表新增一筆資料
     //1.讀取userid
     console.log('userId==>', event.source.userId);
 
@@ -36,7 +34,6 @@ bot.on('follow', function (event) {
     if (err) throw err;
     for (let row of res.rows) {
         var bExist=row.count;
-        console.log(test);
         //  2.1若尚未存在於資料庫，1表新增一筆資料 
         if(bExist=="0"){
             client.query(
@@ -45,7 +42,7 @@ bot.on('follow', function (event) {
             function (err1, result) {
             if (err1) throw err1;
             //client.end();
-            console.log("test:"+test);
+            console.log("新增一筆資料");
         });
 
         }
@@ -55,7 +52,7 @@ bot.on('follow', function (event) {
             client.query("UPDATE public.test1 SET cc=cc+1 WHERE userid = 'B'", (err2, res) => {
     if (err2) throw err2;
     //client.end();
-                console.log("test:"+test);
+                console.log("更新一筆資料");
 });
         
         }
