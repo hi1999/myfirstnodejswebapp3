@@ -32,7 +32,7 @@ bot.on('follow', function (event) {
     console.log('insert table test1');
    
     console.log('query table test1');
-client.query("SELECT * FROM public.test1 where userid='Brandon';", (err, res) => {
+client.query("SELECT * FROM public.test1 where userid='Sam';", (err, res) => {
 
     if (err) throw err;
 
