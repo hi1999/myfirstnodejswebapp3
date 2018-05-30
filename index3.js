@@ -69,7 +69,7 @@ bot.on('follow', function (event) {
 bot.on('unfollow', function (event) {
     console.log('==================unfollow-使用者刪除機器人好友事件');
     //1.讀取userid
-    console.log('userId==>', event.source.userId);
+    //console.log('userId==>', event.source.userId);
     //2.於資料庫(假設可以建立表格，表格可以有欄位1表{user_id,user_name,start_time,friend})若已存在資料庫，將"friend"欄位更新為No
     //問題3:加了下列這段，就會crash
     /* client.query("UPDATE public.test1 SET cc=cc+1 WHERE userid = 'Sam'", (err2, res) => {
