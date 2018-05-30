@@ -29,7 +29,7 @@ bot.on('follow', function (event) {
 
     //2.判斷是否已存在於資料庫(假設可以建立表格，表格可以有欄位1表{user_id,user_name,start_time,friend,get_times})
     console.log('query table test1');
-    client.query("SELECT * FROM public.test1 where userid='B';", (err, res) => {
+    client.query("SELECT count(*) FROM public.test1 where userid='B';", (err, res) => {
     //"SELECT * FROM public.test1;"需要加where userid=line userId,但目前userid太長無法加入
     if (err) throw err;
     for (let row of res.rows) {
