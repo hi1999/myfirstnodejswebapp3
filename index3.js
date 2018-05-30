@@ -25,13 +25,23 @@ console.log('連線OK');
 bot.on('follow', function (event) {
     console.log('==================follow-使用者加入機器人好友事件');
    console.log('query table test1');
-   client.query('SELECT count(*) FROM public.test1;', (err, res) => {
+   client.query("SELECT count(*) FROM public.test1 where userid='Sam';", (err, res) => {
      if (err) throw err;
        
      for (let row of res.rows) {
          var bExist=row.count;
-            console.log("回傳資料:"+bExist);
-        console.log(JSON.stringify(row));
+         console.log("回傳資料:"+bExist);
+         console.log(JSON.stringify(row));
+         /////////////////
+          if(bExist=="0"){
+            //問題2:在下一個client會產生Error: Connection terminated by user錯誤訊息
+            console.log("新增一筆資料");
+          }
+         /////////////
+          if(bExist=="1"){
+          console.log("更新一筆資料");      
+        }
+         /////////////////
      }
    client.end();
 });
