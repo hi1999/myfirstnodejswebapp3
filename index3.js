@@ -108,7 +108,7 @@ bot.on('message', function (event) {
         });
       }
 //////////////////////////////////////////////
-      client.query("SELECT count(*) FROM public.test1 where userid='"+event.source.userId+"';", (err, res) => {    
+      client.query("SELECT count(*) FROM public.users_daily_record where userid='"+event.source.userId+"';", (err, res) => {    
       if (err) throw err;
       for (let row of res.rows) {
          var bExist=row.count;
