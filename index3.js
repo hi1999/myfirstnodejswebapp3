@@ -58,6 +58,7 @@ bot.on('message', function (event) {
     console.log('type==>', event.type);
     console.log('replyToken==>', event.replyToken);
     console.log('userId==>', event.source.userId);
+    console.log('message==>',event.message.text);
     console.log('==================');
 
 });
