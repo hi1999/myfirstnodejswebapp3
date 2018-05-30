@@ -34,7 +34,6 @@ bot.on('follow', function (event) {
     if (err) throw err;
     for (let row of res.rows) {
         var bExist=row.count;
-       
         console.log("回傳資料:"+bExist);
         //  2.1若尚未存在於資料庫，1表新增一筆資料 
 
