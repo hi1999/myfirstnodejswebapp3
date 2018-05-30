@@ -25,7 +25,7 @@ console.log('連線OK');
 bot.on('follow', function (event) {
     console.log('==================follow-使用者加入機器人好友事件');
    console.log('query table test1');
-   client.query("SELECT count(*) FROM public.test1 where userid='DDD';", (err, res) => {
+   client.query("SELECT count(*) FROM public.test1 where userid='"+event.source.userId+"';", (err, res) => {
      if (err) throw err;
        
      for (let row of res.rows) {
@@ -45,7 +45,10 @@ bot.on('follow', function (event) {
           }
          /////////////
           if(bExist=="1"){
-          console.log("更新一筆資料");      
+          console.log("更新一筆資料"); 
+              client.query("UPDATE public.test1 SET cc=cc+1 WHERE userid = '"+event.source.userId+"'", (err2, res) => {
+               if (err2) throw err2;
+                });
         }
          /////////////////
      }
