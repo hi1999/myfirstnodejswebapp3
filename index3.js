@@ -29,6 +29,25 @@ bot.on('follow', function (event) {
     //  2.1若已存在資料庫，將1表"friend"欄位更新為Yes
     //  2.2若尚未存在於資料庫，1表新增一筆資料
     console.log('userId==>', event.source.userId);
+    console.log('insert table test1');
+client.query(
+    'INSERT into public.test1 (userid, cc, update_at) VALUES($1, $2, $3) ',
+    [event.source.userId + new Date(), 101, new Date()],
+    function (err1, result) {
+        if (err1) throw err1;
+        //client.end();
+    });
+    
+    console.log('query table test1');
+client.query('SELECT * FROM public.test1;', (err, res) => {
+    if (err) throw err;
+    for (let row of res.rows) {
+        console.log(JSON.stringify(row));
+    }
+    client.end();
+});
+    
+    
 });
 //使用者刪除機器人好友事件
 bot.on('unfollow', function (event) {
