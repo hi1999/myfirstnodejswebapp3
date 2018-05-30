@@ -36,6 +36,12 @@ bot.on('follow', function (event) {
           if(bExist=="0"){
             //問題2:在下一個client會產生Error: Connection terminated by user錯誤訊息
             console.log("新增一筆資料");
+             /* client.query(
+                'INSERT into public.test1 (userid, cc, update_at) VALUES($1, $2, $3) ',
+                ['BBB', 101, new Date()],
+                function (err1, result) {
+                    if (err1) throw err1;
+                });*/
           }
          /////////////
           if(bExist=="1"){
