@@ -62,6 +62,12 @@ bot.on('message', function (event) {
     console.log('==================');
     if(event.message.text=='抽'){
       console.log('傳遞卡片');
+      console.log('##測試==>回覆圖片功能');
+        event.reply({
+            "type": "image",
+            "originalContentUrl": "https://i.imgur.com/qCGMEIs.jpg",
+            "previewImageUrl": "https://i.imgur.com/qCGMEIs.jpg"
+        });
     }
 
 
