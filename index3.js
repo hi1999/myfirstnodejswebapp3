@@ -70,9 +70,13 @@ bot.on('follow', function (event) {
 bot.on('unfollow', function (event) {
     console.log('==================unfollow-使用者刪除機器人好友事件');
     //1.讀取userid
-    //2.於資料庫(假設可以建立表格，表格可以有欄位1表{user_id,user_name,start_time,friend})
-    //  2.1若已存在資料庫，將"friend"欄位更新為No
-
+    console.log('userId==>', event.source.userId);
+    //2.於資料庫(假設可以建立表格，表格可以有欄位1表{user_id,user_name,start_time,friend})若已存在資料庫，將"friend"欄位更新為No
+     client.query("UPDATE public.test1 SET cc=cc+1 WHERE userid = 'Sam'", (err2, res) => {
+        if (err2) throw err2;
+        client.end();
+     });
+    console.log("更新一筆資料"); 
 });
 //機器人加入群組時的事件
 bot.on('join', function (event) { 
