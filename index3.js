@@ -71,7 +71,7 @@ bot.on('message', function (event) {
            
         });
     /////////////update資料庫
-     * console.log('update table test1');
+     /* console.log('update table test1');
       client.query("UPDATE public.test1 SET cc=cc+1 WHERE userid = 'Sam'", (err2, res) => {
             if (err2) throw err2;
             //client.end();
