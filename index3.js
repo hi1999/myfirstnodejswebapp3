@@ -63,11 +63,21 @@ bot.on('message', function (event) {
     if(event.message.text=='抽'){
       console.log('傳遞卡片');
       console.log('##測試==>回覆圖片功能');
+        //需要再加入隨機功能
         event.reply({
             "type": "image",
             "originalContentUrl": "https://i.imgur.com/qCGMEIs.jpg",
             "previewImageUrl": "https://i.imgur.com/qCGMEIs.jpg"
+           
         });
+    /////////////update資料庫
+      console.log('update table test1');
+      client.query("UPDATE public.test1 SET cc=cc+1 WHERE userid = 'Sam'", (err2, res) => {
+            if (err2) throw err2;
+            //client.end();
+       });
+    
+    
     }
 
 
