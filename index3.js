@@ -48,7 +48,7 @@ bot.on('follow', function (event) {
                 });*/
             ‵
             console.log("新增一筆資料");
-       }
+          }
         
         //  2.2若已存在資料庫，將1表"friend"欄位更新為Yes 
         if(bExist=="1"){
@@ -61,10 +61,10 @@ bot.on('follow', function (event) {
 //        console.log(JSON.stringify(row));
     }
     client.end();
-});
-    
-    
 //});
+    
+    
+});
 //使用者刪除機器人好友事件
 bot.on('unfollow', function (event) {
     console.log('==================unfollow-使用者刪除機器人好友事件');
