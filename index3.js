@@ -30,7 +30,7 @@ bot.on('follow', function (event) {
     //2.判斷是否已存在於資料庫(假設可以建立表格，表格可以有欄位1表{user_id,user_name,start_time,friend,get_times})
     console.log('query table test1');
     client.query("SELECT count(*) FROM public.test1 where userid='B';", (err, res) => {
-    //"SELECT * FROM public.test1;"需要加where userid=line userId,但目前userid太長無法加入
+    //問題1:"SELECT * FROM public.test1;"需要加where userid=line userId,但目前userid太長無法加入
     if (err) throw err;
     for (let row of res.rows) {
         var bExist=row.count;
@@ -39,13 +39,15 @@ bot.on('follow', function (event) {
         //  2.1若尚未存在於資料庫，1表新增一筆資料 
 
         if(bExist=="0"){
-           client.query(
+        //問題2:在下一個client會產生Error: Connection terminated by user錯誤訊息
+            /*  client.query(
                 'INSERT into public.test1 (userid, cc, update_at) VALUES($1, $2, $3) ',
                 ['B', 101, new Date()],
                 function (err1, result) {
                     if (err1) throw err1;
 
-                });
+                });*/
+            ‵
             console.log("新增一筆資料");
        }
         
