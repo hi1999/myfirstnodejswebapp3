@@ -32,9 +32,11 @@ bot.on('follow', function (event) {
     console.log('insert table test1');
    
     console.log('query table test1');
-client.query('SELECT * FROM public.test1;', (err, res) => {
+client.query('SELECT count(*) FROM public.test1;', (err, res) => {
     if (err) throw err;
-    console.log( res.rows[0].number);
+    for (let row of res.rows) {
+        console.log(JSON.stringify(row));
+    }
     client.end();
 });
     
