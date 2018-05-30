@@ -95,6 +95,33 @@ bot.on('message', function (event) {
     console.log('type==>', event.type);
     console.log('replyToken==>', event.replyToken);
     console.log('userId==>', event.source.userId);
+    console.log('==================');
+  if(event.message.text=='抽'){
+      console.log('傳遞卡片');
+      console.log('##測試==>回覆圖片功能');
+        //需要再加入隨機功能
+        event.reply({
+            "type": "image",
+            "originalContentUrl": "https://i.imgur.com/qCGMEIs.jpg",
+            "previewImageUrl": "https://i.imgur.com/qCGMEIs.jpg"
+           
+        });
+});
+
+
+/*bot.on('message', function (event) {
+    console.log('==================message-訊息事件');
+    //1.判斷使用者傳送的訊息是否為"抽"
+    //  1.1若不為抽，不處理
+    //  1.2若為抽，於表1(假設可以建立表格，表格可以有欄位1表{user_id,user_name,start_time,friend,get_times})將get friends+1
+    //  1.3若為抽，於表2(假設可以建立表格，表格可以有欄位2表{user_id,current_time,get_times})判斷該使用者當日抽圖資料是否已存在，若不存在心件資料，
+    //     若存在將get times+1
+    //把收到訊息的 event 印出來看看
+    console.log('解析收到的event:');
+    //console.log(event);
+    console.log('type==>', event.type);
+    console.log('replyToken==>', event.replyToken);
+    console.log('userId==>', event.source.userId);
     console.log('message==>',event.message.text);
     console.log('==================');
     if(event.message.text=='抽'){
@@ -108,7 +135,8 @@ bot.on('message', function (event) {
            
         });
         /////////////////////
-  /* client.query("SELECT count(*) FROM public.test1 where userid='"+event.source.userId+"';", (err, res) => {    
+ */
+ /* client.query("SELECT count(*) FROM public.test1 where userid='"+event.source.userId+"';", (err, res) => {    
       if (err) throw err;
       for (let row of res.rows) {
          var bExist=row.count;
@@ -133,7 +161,7 @@ bot.on('message', function (event) {
         }
          /////////////////
      }*/
-});
+//});
 
 
 
