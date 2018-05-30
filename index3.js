@@ -125,7 +125,7 @@ bot.on('message', function (event) {
           }
           if(bExist=="1"){
           console.log("更新一筆資料"); 
-          client.query("UPDATE public.users_daily_record SET get_times=get_times+1 WHERE userid = '"+event.source.userId+"'", (err2, res) => {
+          client.query("UPDATE public.users_daily_record SET get_times=get_times+1 WHERE user_id = '"+event.source.userId+"'", (err2, res) => {
                if (err2) throw err2;
           });
         }
