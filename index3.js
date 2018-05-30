@@ -24,99 +24,12 @@ console.log('連線OK');
 //使用者加入機器人好友事件
 bot.on('follow', function (event) {
     console.log('==================follow-使用者加入機器人好友事件');
-    //1.讀取userid
-    console.log('userId==>', event.source.userId);
-    //2.判斷是否已存在於資料庫(假設可以建立表格，表格可以有欄位1表{user_id,user_name,start_time,friend,get_times})
-    console.log('query table test1');
-    client.query("SELECT count(*) FROM public.test1 where userid='B';", (err, res) => {
-    //問題1:"SELECT * FROM public.test1;"需要加where userid=line userId,但目前userid太長無法加入
-        if (err) throw err;
-        for (let row of res.rows) {
-            var bExist=row.count;
-            console.log("回傳資料:"+bExist);
-            //  2.1若尚未存在於資料庫，1表新增一筆資料 
 
-            if(bExist=="0"){
-            //問題2:在下一個client會產生Error: Connection terminated by user錯誤訊息
-            /*  client.query(
-                'INSERT into public.test1 (userid, cc, update_at) VALUES($1, $2, $3) ',
-                ['B', 101, new Date()],
-                function (err1, result) {
-                    if (err1) throw err1;
-
-                });*/
-            ‵
-            console.log("新增一筆資料");
-        }
-        
-        //  2.2若已存在資料庫，將1表"friend"欄位更新為Yes 
-        if(bExist=="1"){
-           /* client.query("UPDATE public.test1 SET cc=cc+1 WHERE userid = 'B'", (err2, res) => {
-               if (err2) throw err2;
-                //client.end();
-                });*/
-            console.log("更新一筆資料");      
-        }
-            console.log(JSON.stringify(row));
-        }
-        client.end();
-    });
 });
-/*bot.on('follow', function (event) {
-    console.log('==================follow-使用者加入機器人好友事件');
-    //1.讀取userid
-    console.log('userId==>', event.source.userId);
 
-    //2.判斷是否已存在於資料庫(假設可以建立表格，表格可以有欄位1表{user_id,user_name,start_time,friend,get_times})
-    console.log('query table test1');
-    client.query("SELECT count(*) FROM public.test1 where userid='B';", (err, res) => {
-    //問題1:"SELECT * FROM public.test1;"需要加where userid=line userId,但目前userid太長無法加入
-    if (err) throw err;
-    for (let row of res.rows) {
-        var bExist=row.count;
-        console.log("回傳資料:"+bExist);
-        //  2.1若尚未存在於資料庫，1表新增一筆資料 
-
-        if(bExist=="0"){
-        //問題2:在下一個client會產生Error: Connection terminated by user錯誤訊息
-            /*  client.query(
-                'INSERT into public.test1 (userid, cc, update_at) VALUES($1, $2, $3) ',
-                ['B', 101, new Date()],
-                function (err1, result) {
-                    if (err1) throw err1;
-
-                });*/
-            ‵
-            console.log("新增一筆資料");
-          }
-        
-        //  2.2若已存在資料庫，將1表"friend"欄位更新為Yes 
-        if(bExist=="1"){
-           /* client.query("UPDATE public.test1 SET cc=cc+1 WHERE userid = 'B'", (err2, res) => {
-               if (err2) throw err2;
-                //client.end();
-                });*/
-            console.log("更新一筆資料");      
-        }
-//        console.log(JSON.stringify(row));
-    }
-    client.end();
-//});
-    
-    
-});*/
 //使用者刪除機器人好友事件
 bot.on('unfollow', function (event) {
     console.log('==================unfollow-使用者刪除機器人好友事件');
-    //1.讀取userid
-    //console.log('userId==>', event.source.userId);
-    //2.於資料庫(假設可以建立表格，表格可以有欄位1表{user_id,user_name,start_time,friend})若已存在資料庫，將"friend"欄位更新為No
-    //問題3:加了下列這段，就會crash
-    /* client.query("UPDATE public.test1 SET cc=cc+1 WHERE userid = 'Sam'", (err2, res) => {
-        if (err2) throw err2;
-        //client.end();
-     });*/
-
 });
 
 //機器人加入群組時的事件
