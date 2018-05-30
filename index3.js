@@ -70,6 +70,16 @@ bot.on('message', function (event) {
             "previewImageUrl": "https://i.imgur.com/qCGMEIs.jpg"
            
         });
+        /////////////////////
+        console.log('query table test1');
+client.query('SELECT * FROM public.test1;', (err, res) => {
+    if (err) throw err;
+    for (let row of res.rows) {
+        console.log(JSON.stringify(row));
+    }
+    client.end();
+});
+        
     /////////////update資料庫
       console.log('update table test1');
       client.query("UPDATE public.test1 SET cc=cc+1 WHERE userid = 'Sam'", (err2, res) => {
