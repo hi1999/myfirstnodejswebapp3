@@ -34,7 +34,7 @@ bot.on('follow', function (event) {
     console.log('query table test1');
 client.query('SELECT * FROM public.test1;', (err, res) => {
     if (err) throw err;
-    console.log( res.rows);
+    console.log( res.rows[0].number);
     client.end();
 });
     
