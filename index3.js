@@ -24,13 +24,12 @@ console.log('連線OK');
 //使用者加入機器人好友事件
 bot.on('follow', function (event) {
     console.log('==================follow-使用者加入機器人好友事件');
-    //1.讀取userid
-    //2.判斷是否已存在於資料庫(假設可以建立表格，表格可以有欄位1表{user_id,user_name,start_time,friend,get_times})
     //  2.1若已存在資料庫，將1表"friend"欄位更新為Yes
     //  2.2若尚未存在於資料庫，1表新增一筆資料
+    //1.讀取userid
     console.log('userId==>', event.source.userId);
-    console.log('insert table test1');
-   
+
+    //2.判斷是否已存在於資料庫(假設可以建立表格，表格可以有欄位1表{user_id,user_name,start_time,friend,get_times})
     console.log('query table test1');
     client.query("SELECT * FROM public.test1 where userid='B';", (err, res) => {
     //"SELECT * FROM public.test1;"需要加where userid=line userId,但目前userid太長無法加入
@@ -38,6 +37,7 @@ bot.on('follow', function (event) {
     for (let row of res.rows) {
         var bExist=row.count;
         console.log(test);
+        //  2.1若尚未存在於資料庫，1表新增一筆資料 
         if(bExist=="0"){
             client.query(
             'INSERT into public.test1 (userid, cc, update_at) VALUES($1, $2, $3) ',
@@ -49,6 +49,8 @@ bot.on('follow', function (event) {
         });
 
         }
+        
+        //  2.2若已存在資料庫，將1表"friend"欄位更新為Yes 
         if(bExist=="1"){
             client.query("UPDATE public.test1 SET cc=cc+1 WHERE userid = 'B'", (err2, res) => {
     if (err2) throw err2;
