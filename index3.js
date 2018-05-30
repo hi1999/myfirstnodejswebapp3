@@ -60,6 +60,11 @@ bot.on('message', function (event) {
     console.log('userId==>', event.source.userId);
     console.log('message==>',event.message.text);
     console.log('==================');
+    if(event.message.text=='抽'){
+      console.log('傳遞卡片');
+    }
+
+
 
 });
 
