@@ -39,7 +39,7 @@ client.query("SELECT count(*) FROM public.test1 where userid='Brandon';", (err, 
     for (let row of res.rows) {
         var test=row.count;
        // console.log(test);
-        if(rows.count==1){
+        if(rows.count=='1'){
         console.log(test);
         }
         //console.log(JSON.stringify(row));
