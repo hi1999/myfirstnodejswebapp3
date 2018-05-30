@@ -32,16 +32,31 @@ bot.on('follow', function (event) {
     console.log('insert table test1');
    
     console.log('query table test1');
-client.query("SELECT * FROM public.test1;", (err, res) => {
-
+    client.query("SELECT * FROM public.test1 where userid='B';", (err, res) => {
+    //"SELECT * FROM public.test1;"需要加where userid=line userId,但目前userid太長無法加入
     if (err) throw err;
-
     for (let row of res.rows) {
-        /*var test=row.count;
+        var bExist=row.count;
         console.log(test);
-        if(test=="1"){
-        console.log("test:"+test);
-        }*/
+        if(bExist=="0"){
+            client.query(
+            'INSERT into public.test1 (userid, cc, update_at) VALUES($1, $2, $3) ',
+            ['B' + new Date(), 101, new Date()],
+            function (err1, result) {
+            if (err1) throw err1;
+            //client.end();
+            console.log("test:"+test);
+        });
+
+        }
+        if(bExist=="1"){
+            client.query("UPDATE public.test1 SET cc=cc+1 WHERE userid = 'B'", (err2, res) => {
+    if (err2) throw err2;
+    //client.end();
+                console.log("test:"+test);
+});
+        
+        }
         console.log(JSON.stringify(row));
     }
     client.end();
