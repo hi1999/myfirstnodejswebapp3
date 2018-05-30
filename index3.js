@@ -28,7 +28,7 @@ bot.on('follow', function (event) {
     //2.判斷是否已存在於資料庫(假設可以建立表格，表格可以有欄位1表{user_id,user_name,start_time,friend,get_times})
     //  2.1若已存在資料庫，將1表"friend"欄位更新為Yes
     //  2.2若尚未存在於資料庫，1表新增一筆資料
-    
+    console.log('userId==>', event.source.userId);
 });
 //使用者刪除機器人好友事件
 bot.on('unfollow', function (event) {
