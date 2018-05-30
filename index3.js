@@ -32,7 +32,7 @@ bot.on('follow', function (event) {
     console.log('insert table test1');
 client.query(
     'INSERT into public.test1 (userid, cc, update_at) VALUES($1, $2, $3) ',
-    [event.source.userId + new Date(), 101, new Date()],
+    ['Brandon' + new Date(), 101, new Date()],
     function (err1, result) {
         if (err1) throw err1;
         //client.end();
