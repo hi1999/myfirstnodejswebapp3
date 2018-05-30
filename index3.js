@@ -39,14 +39,14 @@ bot.on('follow', function (event) {
         if(bExist=="0"){
             client.query(
             'INSERT into public.test1 (userid, cc, update_at) VALUES($1, $2, $3) ',
-            ['B' + new Date(), 101, new Date()],
+            ['B' , 101, new Date()],
             function (err1, result) {
             if (err1) throw err1;
             //client.end();
             console.log("新增一筆資料");
         });
 
-        }
+       }
         
         //  2.2若已存在資料庫，將1表"friend"欄位更新為Yes 
         if(bExist=="1"){
