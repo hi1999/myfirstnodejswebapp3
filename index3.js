@@ -34,7 +34,7 @@ bot.on('follow', function (event) {
     console.log('query table test1');
 client.query('SELECT count(*) FROM public.test1;', (err, res) => {
     if (err) throw err;
-   console.log(res.row[0].count);
+   console.log(res.rows.count);
     //for (let row of res.rows) {
         //console.log(JSON.stringify(row));
     //}
