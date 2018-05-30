@@ -34,10 +34,10 @@ bot.on('follow', function (event) {
     if (err) throw err;
     for (let row of res.rows) {
         var bExist=row.count;
-        client.end();
+       
         console.log("回傳資料:"+bExist);
         //  2.1若尚未存在於資料庫，1表新增一筆資料 
-        client.connect();
+
         if(bExist=="0"){
            /* client.query(
                 'INSERT into public.test1 (userid, cc, update_at) VALUES($1, $2, $3) ',
