@@ -64,7 +64,7 @@ bot.on('follow', function (event) {
 });
     
     
-});
+//});
 //使用者刪除機器人好友事件
 bot.on('unfollow', function (event) {
     console.log('==================unfollow-使用者刪除機器人好友事件');
@@ -78,6 +78,7 @@ bot.on('unfollow', function (event) {
      });*/
 
 });
+
 //機器人加入群組時的事件
 bot.on('join', function (event) { 
     console.log('==================join-機器人加入群組時的事件');
