@@ -24,7 +24,15 @@ console.log('連線OK');
 //使用者加入機器人好友事件
 bot.on('follow', function (event) {
     console.log('==================follow-使用者加入機器人好友事件');
-   
+   console.log('query table test1');
+   client.query('SELECT * FROM public.test1;', (err, res) => {
+     if (err) throw err;
+     for (let row of res.rows) {
+        console.log(JSON.stringify(row));
+     }
+   client.end();
+});
+
 
 });
 
