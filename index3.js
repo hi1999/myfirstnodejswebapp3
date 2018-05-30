@@ -76,7 +76,7 @@ bot.on('unfollow', function (event) {
         if (err2) throw err2;
         //client.end();
      });*/
-    console.log("更新一筆資料"); 
+    //console.log("更新一筆資料"); 
 });
 //機器人加入群組時的事件
 bot.on('join', function (event) { 
