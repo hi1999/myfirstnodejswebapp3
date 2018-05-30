@@ -108,28 +108,31 @@ bot.on('message', function (event) {
            
         });
         /////////////////////
-      /*  console.log('query table test1');
-client.query('SELECT * FROM public.test1;', (err, res) => {
-    if (err) throw err;
-    for (let row of res.rows) {
-        console.log(JSON.stringify(row));
-    }
-    client.end();
-});*/
-        
-    /////////////update資料庫
-      console.log('update table test1');
-      client.query("UPDATE public.test1 SET cc=cc+1 WHERE userid = 'Sam'", (err2, res) => {
-            if (err2) throw err2;
-            //client.end();
-       });
-        
-    
-    
-    }
-
-
-
+   client.query("SELECT count(*) FROM public.test1 where userid='"+event.source.userId+"';", (err, res) => {    
+      if (err) throw err;
+      for (let row of res.rows) {
+         var bExist=row.count;
+         console.log("回傳資料:"+bExist);
+         console.log(JSON.stringify(row));
+         /////////////////
+          if(bExist=="0"){
+            console.log("新增一筆資料");
+              client.query(
+                'INSERT into public.users_daily_record (user_id, get_date, get_times) VALUES($1, $2, $3) ',
+                [event.source.userId, new Date(), 1],
+                function (err1, result) {
+                    if (err1) throw err1;
+                });
+          }
+         /////////////
+          if(bExist=="1"){
+          console.log("更新一筆資料"); 
+          client.query("UPDATE public.users_daily_record SET get_times=get_times+1 WHERE userid = '"+event.source.userId+"'", (err2, res) => {
+               if (err2) throw err2;
+          });
+        }
+         /////////////////
+     }
 });
 
 
