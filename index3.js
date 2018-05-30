@@ -25,7 +25,7 @@ console.log('連線OK');
 bot.on('follow', function (event) {
     console.log('==================follow-使用者加入機器人好友事件');
    console.log('query table test1');
-   client.query("SELECT count(*) FROM public.test1 where userid='BBB';", (err, res) => {
+   client.query("SELECT count(*) FROM public.test1 where userid='DDD';", (err, res) => {
      if (err) throw err;
        
      for (let row of res.rows) {
@@ -38,7 +38,7 @@ bot.on('follow', function (event) {
             console.log("新增一筆資料");
               client.query(
                 'INSERT into public.test1 (userid, cc, update_at) VALUES($1, $2, $3) ',
-                ['BBB', 101, new Date()],
+                [event.source.userId, 101, new Date()],
                 function (err1, result) {
                     if (err1) throw err1;
                 });
