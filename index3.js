@@ -27,7 +27,10 @@ bot.on('follow', function (event) {
    console.log('query table test1');
    client.query('SELECT * FROM public.test1;', (err, res) => {
      if (err) throw err;
+       
      for (let row of res.rows) {
+         var bExist=row.count;
+            console.log("回傳資料:"+bExist);
         console.log(JSON.stringify(row));
      }
    client.end();
