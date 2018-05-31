@@ -105,28 +105,23 @@ var options = {
     url: 'https://api.imgur.com/3/album/ZaDbl2w/images',
     headers: { 'Authorization': 'Client-ID c5059e019ff8903' }
 };
-var i = 0;
-
 function callback(error, response, body) {
     if (!error && response.statusCode == 200) {
         var info = JSON.parse(body);
         console.log(info.data[Math.floor(Math.random()*info.data.length)].link);
-        /*for (i = 0; i < info.data.length; i++) {
-            console.log('取得相簿照片-',info.data[i].link);
-        }*/
+        console.log('傳遞卡片');
+        //需要再加入隨機功能
+        event.reply({
+            "type": "image",
+            "originalContentUrl": "'"+info.data[Math.floor(Math.random()*info.data.length)].link+"'",
+            "previewImageUrl": "'"+info.data[Math.floor(Math.random()*info.data.length)].link+"'"
+           
+        });
     }
 }
 request(options, callback);
 ////////////////////////      
-      console.log('傳遞卡片');
-      console.log('##測試==>回覆圖片功能');
-        //需要再加入隨機功能
-        event.reply({
-            "type": "image",
-            "originalContentUrl": "https://i.imgur.com/qCGMEIs.jpg",
-            "previewImageUrl": "https://i.imgur.com/qCGMEIs.jpg"
-           
-        });
+
       client.query("UPDATE public.user_history_record SET get_times=get_times+1 WHERE user_id = '"+event.source.userId+"'", (err2, res) => {
                if (err2) throw err2;
           });
