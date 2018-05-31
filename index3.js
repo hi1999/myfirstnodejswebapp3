@@ -46,7 +46,7 @@ bot.on('follow', function (event) {
          /////////////
           if(bExist=="1"){
           console.log("更新一筆資料"); 
-              client.query("UPDATE public.user_history_record SET get_times=get_times+1 WHERE user_id = '"+event.source.userId+"'", (err2, res) => {
+              client.query("UPDATE public.user_history_record SET friend='Y' WHERE user_id = '"+event.source.userId+"'", (err2, res) => {
                if (err2) throw err2;
                 });
         }
@@ -63,7 +63,7 @@ bot.on('unfollow', function (event) {
     console.log('==================unfollow-使用者刪除機器人好友事件');
     //2.於資料庫(假設可以建立表格，表格可以有欄位1表{user_id,user_name,start_time,friend})若已存在資料庫，將"friend"欄位更新為No
     //問題3:加了下列這段，就會crash
-     client.query("UPDATE public.test1 SET cc=cc+1 WHERE userid = 'Sam'", (err2, res) => {
+     client.query("UPDATE public.user_history_record SET friend='N' WHERE user_id = '"+event.source.userId+"'", (err2, res) => {
         if (err2) throw err2;
         //client.end();
      });
