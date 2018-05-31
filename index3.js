@@ -113,8 +113,8 @@ function callback(error, response, body) {
         //需要再加入隨機功能
         event.reply({
             "type": "image",
-            "originalContentUrl": "'"+info.data[Math.floor(Math.random()*info.data.length)].link+"'",
-            "previewImageUrl": "'"+info.data[Math.floor(Math.random()*info.data.length)].link+"'"
+            "originalContentUrl": info.data[Math.floor(Math.random()*info.data.length)].link,
+            "previewImageUrl": info.data[Math.floor(Math.random()*info.data.length)].link
            
         });
     }
