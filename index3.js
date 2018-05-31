@@ -81,6 +81,7 @@ bot.on('leave', function (event) {
 bot.on('postback', function (event) {
     console.log('==================postback-使用者透過套版訊息回應時的事件');
 });
+
 //訊息事件
 bot.on('message', function (event) {
     console.log('==================message-訊息事件');
