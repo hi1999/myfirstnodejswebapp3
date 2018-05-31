@@ -37,7 +37,7 @@ bot.on('follow', function (event) {
             //問題2:在下一個client會產生Error: Connection terminated by user錯誤訊息
             console.log("新增一筆資料");
               client.query(
-                'INSERT into public.User_Status (user_id, start_date,friend, get_times) VALUES($1, $2, $3,$4) ',
+                'INSERT into public.user_history_record (user_id, start_date,friend, get_times) VALUES($1, $2, $3,$4) ',
                 [event.source.userId,  new Date(), Y,1],
                 function (err1, result) {
                     if (err1) throw err1;
@@ -46,7 +46,7 @@ bot.on('follow', function (event) {
          /////////////
           if(bExist=="1"){
           console.log("更新一筆資料"); 
-              client.query("UPDATE public.User_Status SET get_times=get_times+1 WHERE user_id = '"+event.source.userId+"'", (err2, res) => {
+              client.query("UPDATE public.user_history_record SET get_times=get_times+1 WHERE user_id = '"+event.source.userId+"'", (err2, res) => {
                if (err2) throw err2;
                 });
         }
