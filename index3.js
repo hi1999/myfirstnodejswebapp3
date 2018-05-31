@@ -38,7 +38,7 @@ bot.on('follow', function (event) {
             console.log("新增一筆資料");
               client.query(
                 'INSERT into public.user_history_record (user_id, start_date,friend, get_times) VALUES($1, $2, $3,$4) ',
-                [event.source.userId,  new Date(), Y,1],
+                [event.source.userId,  new Date(), 'Y',1],
                 function (err1, result) {
                     if (err1) throw err1;
                 });
