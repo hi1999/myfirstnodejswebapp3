@@ -110,10 +110,10 @@ var i = 0;
 function callback(error, response, body) {
     if (!error && response.statusCode == 200) {
         var info = JSON.parse(body);
-        console.log(Math.random()*info.data.length);
-        for (i = 0; i < info.data.length; i++) {
+        console.log(info.data[Math.floor(Math.random()*info.data.length)].link);
+        /*for (i = 0; i < info.data.length; i++) {
             console.log('取得相簿照片-',info.data[i].link);
-        }
+        }*/
     }
 }
 request(options, callback);
