@@ -25,7 +25,7 @@ console.log('連線OK');
 bot.on('follow', function (event) {
     console.log('==================follow-使用者加入機器人好友事件');
    console.log('query table test1');
-   client.query("SELECT count(*) FROM public.test1 where userid='"+event.source.userId+"';", (err, res) => {
+   client.query("SELECT count(*) FROM public.User_Status where user_id='"+event.source.userId+"';", (err, res) => {
      if (err) throw err;
        
      for (let row of res.rows) {
@@ -37,8 +37,8 @@ bot.on('follow', function (event) {
             //問題2:在下一個client會產生Error: Connection terminated by user錯誤訊息
             console.log("新增一筆資料");
               client.query(
-                'INSERT into public.test1 (userid, cc, update_at) VALUES($1, $2, $3) ',
-                [event.source.userId, 101, new Date()],
+                'INSERT into public.User_Status (user_id, start_date,friend, get_times) VALUES($1, $2, $3,$4) ',
+                [event.source.userId,  new Date(), Y,1],
                 function (err1, result) {
                     if (err1) throw err1;
                 });
@@ -46,7 +46,7 @@ bot.on('follow', function (event) {
          /////////////
           if(bExist=="1"){
           console.log("更新一筆資料"); 
-              client.query("UPDATE public.test1 SET cc=cc+1 WHERE userid = '"+event.source.userId+"'", (err2, res) => {
+              client.query("UPDATE public.User_Status SET get_times=get_times+1 WHERE user_id = '"+event.source.userId+"'", (err2, res) => {
                if (err2) throw err2;
                 });
         }
