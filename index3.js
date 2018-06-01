@@ -110,7 +110,7 @@ bot.on('message', function (event) {
             console.log('連線2 OK');
 */
             var iSUM=0;
-            client2.query('SELECT SUM(get_times) FROM public.user_history_record;', (err, res) => {    
+            client.query('SELECT SUM(get_times) FROM public.user_history_record;', (err, res) => {    
                 if (err) throw err;
                 for (let row of res.rows) {
                     iSUM=row.sum;
@@ -137,7 +137,7 @@ bot.on('message', function (event) {
 */
 
         
-        client3.query('SELECT COUNT(*) FROM public.user_history_record where get_times>30;', (err, res) => {    
+        client.query('SELECT COUNT(*) FROM public.user_history_record where get_times>30;', (err, res) => {    
                 if (err) throw err;
                 for (let row of res.rows) {
                     iCOUNT=row.count;
