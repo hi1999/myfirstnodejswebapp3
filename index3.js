@@ -25,14 +25,14 @@ console.log('連線OK');
 bot.on('follow', function (event) {
     console.log('==================follow-使用者加入機器人好友事件');
    console.log('query table test1');
-   //client.query("SELECT count(*) FROM public.user_history_record where user_id='"+event.source.userId+"';", (err, res) => {
-    client.query("SELECT user_id FROM public.user_history_record where user_id='"+event.source.userId+"';", (err, res) => {
+   client.query("SELECT count(*) FROM public.user_history_record where user_id='"+event.source.userId+"';", (err, res) => {
+   // client.query("SELECT user_id FROM public.user_history_record where user_id='"+event.source.userId+"';", (err, res) => {
       
     if (err) throw err;
        
      for (let row of res.rows) {
-         //var bExist=row.count;
-         var bExist=row.user_id;
+         var bExist=row.count;
+     //    var bExist=row.user_id;
          console.log("回傳資料:"+bExist);
          console.log(JSON.stringify(row));
          /////////////////
