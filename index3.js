@@ -101,10 +101,11 @@ bot.on('message', function (event) {
     console.log('userId==>', event.source.userId);
     console.log('==================');
     if(event.message.text=='報表'){
+            var iSUM=0;
             client.query('SELECT SUM(get_times) FROM public.user_history_record;', (err, res) => {    
                 if (err) throw err;
                 for (let row of res.rows) {
-                    var iSUM=row.sum;
+                    iSUM=row.sum;
                     console.log("抽的總次數:"+iSUM);
                     console.log(JSON.stringify(row));
                     event.reply("抽的總次數:"+iSUM+"次").then(function (data) {
@@ -115,10 +116,11 @@ bot.on('message', function (event) {
                     console.log('##');
                 }           
             });
-                    client.query('SELECT COUNT(*) FROM public.user_history_record where get_times>30;', (err, res) => {    
+        var iCOUNT=0;    
+        client.query('SELECT COUNT(*) FROM public.user_history_record where get_times>30;', (err, res) => {    
                 if (err) throw err;
                 for (let row of res.rows) {
-                    var iCOUNT=row.count;
+                    iCOUNT=row.count;
                     console.log("超過30 次抽的人數:"+iCOUNT);
                     console.log(JSON.stringify(row));
                     event.reply("超過30 次抽的人數:"+iCOUNT+"人").then(function (data) {
