@@ -226,14 +226,6 @@ bot.on('message', function (event) {
 
 
 
-client.end((err) => {
-  console.log('client has disconnected')
-  if (err) {
-    console.log('error during disconnection', err.stack)
-  }
-})
-
-
 const app = express();
 const linebotParser = bot.parser();
 app.post('/', linebotParser);
