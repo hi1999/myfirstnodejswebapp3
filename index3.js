@@ -113,6 +113,8 @@ bot.on('message', function (event) {
                     });
                 }
             }
+        });
+   
     }
     
     if(event.message.text=='抽'){
