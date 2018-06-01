@@ -102,7 +102,7 @@ bot.on('message', function (event) {
     console.log('==================');
     if(event.message.text=='報表'){
             var iSUM=0;
-            client.query('SELECT SUM(get_times) FROM public.user_history_record;', (err, res) => {    
+            const query=client.query('SELECT SUM(get_times) FROM public.user_history_record;', (err, res) => {    
                 if (err) throw err;
                 for (let row of res.rows) {
                     iSUM=row.sum;
@@ -117,7 +117,7 @@ bot.on('message', function (event) {
                 }           
             });
         var iCOUNT=0;    
-        client.query('SELECT COUNT(*) FROM public.user_history_record where get_times>30;', (err, res) => {    
+        query=client.query('SELECT COUNT(*) FROM public.user_history_record where get_times>30;', (err, res) => {    
                 if (err) throw err;
                 for (let row of res.rows) {
                     iCOUNT=row.count;
@@ -133,7 +133,10 @@ bot.on('message', function (event) {
                     console.log('##');
                 }           
             });
-   
+       query.on('end', () => {
+      done();
+      return res.json(results);
+    });
     }
     /////////////////////////////
     if(event.message.text=='抽'){
@@ -222,10 +225,7 @@ bot.on('message', function (event) {
 
 
 
-    query.on('end', () => {
-      done();
-      return res.json(results);
-    });
+
 
 
 
