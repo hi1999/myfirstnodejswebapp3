@@ -123,7 +123,9 @@ bot.on('message', function (event) {
                     iCOUNT=row.count;
                     console.log("超過30 次抽的人數:"+iCOUNT);
                     console.log(JSON.stringify(row));
-                    event.reply("超過30 次抽的人數:"+iCOUNT+"人").then(function (data) {
+                    event.reply("超過30 次抽的人數:"+iCOUNT+"人"+'/n'+
+                                "抽的總次數:"+iSUM+"次"
+                               ).then(function (data) {
                         console.log('success', data);
                     }).catch(function (error) {
                         console.log('Error', error);
