@@ -74,7 +74,33 @@ const ME = 'Ubb9f5c58d8fc3755bc871dcda17439f6';
   }
 });
 */
-
+//////////////////////
+var request = require('request');
+var options = {
+    url: 'https://api.imgur.com/3/album/ZaDbl2w/images',
+    headers: { 'Authorization': 'Client-ID c5059e019ff8903' }
+};
+function callback(error, response, body) {
+    if (!error && response.statusCode == 200) {
+        var info = JSON.parse(body);
+        console.log(info.data[Math.floor(Math.random()*info.data.length)].link);
+        console.log('傳遞卡片');
+        //需要再加入隨機功能
+       /* event.reply({
+            "type": "image",
+            "originalContentUrl": info.data[Math.floor(Math.random()*info.data.length)].link,
+            "previewImageUrl": info.data[Math.floor(Math.random()*info.data.length)].link
+           
+        });*/
+        bot.push(ME, {
+         "type": "image",
+            "originalContentUrl": info.data[Math.floor(Math.random()*info.data.length)].link,
+            "previewImageUrl": info.data[Math.floor(Math.random()*info.data.length)].link
+        });
+    }
+}
+request(options, callback);
+//////////////////////
 bot.push(ME, {
  "type": "template",
   "altText": "This is a buttons template",
