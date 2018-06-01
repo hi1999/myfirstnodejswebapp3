@@ -215,7 +215,7 @@ bot.on('message', function (event) {
 //////////////////////////////////////////////    
     }
  //client.end();   
- client.disconnect();   
+ client.done();   
 });
 
 
