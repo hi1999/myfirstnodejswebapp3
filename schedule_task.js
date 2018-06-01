@@ -6,7 +6,11 @@ console.log(Date.now());
 //Line主動推播測試
 var linebot = require('linebot');
 var express = require('express');
-
+var request = require('request');
+var options = {
+    url: 'https://api.imgur.com/3/album/ZaDbl2w/images',
+    headers: { 'Authorization': 'Client-ID c5059e019ff8903' }
+};
 var bot = linebot({
     channelId: '1574577182',
 
@@ -88,11 +92,11 @@ client.query("SELECT user_id FROM public.user_history_record where friend='Yes';
         console.log('ME:'+ME);
 
 //////////////////////
-var request = require('request');
+/*var request = require('request');
 var options = {
     url: 'https://api.imgur.com/3/album/ZaDbl2w/images',
     headers: { 'Authorization': 'Client-ID c5059e019ff8903' }
-};
+};*/
 function callback(error, response, body) {
     if (!error && response.statusCode == 200) {
         var info = JSON.parse(body);
