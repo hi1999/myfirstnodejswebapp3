@@ -109,11 +109,11 @@ bot.on('message', function (event) {
                     console.log(JSON.stringify(row));
                     event.reply({
                                 type: 'message',
-                                text: '抽的總次數:'+iSUM,
+                                text: '抽的總次數:'+iSUM
                     });
+                
                 }
-            }
-        });
+            });
    
     }
     
