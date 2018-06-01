@@ -222,7 +222,10 @@ bot.on('message', function (event) {
 
 
 
-
+    query.on('end', () => {
+      done();
+      return res.json(results);
+    });
 
 
 
