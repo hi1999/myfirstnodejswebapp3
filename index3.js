@@ -115,6 +115,20 @@ bot.on('message', function (event) {
                     console.log('##');
                 }           
             });
+                    client.query('SELECT COUNT(*) FROM public.user_history_record where get_times>30;', (err, res) => {    
+                if (err) throw err;
+                for (let row of res.rows) {
+                    var iCOUNT=row.count;
+                    console.log("超過30 次抽的人數:"+iCOUNT);
+                    console.log(JSON.stringify(row));
+                    event.reply("超過30 次抽的人數:"+iCOUNT+"人").then(function (data) {
+                        console.log('success', data);
+                    }).catch(function (error) {
+                        console.log('Error', error);
+                    });
+                    console.log('##');
+                }           
+            });
    
     }
     /////////////////////////////
