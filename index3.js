@@ -101,7 +101,7 @@ bot.on('message', function (event) {
     console.log('userId==>', event.source.userId);
     console.log('==================');
     if(event.message.text=='報表'){
-            client.query('SELECT SUM(*) FROM public.user_history_record;', (err, res) => {    
+            client.query('SELECT SUM(get_times) FROM public.user_history_record;', (err, res) => {    
                 if (err) throw err;
                 for (let row of res.rows) {
                     var iSUM=row.sum;
