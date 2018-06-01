@@ -108,11 +108,11 @@ bot.on('message', function (event) {
                     iSUM=row.sum;
                     console.log("抽的總次數:"+iSUM);
                     console.log(JSON.stringify(row));
-                    event.reply("抽的總次數:"+iSUM+"次").then(function (data) {
+                  /*  event.reply("抽的總次數:"+iSUM+"次").then(function (data) {
                         console.log('success', data);
                     }).catch(function (error) {
                         console.log('Error', error);
-                    });
+                    });*/
                     console.log('##');
                 }           
             });
@@ -226,7 +226,12 @@ bot.on('message', function (event) {
 
 
 
-
+client.end((err) => {
+  console.log('client has disconnected')
+  if (err) {
+    console.log('error during disconnection', err.stack)
+  }
+})
 
 
 const app = express();
