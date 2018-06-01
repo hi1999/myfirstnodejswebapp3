@@ -227,7 +227,7 @@ bot.on('message', function (event) {
 
 
 
-
+client.end();
 
 const app = express();
 const linebotParser = bot.parser();
