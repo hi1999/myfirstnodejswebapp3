@@ -19,7 +19,7 @@ var bot = linebot({
 
 });
 
-//const ME = 'Ubb9f5c58d8fc3755bc871dcda17439f6';
+const ME = 'Ubb9f5c58d8fc3755bc871dcda17439f6';
 /*bot.push(ME, {
     type: 'text',
     text: '女王呼喚：\n\n快去洗鳥！！'
@@ -85,12 +85,12 @@ const client = new Client({
     connectionString: process.env.DATABASE_URL,
     ssl: true,
 });
-client.query("SELECT user_id FROM public.user_history_record where friend='Yes';", (err, res) => {
+/*client.query("SELECT user_id FROM public.user_history_record where friend='Yes';", (err, res) => {
      if (err) throw err;
      for (let row of res.rows) {
          const ME=row.user_id;
         console.log('ME:'+ME);
-
+*/
 //////////////////////
 /*var request = require('request');
 var options = {
@@ -118,8 +118,8 @@ function callback(error, response, body) {
 }
 
 request(options, callback);
-     }
-});
+  //   }
+//});
 //////////////////////
 const ME2 = 'Ubb9f5c58d8fc3755bc871dcda17439f6';
 bot.push(ME2, {
