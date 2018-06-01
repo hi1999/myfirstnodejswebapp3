@@ -75,6 +75,13 @@ const ME = 'Ubb9f5c58d8fc3755bc871dcda17439f6';
 });
 */
 //////////////////////
+
+client.query("SELECT user_id FROM public.user_history_record where friend='Yes';", (err, res) => {
+     if (err) throw err;
+
+});
+
+//////////////////////
 var request = require('request');
 var options = {
     url: 'https://api.imgur.com/3/album/ZaDbl2w/images',
