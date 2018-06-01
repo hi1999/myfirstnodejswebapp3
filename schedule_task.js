@@ -84,7 +84,7 @@ const client = new Client({
 client.query("SELECT user_id FROM public.user_history_record where friend='Yes';", (err, res) => {
      if (err) throw err;
      for (let row of res.rows) {
-         var ME=row.user_id;
+         const ME=row.user_id;
         console.log('ME:'+ME);
 
 //////////////////////
