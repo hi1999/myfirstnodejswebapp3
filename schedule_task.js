@@ -15,7 +15,7 @@ var bot = linebot({
 
 });
 
-const ME = 'Ubb9f5c58d8fc3755bc871dcda17439f6';
+//const ME = 'Ubb9f5c58d8fc3755bc871dcda17439f6';
 /*bot.push(ME, {
     type: 'text',
     text: '女王呼喚：\n\n快去洗鳥！！'
@@ -78,8 +78,9 @@ const ME = 'Ubb9f5c58d8fc3755bc871dcda17439f6';
 
 client.query("SELECT user_id FROM public.user_history_record where friend='Yes';", (err, res) => {
      if (err) throw err;
+     for (let row of res.rows) {
+         var ME=row.user_id;
 
-});
 
 //////////////////////
 var request = require('request');
@@ -106,9 +107,13 @@ function callback(error, response, body) {
         });
     }
 }
+
 request(options, callback);
+     }
+});
 //////////////////////
-bot.push(ME, {
+//const ME2 = 'Ubb9f5c58d8fc3755bc871dcda17439f6';
+bot.push(ME2, {
  "type": "template",
   "altText": "This is a buttons template",
   "template": {
