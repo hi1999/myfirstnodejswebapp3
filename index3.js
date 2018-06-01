@@ -128,7 +128,7 @@ request(options, callback);
                if (err2) throw err2;
                for (let row of res.rows) {
                     var iTimes=row.get_times;
-                   if(iTimes=="30"||iTimes==""){
+                   if(iTimes=="30"||iTimes=="35"){
                    
                    
                        event.reply({
