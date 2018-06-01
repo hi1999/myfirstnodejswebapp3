@@ -124,12 +124,25 @@ function callback(error, response, body) {
 }
 request(options, callback);
 ////////////////////////      
+      client.query("SELECT get_times FROM public.user_history_record where user_id= '"+event.source.userId+"'", (err2, res) => {
+               if (err2) throw err2;
+               for (let row of res.rows) {
+                    var iTimes=row.get_times;
+                   if(iTimes=="3"){
+                   
+                   
+                   
+                   }
+                }
+      });
 
+////////////////////////      
+      
       client.query("UPDATE public.user_history_record SET get_times=get_times+1 WHERE user_id = '"+event.source.userId+"'", (err2, res) => {
                if (err2) throw err2;
           });
      // }
-//////////////////////////////////////////////
+
       client.query("SELECT count(*) FROM public.users_daily_record where user_id='"+event.source.userId+"';", (err, res) => {    
       if (err) throw err;
       for (let row of res.rows) {
