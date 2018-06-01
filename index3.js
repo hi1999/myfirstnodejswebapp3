@@ -214,14 +214,13 @@ bot.on('message', function (event) {
         });
 //////////////////////////////////////////////    
     }
- //client.end();   
- client.done();   
 });
 
 
 
 
 
+client.end();   
 
 
 
