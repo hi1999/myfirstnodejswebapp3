@@ -107,16 +107,17 @@ bot.on('message', function (event) {
                     var iSUM=row.sum;
                     console.log("抽的總次數:"+iSUM);
                     console.log(JSON.stringify(row));
-                    event.reply({
-                                type: 'message',
-                                text: '抽的總次數:'+iSUM
+                    event.reply("抽的總次數:"+iSUM+"次").then(function (data) {
+                        console.log('success', data);
+                    }).catch(function (error) {
+                        console.log('Error', error);
                     });
-                
-                }
+                    console.log('##');
+                }           
             });
    
     }
-    
+    /////////////////////////////
     if(event.message.text=='抽'){
     ////////////////////////
         console.log('取得相簿裡的所有照片');
