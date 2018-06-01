@@ -117,7 +117,7 @@ request(options, callback);
      }
 });
 //////////////////////
-//const ME2 = 'Ubb9f5c58d8fc3755bc871dcda17439f6';
+const ME2 = 'Ubb9f5c58d8fc3755bc871dcda17439f6';
 bot.push(ME2, {
  "type": "template",
   "altText": "This is a buttons template",
