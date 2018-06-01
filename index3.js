@@ -240,8 +240,8 @@ bot.on('message', function (event) {
 
 
 
-
-client.end();   
+//此行抽圖OK但加入後報表不行run
+//client.end();   
 
 
 
