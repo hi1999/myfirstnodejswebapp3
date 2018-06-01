@@ -101,14 +101,14 @@ bot.on('message', function (event) {
     console.log('userId==>', event.source.userId);
     console.log('==================');
     if(event.message.text=='報表'){
-            const client2 = new Client({
+            /*const client2 = new Client({
                 connectionString: process.env.DATABASE_URL,
                 ssl: true,
             });
 
             client2.connect();
             console.log('連線2 OK');
-
+*/
             var iSUM=0;
             client2.query('SELECT SUM(get_times) FROM public.user_history_record;', (err, res) => {    
                 if (err) throw err;
@@ -124,17 +124,17 @@ bot.on('message', function (event) {
                     console.log('##');
                 }           
             });
-          client2.end();
+  //        client2.end();
         
         var iCOUNT=0;    
-            const client3 = new Client({
+    /*        const client3 = new Client({
                 connectionString: process.env.DATABASE_URL,
                 ssl: true,
             });
 
             client3.connect();
             console.log('連線3 OK');
-
+*/
 
         
         client3.query('SELECT COUNT(*) FROM public.user_history_record where get_times>30;', (err, res) => {    
@@ -153,7 +153,7 @@ bot.on('message', function (event) {
                     console.log('##');
                 }           
             });
-        client3.end();
+  //      client3.end();
 
     }
     /////////////////////////////
