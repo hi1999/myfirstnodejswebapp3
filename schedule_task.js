@@ -1,7 +1,22 @@
 ﻿
 console.log('=====測試排程=====');
 console.log(Date.now());
+//////////////////為何都抓不到?
+const { Client } = require('pg');
 
+const client = new Client({
+    connectionString: process.env.DATABASE_URL,
+    ssl: true,
+});
+client.query('SELECT user_id FROM public.user_history_record;', (err, res) => {
+            if (err) throw err;
+            for (let row of res.rows) {
+                var ui=row.user_id;
+                console.log('ui:'+ui);
+                console.log(JSON.stringify(row));
+            }
+        });
+//////////////////      
 
 //Line主動推播測試
 var linebot = require('linebot');
@@ -98,16 +113,7 @@ function callback(error, response, body) {
         console.log(info.data[Math.floor(Math.random()*info.data.length)].link);
         console.log('傳遞卡片');
         //需要再加入隨機功能
-//////////////////為何都抓不到?
-        client.query('SELECT user_id FROM public.user_history_record;', (err, res) => {
-            if (err) throw err;
-            for (let row of res.rows) {
-                var ui=row.user_id;
-                console.log('ui:'+ui);
-                console.log(JSON.stringify(row));
-            }
-        });
-//////////////////        
+  
         
         
         bot.push(ME, {
