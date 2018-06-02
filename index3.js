@@ -101,14 +101,6 @@ bot.on('message', function (event) {
     console.log('userId==>', event.source.userId);
     console.log('==================');
     if(event.message.text=='報表'){
-            /*const client2 = new Client({
-                connectionString: process.env.DATABASE_URL,
-                ssl: true,
-            });
-
-            client2.connect();
-            console.log('連線2 OK');
-*/
             var iSUM=0;
             client.query('SELECT SUM(get_times) FROM public.user_history_record;', (err, res) => {    
                 if (err) throw err;
@@ -116,28 +108,11 @@ bot.on('message', function (event) {
                     iSUM=row.sum;
                     console.log("抽的總次數:"+iSUM);
                     console.log(JSON.stringify(row));
-                  /*  event.reply("抽的總次數:"+iSUM+"次").then(function (data) {
-                        console.log('success', data);
-                    }).catch(function (error) {
-                        console.log('Error', error);
-                    });*/
                     console.log('##');
                 }           
             });
-  //        client2.end();
-        
-        var iCOUNT=0;    
-    /*        const client3 = new Client({
-                connectionString: process.env.DATABASE_URL,
-                ssl: true,
-            });
-
-            client3.connect();
-            console.log('連線3 OK');
-*/
-
-        
-        client.query('SELECT COUNT(*) FROM public.user_history_record where get_times>30;', (err, res) => {    
+            var iCOUNT=0;    
+            client.query('SELECT COUNT(*) FROM public.user_history_record where get_times>30;', (err, res) => {    
                 if (err) throw err;
                 for (let row of res.rows) {
                     iCOUNT=row.count;
@@ -145,6 +120,22 @@ bot.on('message', function (event) {
                     console.log(JSON.stringify(row));
                     event.reply("超過30 次抽的人數:"+iCOUNT+"人"+"\n"+
                                 "抽的總次數:"+iSUM+"次"
+                               ).then(function (data) {
+                        console.log('success', data);
+                    }).catch(function (error) {
+                        console.log('Error', error);
+                    });
+                    console.log('##');
+                }           
+            });
+            var iFriend=0;    
+            client.query("SELECT COUNT(*) FROM public.user_history_record where friend=='Yes';", (err, res) => {    
+                if (err) throw err;
+                for (let row of res.rows) {
+                    iFriend=row.count;
+                    console.log(JSON.stringify(row));
+                    event.reply("目前訂閱人數:"+iFriend+"人"+"\n"+
+                                "活躍用戶比率為:"+iCOUNT/iFriend
                                ).then(function (data) {
                         console.log('success', data);
                     }).catch(function (error) {
