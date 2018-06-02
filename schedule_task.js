@@ -9,6 +9,8 @@ const client = new Client({
     ssl: true,
 });
 client.connect();
+console.log('Client to DB連線成功');
+
 
 //////////////////      
 
@@ -16,17 +18,42 @@ client.connect();
 var linebot = require('linebot');
 var express = require('express');
 var request = require('request');
+
+console.log('宣告Line BOT');
+var bot = linebot({
+    channelId: '1574577182',
+    channelSecret: '3e03bec3a3ee9e463ed76dfe7da3baec',
+    channelAccessToken: 'NZXzzQ3o+VJYjHusBszu5QIoff22qIQ88z+F0fOFeFKIYsLtuYPB4XJAGY84LJIBJpv5pnp8fBrC6kO0rG4bq1detk7Qh40XADbWE524z77Sdumg1Hom12AXpa827FVnCoR81vbtvGoDlHCrX5MdmwdB04t89/1O/w1cDnyilFU='
+});
+
+
+console.log('連線IMGUR隨機取圖');
 var options = {
     url: 'https://api.imgur.com/3/album/ZaDbl2w/images',
     headers: { 'Authorization': 'Client-ID c5059e019ff8903' }
 };
-var bot = linebot({
-    channelId: '1574577182',
+function callback(error, response, body) {
+    if (!error && response.statusCode == 200) {
+        var info = JSON.parse(body);
+        var imgLink = info.data[Math.floor(Math.random() * info.data.length)].link;
+        console.log("\t==>callback取圖路俓OK:" + imgLink);
 
-    channelSecret: '3e03bec3a3ee9e463ed76dfe7da3baec',
-    channelAccessToken: 'NZXzzQ3o+VJYjHusBszu5QIoff22qIQ88z+F0fOFeFKIYsLtuYPB4XJAGY84LJIBJpv5pnp8fBrC6kO0rG4bq1detk7Qh40XADbWE524z77Sdumg1Hom12AXpa827FVnCoR81vbtvGoDlHCrX5MdmwdB04t89/1O/w1cDnyilFU='
+        //取出USER LIST
+        console.log("\tFor each User");
+        client.query('SELECT user_id FROM public.user_history_record;', (err, res) => {
+            if (err) throw err;
+            for (let row of res.rows) {
+                var ui = row.user_id;
+                console.log('\t\tui:' + ui);
+                //console.log(JSON.stringify(row));
+            }
+        });
+        //傳卡片
 
-});
+    }
+}
+request(options, callback);
+
 
 const ME = 'Ubb9f5c58d8fc3755bc871dcda17439f6';
 /*bot.push(ME, {
@@ -93,13 +120,16 @@ var options = {
     url: 'https://api.imgur.com/3/album/ZaDbl2w/images',
     headers: { 'Authorization': 'Client-ID c5059e019ff8903' }
 };*/
+
+/*
 function callback(error, response, body) {
     if (!error && response.statusCode == 200) {
         var info = JSON.parse(body);
-        console.log(info.data[Math.floor(Math.random()*info.data.length)].link);
+        console.log(info.data[Math.floor(Math.random() * info.data.length)].link);
+
         console.log('傳遞卡片');
         //需要再加入隨機功能
-client.query('SELECT user_id FROM public.user_history_record;', (err, res) => {
+        client.query('SELECT user_id FROM public.user_history_record;', (err, res) => {
             if (err) throw err;
             for (let row of res.rows) {
                 var ui=row.user_id;
@@ -120,46 +150,45 @@ client.query('SELECT user_id FROM public.user_history_record;', (err, res) => {
         ///////////////
     }
 }
-
-request(options, callback);
+*/
   //   }
 //});
 //////////////////////
 const ME2 = 'Ubb9f5c58d8fc3755bc871dcda17439f6';
 bot.push(ME2, {
- "type": "template",
-  "altText": "This is a buttons template",
-  "template": {
-      "type": "buttons",
-      "thumbnailImageUrl": "https://example.com/bot/images/image.jpg",
-      "imageAspectRatio": "rectangle",
-      "imageSize": "cover",
-      "imageBackgroundColor": "#FFFFFF",
-      "title": "Menu",
-      "text": "Please select",
-      "defaultAction": {
-          "type": "uri",
-          "label": "View detail",
-          "uri": "http://example.com/page/123"
-      },
-      "actions": [
-          {
-            "type": "postback",
-            "label": "Buy",
-            "data": "action=buy&itemid=123"
-          },
-          {
-            "type": "postback",
-            "label": "Add to cart",
-            "data": "action=add&itemid=123"
-          },
-          {
+    "type": "template",
+    "altText": "This is a buttons template",
+    "template": {
+        "type": "buttons",
+        "thumbnailImageUrl": "https://example.com/bot/images/image.jpg",
+        "imageAspectRatio": "rectangle",
+        "imageSize": "cover",
+        "imageBackgroundColor": "#FFFFFF",
+        "title": "Menu",
+        "text": "Please select",
+        "defaultAction": {
             "type": "uri",
             "label": "View detail",
             "uri": "http://example.com/page/123"
-          }
-      ]
-  }
+        },
+        "actions": [
+            {
+                "type": "postback",
+                "label": "Buy",
+                "data": "action=buy&itemid=123"
+            },
+            {
+                "type": "postback",
+                "label": "Add to cart",
+                "data": "action=add&itemid=123"
+            },
+            {
+                "type": "uri",
+                "label": "View detail",
+                "uri": "http://example.com/page/123"
+            }
+        ]
+    }
 });
 
 //const SAM = 'Uf11e08fe2c7bbabff46ad97b52806f3a';//'U96297178ee6ec3fbfe6d399b5b1e92e7';

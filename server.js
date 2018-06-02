@@ -3,22 +3,31 @@ var http = require('http');
 var port = process.env.PORT || 1337;
 
 //------------------------------------------------------------
-var request = require('request');
-var options = {
-    url: 'https://api.imgur.com/3/album/ZaDbl2w/images',
-    headers: { 'Authorization': 'Client-ID c5059e019ff8903' }
-};
-var i = 0;
-function callback(error, response, body) {
-    if (!error && response.statusCode == 200) {
-        var info = JSON.parse(body);
-        for (i = 0; i < info.data.length; i++) {
-            console.log(info.data[i].link);
-        }
-    }
-}
-request(options, callback);
+const { Client } = require('pg');
 
+const client = new Client({
+    connectionString: process.env.DATABASE_URL,
+    ssl: true,
+});
+client.connect();
+//------------------------------------------------------------
+//var request = require('request');
+//var options = {
+//    url: 'https://api.imgur.com/3/album/ZaDbl2w/images',
+//    headers: { 'Authorization': 'Client-ID c5059e019ff8903' }
+//};
+//var i = 0;
+//function callback(error, response, body) {
+//    if (!error && response.statusCode == 200) {
+//        var info = JSON.parse(body);
+//        for (i = 0; i < info.data.length; i++) {
+//            console.log(info.data[i].link);
+//        }
+//    }
+//}
+//request(options, callback);
+
+//------------------------------------------------------------
 //var https = require('https');
 //var options = {
 //    hostname: 'api.imgur.com',
