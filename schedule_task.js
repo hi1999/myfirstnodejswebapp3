@@ -93,15 +93,7 @@ const ME = 'Ubb9f5c58d8fc3755bc871dcda17439f6';
   }
 });
 */
-//////////////////////
-const { Client } = require('pg');
 
-const client = new Client({
-    connectionString: process.env.DATABASE_URL,
-    ssl: true,
-});
-
-//////////////////////
 /*var request = require('request');
 var options = {
     url: 'https://api.imgur.com/3/album/ZaDbl2w/images',
