@@ -32,6 +32,8 @@ var options = {
     url: 'https://api.imgur.com/3/album/ZaDbl2w/images',
     headers: { 'Authorization': 'Client-ID c5059e019ff8903' }
 };
+
+
 function callback(error, response, body) {
     if (!error && response.statusCode == 200) {
         var info = JSON.parse(body);
@@ -43,12 +45,12 @@ function callback(error, response, body) {
         client.query('SELECT user_id FROM public.user_history_record;', (err, res) => {
             if (err) throw err;
 
-            client2 = new Client({
-                connectionString: process.env.DATABASE_URL,
-                ssl: true,
-            });
-            client2.connect();
-            console.log('Client2 to DB連線成功');
+            //client2 = new Client({
+            //    connectionString: process.env.DATABASE_URL,
+            //    ssl: true,
+            //});
+            //client2.connect();
+            //console.log('Client2 to DB連線成功');
 
             for (let row of res.rows) {
                 var ui = row.user_id;
@@ -56,14 +58,14 @@ function callback(error, response, body) {
                 //console.log(JSON.stringify(row));
 
 
-                bot.push(ui, {
-                    "type": "image",
-                    "originalContentUrl": imgLink,
-                    "previewImageUrl": imgLink
-                });
-                console.log('\t\t\tBOT PUSH OK');
+                //bot.push(ui, {
+                //    "type": "image",
+                //    "originalContentUrl": imgLink,
+                //    "previewImageUrl": imgLink
+                //});
+                //console.log('\t\t\tBOT PUSH OK');
             }            
-            client2.end();
+            //client2.end();
         });
 
         console.log('end callback');
@@ -278,11 +280,3 @@ request(options, callback);
 //}); 
 
 console.log('==================');
-
-const app = express();
-const linebotParser = bot.parser();
-app.post('/', linebotParser);
-var server = app.listen(process.env.PORT || 8088, function () {
-    var port = server.address().port;
-    console.log("App now running on port", port);
-});
