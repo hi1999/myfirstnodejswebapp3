@@ -44,8 +44,14 @@ function callback(error, response, body) {
             console.log("----------------For each User");
             for (let row of res.rows) {
                 var ui = row.user_id;
-                console.log('----------------ui:' + ui + '_' + imgLink);
                 //console.log(JSON.stringify(row));
+                console.log('----------------push ui:' + ui + ' with image' + imgLink);
+                bot.push(ui, {
+                    "type": "image",
+                    "originalContentUrl": imgLink,
+                    "previewImageUrl": imgLink
+                });
+                console.log('----------------push ok');
             }
             client.end();
         });
