@@ -11,6 +11,17 @@ const client = new Client({
 client.connect();
 console.log('Client to DB連線成功');
 
+console.log("\tFor each User");
+client.query('SELECT user_id FROM public.user_history_record;', (err, res) => {
+    if (err) throw err;
+
+    for (let row of res.rows) {
+        var ui = row.user_id;
+        console.log('\t\tui:' + ui);
+        //console.log(JSON.stringify(row));
+    }
+    client.end();
+});
 
 //////////////////      
 
@@ -40,24 +51,12 @@ function callback(error, response, body) {
         var imgLink = info.data[Math.floor(Math.random() * info.data.length)].link;
         console.log("\t==>callback取圖路俓OK:" + imgLink);
 
-        //取出USER LIST
-        console.log("\tFor each User");
-        client.query('SELECT user_id FROM public.user_history_record;', (err, res) => {
-            if (err) throw err;
-
-            for (let row of res.rows) {
-                var ui = row.user_id;
-                console.log('\t\tui:' + ui);
-                //console.log(JSON.stringify(row));
-            }            
-        });
 
         console.log('\t==>end callback');
         
     }
 }
 request(options, callback);
-client.end();
 
 
 const ME = 'Ubb9f5c58d8fc3755bc871dcda17439f6';
