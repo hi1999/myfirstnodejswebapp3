@@ -138,7 +138,7 @@ bot.on('message', function (event) {
                         }           
                  });
             var iSumToday=0;
-            client.query('SELECT SUM(get_times) FROM public.users_daily_record;', (err, res) => {    
+            client.query("SELECT SUM(get_times) FROM public.users_daily_recordwhere user_id like '%-5-2%';", (err, res) => {    
                 if (err) throw err;
                 for (let row of res.rows) {
                     iSumToday=row.sum;
