@@ -129,7 +129,7 @@ bot.on('message', function (event) {
                 }           
             });
              var iGetUserToday=0; 
-                    client.query("SELECT COUNT(*) FROM public.users_daily_record where user_id like '%-5-2%';", (err, res) => {    
+                    client.query("SELECT COUNT(*) FROM public.users_daily_record where user_id like '%"++iMonth+"-"+iDay+"%';", (err, res) => {    
                         if (err) throw err;
                         for (let row of res.rows) {
                             iGetUserToday=row.count;
@@ -138,7 +138,7 @@ bot.on('message', function (event) {
                         }           
                  });
             var iSumToday=0;
-            client.query("SELECT SUM(get_times) FROM public.users_daily_record where user_id like '%-5-2%';", (err, res) => {    
+            client.query("SELECT SUM(get_times) FROM public.users_daily_record where user_id like '%"++iMonth+"-"+iDay+"%';", (err, res) => {    
                 if (err) throw err;
                 for (let row of res.rows) {
                     iSumToday=row.sum;
@@ -151,8 +151,8 @@ bot.on('message', function (event) {
                 for (let row of res.rows) {
                     iFriend=row.count;
                     console.log(JSON.stringify(row));
-                    event.reply("        當日活躍人數:"+iGetUserToday+"人"+"\n"+
-                                "      當日抽的總次數:"+iSumToday+"次"+"\n"+
+                    event.reply("          當日活躍人數:"+iGetUserToday+"人"+"\n"+
+                                "    當日抽的總次數:"+iSumToday+"次"+"\n"+
                                 "超過30次抽的人數:"+iCOUNT+"人"+"\n"+
                                 "         抽的總次數:"+iSUM+"次"+"\n"+
                                 "      目前訂閱人數:"+iFriend+"人"+"\n"+
