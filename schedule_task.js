@@ -4,23 +4,8 @@ console.log(Date.now());
 //////////////////為何都抓不到?
 const { Client } = require('pg');
 
-const client = new Client({
-    connectionString: process.env.DATABASE_URL,
-    ssl: true,
-});
-client.connect();
 
-client.query('SELECT user_id FROM public.user_history_record;', (err, res) => {
-    if (err) throw err;
 
-    console.log("\tFor each User");
-    for (let row of res.rows) {
-        var ui = row.user_id;
-        console.log('\t\tui:' + ui);
-        //console.log(JSON.stringify(row));
-    }
-    client.end();
-});
 
 //////////////////      
 
@@ -36,23 +21,37 @@ var bot = linebot({
     channelAccessToken: 'NZXzzQ3o+VJYjHusBszu5QIoff22qIQ88z+F0fOFeFKIYsLtuYPB4XJAGY84LJIBJpv5pnp8fBrC6kO0rG4bq1detk7Qh40XADbWE524z77Sdumg1Hom12AXpa827FVnCoR81vbtvGoDlHCrX5MdmwdB04t89/1O/w1cDnyilFU='
 });
 
-
-console.log('連線IMGUR隨機取圖');
+//Request IMGUR callback 隨機取圖
 var options = {
     url: 'https://api.imgur.com/3/album/ZaDbl2w/images',
     headers: { 'Authorization': 'Client-ID c5059e019ff8903' }
 };
-
-
 function callback(error, response, body) {
     if (!error && response.statusCode == 200) {
         var info = JSON.parse(body);
         var imgLink = info.data[Math.floor(Math.random() * info.data.length)].link;
         console.log("\t==>callback取圖路俓OK:" + imgLink);
 
+        console.log('----------------1');
+        const client = new Client({
+            connectionString: process.env.DATABASE_URL,
+            ssl: true,
+        });
+        client.connect();
+        client.query('SELECT user_id FROM public.user_history_record;', (err, res) => {
+            if (err) throw err;
+
+            console.log("----------------For each User");
+            for (let row of res.rows) {
+                var ui = row.user_id;
+                console.log('----------------ui:' + ui);
+                //console.log(JSON.stringify(row));
+            }
+            client.end();
+        });
+        console.log('----------------1');
 
         console.log('\t==>end callback');
-        
     }
 }
 request(options, callback);
