@@ -29,7 +29,7 @@ var options = {
 function callback(error, response, body) {
     if (!error && response.statusCode == 200) {
         var info = JSON.parse(body);
-        console.log("\t==>callback取圖路俓OK:" + imgLink);
+        console.log("\t==>callback取圖OK:");
 
         const client = new Client({
             connectionString: process.env.DATABASE_URL,
