@@ -50,7 +50,7 @@ function callback(error, response, body) {
                     "originalContentUrl": imgLink,
                     "previewImageUrl": imgLink
                 });
-                console.log('==>push ok');
+                console.log('==>push [' + imgLink+'] ok');
             }
             client.end();
         });
