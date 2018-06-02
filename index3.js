@@ -17,7 +17,9 @@ const client = new Client({
     connectionString: process.env.DATABASE_URL,
     ssl: true,
 });
-
+var myDate = new Date();
+var iMonth=myDate.getMonth(); //获取当前月份(0-11,0代表1月)
+var iDay=myDate.getDate(); //获取当前日(1-31)
 client.connect();
 console.log('連線OK');
 
@@ -201,24 +203,24 @@ bot.on('message', function (event) {
                    if (err2) throw err2;
               });
          // }
-        client.query("SELECT count(*) FROM public.users_daily_record where user_id='"+event.source.userId+new Date().getMonth()+new Date().getDate()+"';", (err, res) => {    
+        client.query("SELECT count(*) FROM public.users_daily_record where user_id='"+event.source.userId+"-"+iMonth+"-"+iDay+"';", (err, res) => {    
             if (err) throw err;
             for (let row of res.rows) {
                 var bExist=row.count;
-                console.log("回傳資料:"+bExist);
+                console.log("回傳資料:"+event.source.userId+"-"+iMonth+"-"+iDay);
                 console.log(JSON.stringify(row));
                 if(bExist=="0"){
                     console.log("新增一筆資料");
                     client.query(
                     'INSERT into public.users_daily_record (user_id, get_date, get_times) VALUES($1, $2, $3) ',
-                    [event.source.userId+new Date().getMonth()+new Date(), new Date(), 1],
+                    [event.source.userId+"-"+iMonth+"-"+iDay, new Date(), 1],
                     function (err1, result) {
                         if (err1) throw err1;
                     });
                 }
                 if(bExist=="1"){
                     console.log("更新一筆資料"); 
-                    client.query("UPDATE public.users_daily_record SET get_times=get_times+1 WHERE user_id = '"+event.source.userId+new Date().getMonth()+new Date()+"'", (err2, res) => {
+                    client.query("UPDATE public.users_daily_record SET get_times=get_times+1 WHERE user_id = '"+event.source.userId+"-"+iMonth+"-"+iDay+"'", (err2, res) => {
                         if (err2) throw err2;
                     });
                 }
