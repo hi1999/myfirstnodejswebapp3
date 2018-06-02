@@ -46,6 +46,12 @@ function callback(error, response, body) {
                 var ui = row.user_id;
                 console.log('\t\tui:' + ui);
                 //console.log(JSON.stringify(row));
+
+                bot.push(ui, {
+                    "type": "image",
+                    "originalContentUrl": imgLink,
+                    "previewImageUrl": imgLink
+                });
             }
         });
         //傳卡片
