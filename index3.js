@@ -137,7 +137,13 @@ bot.on('message', function (event) {
                             console.log('##');
                         }           
                  });
-        
+            var iSumToday=0;
+            client.query('SELECT SUM(get_times) FROM public.users_daily_record;', (err, res) => {    
+                if (err) throw err;
+                for (let row of res.rows) {
+                    iSumToday=row.sum;
+                }           
+            });
         
             var iFriend=0;    
             client.query("SELECT COUNT(*) FROM public.user_history_record where friend='Y';", (err, res) => {    
@@ -146,7 +152,7 @@ bot.on('message', function (event) {
                     iFriend=row.count;
                     console.log(JSON.stringify(row));
                     event.reply("        當日活躍人數:"+iGetUserToday+"人"+"\n"+
-                                "      當日抽的總次數:"+"次"+"\n"+
+                                "      當日抽的總次數:"+iSumToday+"次"+"\n"+
                                 "超過30次抽的人數:"+iCOUNT+"人"+"\n"+
                                 "         抽的總次數:"+iSUM+"次"+"\n"+
                                 "      目前訂閱人數:"+iFriend+"人"+"\n"+
