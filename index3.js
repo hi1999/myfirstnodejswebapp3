@@ -145,7 +145,8 @@ bot.on('message', function (event) {
                 for (let row of res.rows) {
                     iFriend=row.count;
                     console.log(JSON.stringify(row));
-                    event.reply("    當日活躍人數:"+iGetUserToday+"人"+"\n"+
+                    event.reply("        當日活躍人數:"+iGetUserToday+"人"+"\n"+
+                                "      當日抽的總次數:"+"次"+"\n"+
                                 "超過30次抽的人數:"+iCOUNT+"人"+"\n"+
                                 "         抽的總次數:"+iSUM+"次"+"\n"+
                                 "      目前訂閱人數:"+iFriend+"人"+"\n"+
