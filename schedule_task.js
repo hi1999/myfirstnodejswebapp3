@@ -99,11 +99,11 @@ function callback(error, response, body) {
         console.log('傳遞卡片');
         //需要再加入隨機功能
 //////////////////
-        client.query("SELECT user_id FROM public.user_history_record where friend='Y';", (err, res) => {
+        client.query('SELECT user_id FROM public.user_history_record;', (err, res) => {
      if (err) throw err;
      for (let row of res.rows) {
-         const ME=row.user_id;
-        console.log('ME:'+ME);
+         var ui=row.user_id;
+        console.log('ui:'+ui);
      }
 });
 //////////////////        
