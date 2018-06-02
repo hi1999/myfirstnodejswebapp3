@@ -69,10 +69,11 @@ function callback(error, response, body) {
         });
 
         console.log('end callback');
-        client.end();
+        
     }
 }
 request(options, callback);
+client.end();
 
 
 const ME = 'Ubb9f5c58d8fc3755bc871dcda17439f6';
