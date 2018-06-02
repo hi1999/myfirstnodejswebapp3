@@ -62,18 +62,16 @@ function callback(error, response, body) {
                     "previewImageUrl": imgLink
                 });
                 console.log('\t\t\tBOT PUSH OK');
-            }
-
-
+            }            
             client2.end();
         });
 
         console.log('end callback');
+        client.end();
     }
 }
 request(options, callback);
 
-client.end();
 
 const ME = 'Ubb9f5c58d8fc3755bc871dcda17439f6';
 /*bot.push(ME, {
@@ -280,3 +278,11 @@ request(options, callback);
 //}); 
 
 console.log('==================');
+
+const app = express();
+const linebotParser = bot.parser();
+app.post('/', linebotParser);
+var server = app.listen(process.env.PORT || 8088, function () {
+    var port = server.address().port;
+    console.log("App now running on port", port);
+});
