@@ -129,7 +129,7 @@ bot.on('message', function (event) {
                 }           
             });
              var iGetUserToday=0; 
-                    client.query("SELECT COUNT(*) FROM public.users_daily_record where user_id like '%"++iMonth+"-"+iDay+"%';", (err, res) => {    
+                    client.query("SELECT COUNT(*) FROM public.users_daily_record where user_id like '%"+iMonth+"-"+iDay+"%';", (err, res) => {    
                         if (err) throw err;
                         for (let row of res.rows) {
                             iGetUserToday=row.count;
@@ -138,7 +138,7 @@ bot.on('message', function (event) {
                         }           
                  });
             var iSumToday=0;
-            client.query("SELECT SUM(get_times) FROM public.users_daily_record where user_id like '%"++iMonth+"-"+iDay+"%';", (err, res) => {    
+            client.query("SELECT SUM(get_times) FROM public.users_daily_record where user_id like '%"+iMonth+"-"+iDay+"%';", (err, res) => {    
                 if (err) throw err;
                 for (let row of res.rows) {
                     iSumToday=row.sum;
