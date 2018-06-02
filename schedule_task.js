@@ -42,10 +42,19 @@ function callback(error, response, body) {
         console.log("\tFor each User");
         client.query('SELECT user_id FROM public.user_history_record;', (err, res) => {
             if (err) throw err;
+
+            client2 = new Client({
+                connectionString: process.env.DATABASE_URL,
+                ssl: true,
+            });
+            client2.connect();
+            console.log('Client2 to DB連線成功');
+
             for (let row of res.rows) {
                 var ui = row.user_id;
                 console.log('\t\tui:' + ui);
                 //console.log(JSON.stringify(row));
+
 
                 bot.push(ui, {
                     "type": "image",
@@ -54,6 +63,9 @@ function callback(error, response, body) {
                 });
                 console.log('\t\t\tBOT PUSH OK');
             }
+
+
+            client2.end();
         });
 
         console.log('end callback');
@@ -61,6 +73,7 @@ function callback(error, response, body) {
 }
 request(options, callback);
 
+client.end();
 
 const ME = 'Ubb9f5c58d8fc3755bc871dcda17439f6';
 /*bot.push(ME, {
@@ -161,42 +174,42 @@ function callback(error, response, body) {
   //   }
 //});
 //////////////////////
-const ME2 = 'Ubb9f5c58d8fc3755bc871dcda17439f6';
-bot.push(ME2, {
-    "type": "template",
-    "altText": "This is a buttons template",
-    "template": {
-        "type": "buttons",
-        "thumbnailImageUrl": "https://example.com/bot/images/image.jpg",
-        "imageAspectRatio": "rectangle",
-        "imageSize": "cover",
-        "imageBackgroundColor": "#FFFFFF",
-        "title": "Menu",
-        "text": "Please select",
-        "defaultAction": {
-            "type": "uri",
-            "label": "View detail",
-            "uri": "http://example.com/page/123"
-        },
-        "actions": [
-            {
-                "type": "postback",
-                "label": "Buy",
-                "data": "action=buy&itemid=123"
-            },
-            {
-                "type": "postback",
-                "label": "Add to cart",
-                "data": "action=add&itemid=123"
-            },
-            {
-                "type": "uri",
-                "label": "View detail",
-                "uri": "http://example.com/page/123"
-            }
-        ]
-    }
-});
+//const ME2 = 'Ubb9f5c58d8fc3755bc871dcda17439f6';
+//bot.push(ME2, {
+//    "type": "template",
+//    "altText": "This is a buttons template",
+//    "template": {
+//        "type": "buttons",
+//        "thumbnailImageUrl": "https://example.com/bot/images/image.jpg",
+//        "imageAspectRatio": "rectangle",
+//        "imageSize": "cover",
+//        "imageBackgroundColor": "#FFFFFF",
+//        "title": "Menu",
+//        "text": "Please select",
+//        "defaultAction": {
+//            "type": "uri",
+//            "label": "View detail",
+//            "uri": "http://example.com/page/123"
+//        },
+//        "actions": [
+//            {
+//                "type": "postback",
+//                "label": "Buy",
+//                "data": "action=buy&itemid=123"
+//            },
+//            {
+//                "type": "postback",
+//                "label": "Add to cart",
+//                "data": "action=add&itemid=123"
+//            },
+//            {
+//                "type": "uri",
+//                "label": "View detail",
+//                "uri": "http://example.com/page/123"
+//            }
+//        ]
+//    }
+//});
 
 //const SAM = 'Uf11e08fe2c7bbabff46ad97b52806f3a';//'U96297178ee6ec3fbfe6d399b5b1e92e7';
 //bot.push(SAM, {
