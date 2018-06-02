@@ -44,7 +44,7 @@ function callback(error, response, body) {
             console.log("----------------For each User");
             for (let row of res.rows) {
                 var ui = row.user_id;
-                console.log('----------------ui:' + ui);
+                console.log('----------------ui:' + ui + '_' + imgLink);
                 //console.log(JSON.stringify(row));
             }
             client.end();
