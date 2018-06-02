@@ -85,13 +85,7 @@ const client = new Client({
     connectionString: process.env.DATABASE_URL,
     ssl: true,
 });
-client.query("SELECT user_id FROM public.user_history_record where friend='Y';", (err, res) => {
-     if (err) throw err;
-     for (let row of res.rows) {
-         const ME=row.user_id;
-        console.log('ME:'+ME);
-     }
-});
+
 //////////////////////
 /*var request = require('request');
 var options = {
@@ -104,12 +98,17 @@ function callback(error, response, body) {
         console.log(info.data[Math.floor(Math.random()*info.data.length)].link);
         console.log('傳遞卡片');
         //需要再加入隨機功能
-       /* event.reply({
-            "type": "image",
-            "originalContentUrl": info.data[Math.floor(Math.random()*info.data.length)].link,
-            "previewImageUrl": info.data[Math.floor(Math.random()*info.data.length)].link
-           
-        });*/
+//////////////////
+        client.query("SELECT user_id FROM public.user_history_record where friend='Y';", (err, res) => {
+     if (err) throw err;
+     for (let row of res.rows) {
+         const ME=row.user_id;
+        console.log('ME:'+ME);
+     }
+});
+//////////////////        
+        
+        
         bot.push(ME, {
          "type": "image",
             "originalContentUrl": info.data[Math.floor(Math.random()*info.data.length)].link,
