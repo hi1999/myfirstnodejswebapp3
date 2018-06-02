@@ -102,7 +102,7 @@ bot.on('message', function (event) {
     console.log('replyToken==>', event.replyToken);
     console.log('userId==>', event.source.userId);
     console.log('==================');
-    if(event.message.text=='報表'){
+    /*if(event.message.text=='報表'){
             var iSUM=0;
             client.query('SELECT SUM(get_times) FROM public.user_history_record;', (err, res) => {    
                 if (err) throw err;
@@ -118,13 +118,7 @@ bot.on('message', function (event) {
                 if (err) throw err;
                 for (let row of res.rows) {
                     iCOUNT=row.count;
-                   /* event.reply("超過30 次抽的人數:"+iCOUNT+"人"+"\n"+
-                                "抽的總次數:"+iSUM+"次"
-                               ).then(function (data) {
-                        console.log('success', data);
-                    }).catch(function (error) {
-                        console.log('Error', error);
-                    });*/
+
                     console.log('##');
                 }           
             });
@@ -167,7 +161,7 @@ bot.on('message', function (event) {
             });
   //      client3.end();
 
-    }
+    }*/
     /////////////////////////////
     if(event.message.text=='抽'){
     ////////////////////////
@@ -253,7 +247,7 @@ bot.on('message', function (event) {
 
 
 //此行抽圖OK但加入後報表不行run
-//client.end();   
+client.end();   
 
 
 
