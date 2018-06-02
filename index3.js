@@ -129,7 +129,7 @@ bot.on('message', function (event) {
                 }           
             });
             var iFriend=0;    
-            client.query("SELECT COUNT(*) FROM public.user_history_record where friend=='Yes';", (err, res) => {    
+            client.query("SELECT COUNT(*) FROM public.user_history_record where friend='Yes';", (err, res) => {    
                 if (err) throw err;
                 for (let row of res.rows) {
                     iFriend=row.count;
