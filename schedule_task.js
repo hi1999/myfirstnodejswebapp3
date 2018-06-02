@@ -45,27 +45,11 @@ function callback(error, response, body) {
         client.query('SELECT user_id FROM public.user_history_record;', (err, res) => {
             if (err) throw err;
 
-            //client2 = new Client({
-            //    connectionString: process.env.DATABASE_URL,
-            //    ssl: true,
-            //});
-            //client2.connect();
-            //console.log('Client2 to DB連線成功');
-
             for (let row of res.rows) {
                 var ui = row.user_id;
                 console.log('\t\tui:' + ui);
                 //console.log(JSON.stringify(row));
-
-
-                //bot.push(ui, {
-                //    "type": "image",
-                //    "originalContentUrl": imgLink,
-                //    "previewImageUrl": imgLink
-                //});
-                //console.log('\t\t\tBOT PUSH OK');
             }            
-            //client2.end();
         });
 
         console.log('\t==>end callback');
