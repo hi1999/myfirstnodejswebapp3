@@ -52,10 +52,11 @@ function callback(error, response, body) {
                     "originalContentUrl": imgLink,
                     "previewImageUrl": imgLink
                 });
+                console.log('\t\t\tBOT PUSH OK');
             }
         });
-        //傳卡片
 
+        console.log('end callback');
     }
 }
 request(options, callback);
