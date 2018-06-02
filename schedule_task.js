@@ -98,14 +98,15 @@ function callback(error, response, body) {
         console.log(info.data[Math.floor(Math.random()*info.data.length)].link);
         console.log('傳遞卡片');
         //需要再加入隨機功能
-//////////////////
+//////////////////為何都抓不到?
         client.query('SELECT user_id FROM public.user_history_record;', (err, res) => {
-     if (err) throw err;
-     for (let row of res.rows) {
-         var ui=row.user_id;
-        console.log('ui:'+ui);
-     }
-});
+            if (err) throw err;
+            for (let row of res.rows) {
+                var ui=row.user_id;
+                console.log('ui:'+ui);
+                console.log(JSON.stringify(row));
+            }
+        });
 //////////////////        
         
         
