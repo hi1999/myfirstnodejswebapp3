@@ -29,7 +29,7 @@ var options = {
 function callback(error, response, body) {
     if (!error && response.statusCode == 200) {
         var info = JSON.parse(body);
-        console.log("\t==>callback取圖OK:");
+        console.log("\t==>callback取圖OK: (" + info.data.length+")");
 
         const client = new Client({
             connectionString: process.env.DATABASE_URL,
@@ -50,7 +50,7 @@ function callback(error, response, body) {
                     "originalContentUrl": imgLink,
                     "previewImageUrl": imgLink
                 });
-                console.log('==>push [' + imgLink+'] ok');
+                console.log('\t==>push [' + imgLink+'] ok');
             }
             client.end();
         });
