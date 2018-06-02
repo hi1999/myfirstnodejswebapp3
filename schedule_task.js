@@ -8,6 +8,7 @@ const client = new Client({
     connectionString: process.env.DATABASE_URL,
     ssl: true,
 });
+client.connect();
 client.query('SELECT user_id FROM public.user_history_record;', (err, res) => {
             if (err) throw err;
             for (let row of res.rows) {
