@@ -32,7 +32,6 @@ function callback(error, response, body) {
         var imgLink = info.data[Math.floor(Math.random() * info.data.length)].link;
         console.log("\t==>callback取圖路俓OK:" + imgLink);
 
-        console.log('----------------1');
         const client = new Client({
             connectionString: process.env.DATABASE_URL,
             ssl: true,
@@ -41,21 +40,20 @@ function callback(error, response, body) {
         client.query('SELECT user_id FROM public.user_history_record;', (err, res) => {
             if (err) throw err;
 
-            console.log("----------------For each User");
+            console.log("(after callback) Push Image For Each User");
             for (let row of res.rows) {
                 var ui = row.user_id;
                 //console.log(JSON.stringify(row));
-                console.log('----------------push ui:' + ui + ' with image' + imgLink);
+                console.log('==>push ui:' + ui );
                 bot.push(ui, {
                     "type": "image",
                     "originalContentUrl": imgLink,
                     "previewImageUrl": imgLink
                 });
-                console.log('----------------push ok');
+                console.log('==>push ok');
             }
             client.end();
         });
-        console.log('----------------1');
 
         console.log('\t==>end callback');
     }
