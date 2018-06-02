@@ -133,7 +133,7 @@ bot.on('message', function (event) {
                     iFriend=row.count;
                     console.log(JSON.stringify(row));
                     event.reply("超過30次抽的人數:"+iCOUNT+"人"+"\n"+
-                                "        抽的總次數:"+iSUM+"次"+"\n"+
+                                "         抽的總次數:"+iSUM+"次"+"\n"+
                                 "      目前訂閱人數:"+iFriend+"人"+"\n"+
                                 "   活躍用戶比率為:"+iCOUNT/iFriend*100+"%"
                                ).then(function (data) {
