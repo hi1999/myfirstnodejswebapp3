@@ -9,12 +9,11 @@ const client = new Client({
     ssl: true,
 });
 client.connect();
-console.log('Client to DB連線成功');
 
-console.log("\tFor each User");
 client.query('SELECT user_id FROM public.user_history_record;', (err, res) => {
     if (err) throw err;
 
+    console.log("\tFor each User");
     for (let row of res.rows) {
         var ui = row.user_id;
         console.log('\t\tui:' + ui);
