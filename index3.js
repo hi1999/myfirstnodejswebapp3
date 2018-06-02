@@ -130,13 +130,13 @@ bot.on('message', function (event) {
             });
              var iGetUserToday=0; 
                     client.query("SELECT COUNT(*) FROM public.user_daily_record where user_id like '%-5-2%';", (err, res) => {    
-                if (err) throw err;
-                for (let row of res.rows) {
-                    iGetUserToday=row.count;
+                        if (err) throw err;
+                        for (let row of res.rows) {
+                            iGetUserToday=row.count;
                    
-                    console.log('##');
-                }           
-            });
+                            console.log('##');
+                        }           
+                 });
         
         
             var iFriend=0;    
