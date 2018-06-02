@@ -207,7 +207,7 @@ bot.on('message', function (event) {
             if (err) throw err;
             for (let row of res.rows) {
                 var bExist=row.count;
-                console.log("回傳資料:"+event.source.userId+"-"+iMonth+"-"+iDate);
+                console.log("回傳資料:"+event.source.userId+"-"+iMonth+"-"+iDay);
                 console.log(JSON.stringify(row));
                 if(bExist=="0"){
                     console.log("新增一筆資料");
