@@ -29,7 +29,6 @@ var options = {
 function callback(error, response, body) {
     if (!error && response.statusCode == 200) {
         var info = JSON.parse(body);
-        var imgLink = info.data[Math.floor(Math.random() * info.data.length)].link;
         console.log("\t==>callback取圖路俓OK:" + imgLink);
 
         const client = new Client({
@@ -44,7 +43,8 @@ function callback(error, response, body) {
             for (let row of res.rows) {
                 var ui = row.user_id;
                 //console.log(JSON.stringify(row));
-                console.log('==>push ui:' + ui );
+                console.log('==>push ui:' + ui);
+                var imgLink = info.data[Math.floor(Math.random() * info.data.length)].link;
                 bot.push(ui, {
                     "type": "image",
                     "originalContentUrl": imgLink,
