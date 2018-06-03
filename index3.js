@@ -1,7 +1,7 @@
 var linebot = require('linebot');
 var express = require('express');
 
-console.log('start index3.js');
+console.log('start index3.js 1');
 console.log('測試PostgreSQL');
 
 var bot = linebot({
