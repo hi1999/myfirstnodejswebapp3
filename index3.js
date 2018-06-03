@@ -53,6 +53,7 @@ bot.on('follow', function (event) {
                         if (err1) throw err1;
                         client.end();
                     });
+                console.log("新增一筆資料OK");
             }
             /////////////
             if (bExist == "1") {
@@ -64,6 +65,7 @@ bot.on('follow', function (event) {
                     if (err2) throw err2;
                     client.end();
                 });
+                console.log("更新一筆資料OK");
             }
             /////////////////
         }
@@ -144,6 +146,8 @@ bot.on('message', function (event) {
         client.query("SELECT get_times FROM public.user_history_record where user_id= '" + event.source.userId + "'", (err2, res) => {
             if (err2) throw err2;
             for (let row of res.rows) {
+                
+                console.log('row',row);
                 var iTimes = row.get_times;
                 if (iTimes == "30" || iTimes == "35") {
                     event.reply({
