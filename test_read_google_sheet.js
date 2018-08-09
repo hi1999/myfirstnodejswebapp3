@@ -16,11 +16,26 @@ const TOKEN_PATH = 'token.json';
 
 var apiKey = '4/NgASGFk6zIaO_dP29g1HkX5OXWz0pn4cRpuWDMvLT6wcK_dbqk1Ukhg';
 
+app.get('/oauth2callback', (req, res) => {
+    const code = req.query.code;
+    client.getToken(code, (err, tokens) => {
+        if (err) {
+            console.error('Error getting oAuth tokens:');
+            throw err;
+        }
+        client.credentials = tokens;
+        res.send('Authentication successful! Please return to the console.');
+        server.close();
+        listMajors(client);
+    });
+});
+
 // Load client secrets from a local file.
 fs.readFile('credentials.json', (err, content) => {
     if (err) return console.log('Error loading client secret file:', err);
     // Authorize a client with credentials, then call the Google Sheets API.
     authorize(JSON.parse(content), listMajors);
+
 });
 
 /**
