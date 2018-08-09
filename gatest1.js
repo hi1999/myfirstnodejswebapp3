@@ -2,8 +2,8 @@
 var express = require('express');
 var app = express();
 
-//var ua = require('universal-analytics');
-//var visitor = ua('UA-21856187-7');//谷歌统计
+var ua = require('universal-analytics');
+var visitor = ua('UA-21856187-7');//谷歌统计
 
 app.get("/", function (req, res) {
     res.send('Hello World!')
