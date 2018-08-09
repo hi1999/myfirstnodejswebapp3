@@ -26,9 +26,9 @@ const scopes = ['https://www.googleapis.com/auth/spreadsheets.readonly'];
 
 // Create an oAuth2 client to authorize the API call
 const client = new google.auth.OAuth2(
-    keys.web.client_id,
-    keys.web.client_secret,
-    keys.web.redirect_uris[0]
+    '750075050536-ci75d0lt110ajk4plrrmci58ma1okvp8.apps.googleusercontent.com',//keys.web.client_id,
+    'lVPgKPGSNayDSPU7IFczBT5G',//keys.web.client_secret,
+    'urn:ietf:wg:oauth:2.0:oob'//keys.web.redirect_uris[0]
 );
 
 // Generate the url that will be used for authorization
