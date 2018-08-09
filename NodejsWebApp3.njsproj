@@ -58,6 +58,9 @@
     <Compile Include="test_read_google_sheet2.js">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="test_read_google_sheet3.js">
+      <SubType>Code</SubType>
+    </Compile>
     <Content Include="client_secret.json" />
     <Content Include="credentials.json" />
     <Content Include="package.json" />
