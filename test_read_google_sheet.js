@@ -39,6 +39,7 @@ function authorize(credentials, callback) {
         oAuth2Client.setCredentials(JSON.parse(token));
         callback(oAuth2Client);
     });
+    console.log('---------------------------authorize#');
 }
 
 /**
@@ -84,7 +85,7 @@ function listMajors(auth) {
     console.log('---------------------------1');
 
     sheets.spreadsheets.values.get({
-        spreadsheetId: '1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms',
+        spreadsheetId: '1GrvkbHdttGR8cG3M494MIqj5TvwNBts3Miy0ZszdQLo',
         range: 'Class Data!A2:E',
     }, (err, res) => {
         if (err) return console.log('The API returned an error: ' + err);
