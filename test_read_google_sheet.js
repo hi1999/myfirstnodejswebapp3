@@ -78,6 +78,8 @@ function getNewToken(oAuth2Client, callback) {
  */
 function listMajors(auth) {
     const sheets = google.sheets({ version: 'v4', auth });
+    console.log('---------------------------1');
+
     sheets.spreadsheets.values.get({
         spreadsheetId: '1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms',
         range: 'Class Data!A2:E',
@@ -95,6 +97,7 @@ function listMajors(auth) {
         }
     });
 }
+console.log('---------------------------2');
 
 var server = app.listen(process.env.PORT || 8080, function () {
     var port = server.address().port;
