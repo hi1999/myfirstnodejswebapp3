@@ -60,12 +60,14 @@ function getNewToken(oAuth2Client, callback) {
         access_type: 'offline',
         scope: SCOPES,
     });
+    console.log('---------------------------authUrl:' + authUrl);
     console.log('Authorize this app by visiting this url:', authUrl);
     const rl = readline.createInterface({
         input: process.stdin,
         output: process.stdout,
     });
-    apiKey = await rl.output;
+    console.log('---------------------------rl.output' + rl.output);
+
     oAuth2Client.getToken(apiKey, (err, token) => {
         if (err) return console.error('Error while trying to retrieve access token', err);
         oAuth2Client.setCredentials(token);
