@@ -65,7 +65,7 @@ function getNewToken(oAuth2Client, callback) {
         input: process.stdin,
         output: process.stdout,
     });
-    apiKey = rl.output;
+    apiKey = await rl.output;
     oAuth2Client.getToken(apiKey, (err, token) => {
         if (err) return console.error('Error while trying to retrieve access token', err);
         oAuth2Client.setCredentials(token);
