@@ -14,6 +14,8 @@ const { google } = require('googleapis');
 const SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly'];
 const TOKEN_PATH = 'token.json';
 
+var apiKey = '4/NgASGFk6zIaO_dP29g1HkX5OXWz0pn4cRpuWDMvLT6wcK_dbqk1Ukhg';
+
 // Load client secrets from a local file.
 fs.readFile('credentials.json', (err, content) => {
     if (err) return console.log('Error loading client secret file:', err);
@@ -54,6 +56,7 @@ function getNewToken(oAuth2Client, callback) {
     const authUrl = oAuth2Client.generateAuthUrl({
         access_type: 'offline',
         scope: SCOPES,
+        auth: apiKey, 
     });
     console.log('Authorize this app by visiting this url:', authUrl);
     const rl = readline.createInterface({
