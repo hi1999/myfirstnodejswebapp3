@@ -54,8 +54,14 @@ app.get('/oauth2callback', (req, res) => {
         listMajors(client);
     });
 });
-const server = app.listen(3000, () => {
-    // open the browser to the authorize url to start the workflow
+//const server = app.listen(3000, () => {
+//    // open the browser to the authorize url to start the workflow
+//    opn(this.authorizeUrl, { wait: false });
+//});
+
+var server = app.listen(process.env.PORT || 8080, function () {
+    var port = server.address().port;
+    console.log("App now running on port", port);
     opn(this.authorizeUrl, { wait: false });
 });
 
@@ -88,8 +94,3 @@ function listMajors(auth) {
 }
 // [END main_body]
 
-
-var server = app.listen(process.env.PORT || 8080, function () {
-    var port = server.address().port;
-    console.log("App now running on port", port);
-});
