@@ -29,6 +29,9 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="gatest1.js">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="index.js">
       <SubType>Code</SubType>
     </Compile>

@@ -1,1 +1,1 @@
-web: node index3.js
+web: node gatest1.js
