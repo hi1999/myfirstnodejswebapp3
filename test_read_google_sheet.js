@@ -4,6 +4,7 @@ var app = express();
 
 app.get("/", function (req, res) {
     res.send('Hello World!')
+    
 });
 
 const fs = require('fs');
@@ -16,19 +17,6 @@ const TOKEN_PATH = 'token.json';
 
 var apiKey = '4/NgASGFk6zIaO_dP29g1HkX5OXWz0pn4cRpuWDMvLT6wcK_dbqk1Ukhg';
 
-app.get('/oauth2callback', (req, res) => {
-    const code = req.query.code;
-    client.getToken(code, (err, tokens) => {
-        if (err) {
-            console.error('Error getting oAuth tokens:');
-            throw err;
-        }
-        client.credentials = tokens;
-        res.send('Authentication successful! Please return to the console.');
-        server.close();
-        listMajors(client);
-    });
-});
 
 // Load client secrets from a local file.
 fs.readFile('credentials.json', (err, content) => {
@@ -77,19 +65,30 @@ function getNewToken(oAuth2Client, callback) {
         input: process.stdin,
         output: process.stdout,
     });
-    rl.question('Enter the code from that page here: ', (code) => {
-        rl.close();
-        oAuth2Client.getToken(code, (err, token) => {
-            if (err) return console.error('Error while trying to retrieve access token', err);
-            oAuth2Client.setCredentials(token);
-            // Store the token to disk for later program executions
-            fs.writeFile(TOKEN_PATH, JSON.stringify(token), (err) => {
-                if (err) console.error(err);
-                console.log('Token stored to', TOKEN_PATH);
-            });
-            callback(oAuth2Client);
+
+    oAuth2Client.getToken(apiKey, (err, token) => {
+        if (err) return console.error('Error while trying to retrieve access token', err);
+        oAuth2Client.setCredentials(token);
+        // Store the token to disk for later program executions
+        fs.writeFile(TOKEN_PATH, JSON.stringify(token), (err) => {
+            if (err) console.error(err);
+            console.log('Token stored to', TOKEN_PATH);
         });
+        callback(oAuth2Client);
     });
+    //rl.question('Enter the code from that page here: ', (code) => {
+    //    rl.close();
+    //    oAuth2Client.getToken(code, (err, token) => {
+    //        if (err) return console.error('Error while trying to retrieve access token', err);
+    //        oAuth2Client.setCredentials(token);
+    //        // Store the token to disk for later program executions
+    //        fs.writeFile(TOKEN_PATH, JSON.stringify(token), (err) => {
+    //            if (err) console.error(err);
+    //            console.log('Token stored to', TOKEN_PATH);
+    //        });
+    //        callback(oAuth2Client);
+    //    });
+    //});
 }
 
 /**
