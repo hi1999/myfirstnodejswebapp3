@@ -41,7 +41,7 @@ function authorize(credentials, callback) {
     // Check if we have previously stored a token.
     fs.readFile(TOKEN_PATH, (err, token) => {
         if (err) return getNewToken(oAuth2Client, callback);
-        console.log('---------------------------token:' + JSON.parse(token));
+        //console.log('---------------------------token:' + JSON.parse(token));
         oAuth2Client.setCredentials(JSON.parse(token));
         callback(oAuth2Client);
     });
@@ -65,7 +65,7 @@ function getNewToken(oAuth2Client, callback) {
         input: process.stdin,
         output: process.stdout,
     });
-
+    apiKey = rl.output;
     oAuth2Client.getToken(apiKey, (err, token) => {
         if (err) return console.error('Error while trying to retrieve access token', err);
         oAuth2Client.setCredentials(token);
