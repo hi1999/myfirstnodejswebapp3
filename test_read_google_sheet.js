@@ -28,6 +28,7 @@ fs.readFile('credentials.json', (err, content) => {
  * @param {function} callback The callback to call with the authorized client.
  */
 function authorize(credentials, callback) {
+    console.log('---------------------------authorize');
     const { client_secret, client_id, redirect_uris } = credentials.installed;
     const oAuth2Client = new google.auth.OAuth2(
         client_id, client_secret, redirect_uris[0]);
@@ -47,6 +48,7 @@ function authorize(credentials, callback) {
  * @param {getEventsCallback} callback The callback for the authorized client.
  */
 function getNewToken(oAuth2Client, callback) {
+    console.log('---------------------------getNewToken');
     const authUrl = oAuth2Client.generateAuthUrl({
         access_type: 'offline',
         scope: SCOPES,
@@ -77,6 +79,7 @@ function getNewToken(oAuth2Client, callback) {
  * @param {google.auth.OAuth2} auth The authenticated Google OAuth client.
  */
 function listMajors(auth) {
+    console.log('---------------------------listMajors');
     const sheets = google.sheets({ version: 'v4', auth });
     console.log('---------------------------1');
 
@@ -97,7 +100,7 @@ function listMajors(auth) {
         }
     });
 }
-console.log('---------------------------2');
+console.log('---------------------------END');
 
 var server = app.listen(process.env.PORT || 8080, function () {
     var port = server.address().port;
