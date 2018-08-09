@@ -52,7 +52,11 @@
     </Compile>
     <Compile Include="schedule_task.js" />
     <Compile Include="server.js" />
+    <Compile Include="test_read_google_sheet.js">
+      <SubType>Code</SubType>
+    </Compile>
     <Content Include="client_secret.json" />
+    <Content Include="credentials.json" />
     <Content Include="package.json" />
     <Content Include="Procfile" />
     <Content Include="README.md" />
