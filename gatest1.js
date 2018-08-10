@@ -9,9 +9,10 @@ async function accessSpreadsheet() {
   console.log('-----1');
   const doc = new GoogleSpreadsheet(SPREADSHEET_ID)
   console.log('-----2');
-  await promisify(doc.useServiceAccountAuth)(creds)
+  console.log('-----2'+doc.getInfo);
+  //await promisify(doc.useServiceAccountAuth)(creds)
   console.log('-----3');
-  const info = await promisify(doc.getInfo)()
+  //const info = await promisify(doc.getInfo)()
   
   console.log('-----4');
   console.log('Loaded doc: ' + info.title +' by '+ info.author.email)
