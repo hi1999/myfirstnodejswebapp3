@@ -1,7 +1,7 @@
 const GoogleSpreadsheet = require('google-spreadsheet')
 const { promisify } = require('util')
 
-const credentials = require('credentials.json')
+const credentials = require('service-account.json')
 
 const SPREADSHEET_ID = '1GrvkbHdttGR8cG3M494MIqj5TvwNBts3Miy0ZszdQLo';
 
